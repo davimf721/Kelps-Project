@@ -1,5 +1,5 @@
-# Kelps (gerenciador de senhas)
-Um gerenciador de senhas:
+# Kelps (Loja de jogos)
+Uma loja online de jogos:
 - personalisável
 - seguro
 - automatizado
