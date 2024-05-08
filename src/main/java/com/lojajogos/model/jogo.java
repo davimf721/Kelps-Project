@@ -1,12 +1,12 @@
-package com.lojajogos.model;
+package main.java.com.lojajogos.model;
 
-public class Jogo {
+ class jogo {
     private String nome;
     private String descricao;
     private double preco;
 
     // Construtor
-    public Jogo(String nome, String descricao, double preco) {
+    public jogo(String nome, String descricao, double preco) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;

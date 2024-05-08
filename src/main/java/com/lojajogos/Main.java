@@ -1,4 +1,4 @@
-package com.lojajogos;
+package main.java.com.lojajogos;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
