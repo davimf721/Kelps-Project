@@ -1,5 +1,5 @@
-# Kelps (Loja de jogos)
-Uma loja online de jogos:
+# Kelps (Trabalho da A3)
+Um cadastro de ferramentas  e de amigos:
 - personalisável
 - seguro
 - automatizado
