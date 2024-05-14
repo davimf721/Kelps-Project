@@ -1,18 +1,19 @@
 package main.java.com.cadastroferramentas.dao;
 
+import main.java.com.cadastroferramentas.model.Ferramenta;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FerramentaDAO {
-    private Connection conexao;
+    private final Connection conexao;
 
     public FerramentaDAO(Connection conexao) {
         this.conexao = conexao;
     }
 
     public void inserir(Ferramenta ferramenta) throws SQLException {
-        String sql = "INSERT INTO Ferramentas (id, nome, marca, custoAquisicao) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO ferramentas (id, nome, marca, custo_aquisicao) VALUES (?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, ferramenta.getId());
         stmt.setString(2, ferramenta.getNome());
@@ -23,14 +24,14 @@ public class FerramentaDAO {
 
     public List<Ferramenta> listar() throws SQLException {
         List<Ferramenta> ferramentas = new ArrayList<>();
-        String sql = "SELECT * FROM Ferramentas";
+        String sql = "SELECT * FROM ferramentas";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
             int id = rs.getInt("id");
             String nome = rs.getString("nome");
             String marca = rs.getString("marca");
-            double custoAquisicao = rs.getDouble("custoAquisicao");
+            double custoAquisicao = rs.getDouble("custo_aquisicao");
             Ferramenta ferramenta = new Ferramenta(id, nome, marca, custoAquisicao);
             ferramentas.add(ferramenta);
         }
@@ -38,14 +39,14 @@ public class FerramentaDAO {
     }
 
     public Ferramenta buscar(int id) throws SQLException {
-        String sql = "SELECT * FROM Ferramentas WHERE id = ?";
+        String sql = "SELECT * FROM ferramentas WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             String nome = rs.getString("nome");
             String marca = rs.getString("marca");
-            double custoAquisicao = rs.getDouble("custoAquisicao");
+            double custoAquisicao = rs.getDouble("custo_aquisicao");
             return new Ferramenta(id, nome, marca, custoAquisicao);
         } else {
             return null;
@@ -53,7 +54,7 @@ public class FerramentaDAO {
     }
 
     public void atualizar(Ferramenta ferramenta) throws SQLException {
-        String sql = "UPDATE Ferramentas SET nome = ?, marca = ?, custoAquisicao = ? WHERE id = ?";
+        String sql = "UPDATE ferramentas SET nome = ?, marca = ?, custo_aquisicao = ? WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, ferramenta.getNome());
         stmt.setString(2, ferramenta.getMarca());
@@ -63,7 +64,7 @@ public class FerramentaDAO {
     }
 
     public void deletar(int id) throws SQLException {
-        String sql = "DELETE FROM Ferramentas WHERE id = ?";
+        String sql = "DELETE FROM ferramentas WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, id);
         stmt.execute();
