@@ -1,5 +1,6 @@
 package main.java.com.cadastroferramentas;
 
+
 public class Main {
     public static void main(String[] args) {
         // Aqui você pode iniciar o aplicativo e testar suas funcionalidades
