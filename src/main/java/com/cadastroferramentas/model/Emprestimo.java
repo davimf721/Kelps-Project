@@ -9,9 +9,9 @@ public class Emprestimo {
     private Date dataDevolucao;
     private boolean devolvido;
 
-    public Emprestimo(int idEmprestimo, int idFerramentas, int idAmigo, Date dataEmprestimo, Date dataDevolucao, boolean devolvido){
+    public Emprestimo(int idEmprestimo, int idFerramenta, int idAmigo, Date dataEmprestimo, Date dataDevolucao, boolean devolvido){
         this.idEmprestimo = idEmprestimo;
-        this.idFerramenta = idFerramentas;
+        this.idFerramenta = idFerramenta;
         this.idAmigo = idAmigo;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao  = dataDevolucao;
