@@ -6,18 +6,25 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
 public class MySQLConnection {
-    public static Connection getConnection() throws SQLException, IOException {
+    public static Connection getConnection() {
+        Connection connection = null;
         Properties props = new Properties();
-        FileInputStream in = new FileInputStream("src/main/resources/jdbc.properties");
-        props.load(in);
-        in.close();
 
-        String url = props.getProperty("url");
-        String user = props.getProperty("user");
-        String password = props.getProperty("password");
+        try (FileInputStream in = new FileInputStream("src/main/java/resources/jdbc.properties")) {
+            props.load(in);
 
-        return DriverManager.getConnection(url, user, password);
+            String url = props.getProperty("url") + "/" + props.getProperty("database");
+            String user = props.getProperty("user");
+            String password = props.getProperty("password");
+
+            connection = DriverManager.getConnection(url, user, password);
+        } catch (IOException | SQLException e) {
+            // handle exception here
+            e.printStackTrace();
+        }
+
+        return connection;
     }
 }
-
