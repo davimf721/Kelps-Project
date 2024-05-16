@@ -12,6 +12,10 @@ public class EmprestimoDAO {
         this.conexao = conexao;
     }
 
+    public EmprestimoDAO() {
+
+    }
+
     public void inserir(Emprestimo emprestimo) throws SQLException {
         String sql = "INSERT INTO emprestimos (id_emprestimo, id_ferramenta, id_amigo, data_emprestimo, data_devolucao, devolvido) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);

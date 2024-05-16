@@ -12,6 +12,10 @@ public class FerramentaDAO {
         this.conexao = conexao;
     }
 
+    public FerramentaDAO() {
+
+    }
+
     public void inserir(Ferramenta ferramenta) throws SQLException {
         String sql = "INSERT INTO ferramentas (id, nome, marca, custo_aquisicao) VALUES (?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql);
