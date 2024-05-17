@@ -6,9 +6,12 @@ import main.java.com.cadastroferramentas.model.Amigo;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AmigoController {
     private final AmigoDAO amigoDAO;
+    private static final Logger LOGGER = Logger.getLogger(AmigoController.class.getName());
 
     /**
      * Construtor da classe AmigoController.
@@ -28,7 +31,7 @@ public class AmigoController {
                 System.out.println(amigo);
             }
         } catch (SQLException e) {
-            System.err.println("Erro ao listar os amigos: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erro ao listar os amigos", e);
         }
     }
 
@@ -45,7 +48,7 @@ public class AmigoController {
                 System.out.println("Amigo com ID " + id + " não encontrado.");
             }
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar o amigo: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erro ao buscar o amigo", e);
         }
     }
 
@@ -58,7 +61,7 @@ public class AmigoController {
             amigoDAO.inserir(amigo);
             System.out.println("Amigo inserido com sucesso.");
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir o amigo: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erro ao inserir o amigo", e);
         }
     }
 
@@ -71,7 +74,7 @@ public class AmigoController {
             amigoDAO.atualizar(amigo);
             System.out.println("Amigo atualizado com sucesso.");
         } catch (SQLException e) {
-            System.err.println("Erro ao atualizar o amigo: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erro ao atualizar o amigo", e);
         }
     }
 
@@ -84,7 +87,7 @@ public class AmigoController {
             amigoDAO.deletar(id);
             System.out.println("Amigo deletado com sucesso.");
         } catch (SQLException e) {
-            System.err.println("Erro ao deletar o amigo: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erro ao deletar o amigo", e);
         }
     }
 }
