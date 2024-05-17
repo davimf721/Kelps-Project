@@ -49,6 +49,6 @@ Relatório de empréstimos ativos e histórico de empréstimos.
 -Lógica para acessar e manipular os dados no banco de dados MySQL.
 ## Considerações Adicionais:
 - Utilizar JDBC para interagir com o banco de dados MySQL.
--Implementar validações de entrada de dados para garantir a integridade dos dados.
--Criar uma estrutura de exceções para lidar com erros e exceções durante a execução do aplicativo.
--Testar exaustivamente todas as funcionalidades para garantir que o sistema esteja funcionando conforme o esperado.
+- Implementar validações de entrada de dados para garantir a integridade dos dados.
+- Criar uma estrutura de exceções para lidar com erros e exceções durante a execução do aplicativo.
+- Testar exaustivamente todas as funcionalidades para garantir que o sistema esteja funcionando conforme o esperado.
