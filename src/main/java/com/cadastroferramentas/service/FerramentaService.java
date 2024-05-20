@@ -7,7 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class FerramentaService {
-    private FerramentaDAO ferramentaDAO = new FerramentaDAO();
+    private final FerramentaDAO ferramentaDAO;
+
+    public FerramentaService(FerramentaDAO ferramentaDAO) {
+        this.ferramentaDAO = ferramentaDAO;
+    }
 
     public List<Ferramenta> listar() throws SQLException {
         return ferramentaDAO.listar();
