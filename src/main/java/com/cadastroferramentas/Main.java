@@ -1,9 +1,9 @@
-package main.java.com.cadastroferramentas;
+package com.cadastroferramentas;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import main.java.com.cadastroferramentas.dao.AmigoDAO;
+import com.cadastroferramentas.dao.AmigoDAO;
 import main.java.com.cadastroferramentas.dao.MySQLConnection;
 import main.java.com.cadastroferramentas.model.Amigo;
 
