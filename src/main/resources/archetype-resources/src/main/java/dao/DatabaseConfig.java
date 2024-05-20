@@ -6,7 +6,7 @@ import java.util.Properties;
 public class DatabaseConfig {
     public static Properties loadProperties() throws IOException {
         Properties props = new Properties();
-        FileInputStream in = new FileInputStream("src/main/resources/jdbc.properties");
+        FileInputStream in = new FileInputStream("src/sqlResources/jdbc.properties");
         props.load(in);
         in.close();
         return props;
