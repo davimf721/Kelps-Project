@@ -6,6 +6,11 @@ import com.project.model.Amigo;
 import java.sql.SQLException;
 import java.util.List;
 
+
+/**
+ * Classe de serviço para gerenciar operações relacionadas aos amigos.
+ */
+
 public class AmigoService {
     private final AmigoDAO amigoDAO;
 

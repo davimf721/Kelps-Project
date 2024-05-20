@@ -15,9 +15,9 @@ public class EmprestimoService {
     }
 
     /**
-     * List all emprestimos from the database.
+     * Lista todos os emprestimos do banco de dados.
      *
-     * @return a list of Emprestimo
+     * @return uma lista de Emprestimo
      * @throws ServiceException if there is an error during the database operation
      */
     public List<Emprestimo> listar() throws ServiceException {
