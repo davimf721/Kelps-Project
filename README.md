@@ -6,27 +6,43 @@ Um cadastro de ferramentas  e de amigos:
 
 ##
 
+
 ## Modelo de Dados:
 ### Tabelas no MySQL:
 - ferramentas: armazena informações sobre as ferramentas (id, nome, marca, custo de aquisição).
 - amigos: armazena informações sobre os amigos (id, nome, telefone).
 - emprestimos: armazena informações sobre os empréstimos (id_emprestimo, id_ferramenta, id_amigo, data_emprestimo, data_devolucao, devolvido).
-## Funcionalidades:
-### Cadastro de Ferramentas e Amigos:
-
-- Permitir adicionar, visualizar, editar e excluir ferramentas e amigos.
-### Empréstimo de Ferramentas:
-
-- Registrar empréstimos de uma ou mais ferramentas para um amigo, com data de empréstimo e data prevista de devolução.
-- Validar se o amigo ainda tem itens não devolvidos antes de conceder um novo empréstimo.
+## Requisitos Funcionais:
+### Cadastro de Ferramentas:
+- O sistema deve permitir o cadastro de novas ferramentas com informações como nome, marca e custo de aquisição.
+- Deve ser possível editar e excluir ferramentas já cadastradas.
+### Cadastro de Amigos:
+- Deve ser possível cadastrar novos amigos com informações como nome e telefone.
+- O sistema deve permitir editar e excluir amigos já cadastrados.
+### Registro de Empréstimos:
+- Deve ser possível registrar empréstimos de uma ou mais ferramentas a um amigo específico.
+- O sistema deve registrar a data em que o empréstimo ocorreu e a data de devolução prevista.
+- Deve ser possível visualizar empréstimos ativos (não devolvidos) e histórico de todos os empréstimos realizados.
+- Ao registrar um novo empréstimo, o sistema deve verificar se o amigo já possui alguma ferramenta emprestada e informar ao usuário.
 ### Relatórios:
+- O sistema deve gerar um relatório de ferramentas disponíveis, mostrando o nome, marca e custo de aquisição de cada ferramenta, juntamente com o valor total gasto.
+- Deve ser possível visualizar um relatório de empréstimos ativos, mostrando quais ferramentas foram emprestadas, para quem e a data de devolução prevista.
+- Deve ser possível visualizar um relatório de todos os empréstimos realizados, mostrando quais ferramentas foram emprestadas, para quem, a data de empréstimo e a data de devolução.
+- O sistema deve ser capaz de identificar quem fez mais empréstimos e se há alguém que nunca devolveu ferramentas.
+## Requisitos Não Funcionais:
+### Localização:
+- O sistema deve ser executado localmente no computador do usuário, sem a necessidade de acesso à internet.
+### Usabilidade:
+- A interface do usuário deve ser intuitiva e de fácil utilização, especialmente para um público não técnico..
+### Desempenho:
+- O sistema deve ser responsivo e executar de forma rápida, mesmo com uma grande quantidade de dados cadastrados.
+### Segurança:
+- Deve haver proteção dos dados sensíveis dos amigos e das ferramentas, garantindo que apenas usuários autorizados possam acessá-los.
+### Manutenção:
+- O sistema deve ser facilmente mantido e atualizado, permitindo futuras correções de bugs e implementações de novas funcionalidades, se necessário.
 
-Relatório de ferramentas e gastos totais.
-Relatório de empréstimos ativos e histórico de empréstimos.
-### Integração com Google Agenda:
 
-- Integrar a agenda com o Google Calendar para registrar convites de amigos para eventos.
-- Compartilhar lembretes de eventos via e-mail.
+
 ## Tecnologias Utilizadas:
 ### Java 21:
 
