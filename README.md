@@ -63,6 +63,12 @@ Um cadastro de ferramentas  e de amigos:
 ### Camada de Acesso a Dados:
 
 -Lógica para acessar e manipular os dados no banco de dados MySQL.
+
+## Informações do banco de dados
+- `url=jdbc:mysql://localhost:3306`
+- `database=kelps`
+- `user=root`
+- `password=root`
 ## Considerações Adicionais:
 - Utilizar JDBC para interagir com o banco de dados MySQL.
 - Implementar validações de entrada de dados para garantir a integridade dos dados.
