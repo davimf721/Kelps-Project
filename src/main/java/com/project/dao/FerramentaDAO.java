@@ -8,13 +8,28 @@ import com.project.model.Ferramenta;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta classe implementa operações de acesso a dados para a entidade Ferramenta no banco de dados.
+ */
 public class FerramentaDAO {
     private final Connection conexao; /** Assumindo que a conexão seja fornecida ou injetada */
 
+    /**
+     * Construtor que inicializa a conexão com o banco de dados.
+     *
+     * @param conexao A conexão com o banco de dados
+     */
     public FerramentaDAO(Connection conexao) {
         this.conexao = conexao;
     }
 
+    /**
+     * Busca uma ferramenta no banco de dados com base no ID.
+     *
+     * @param id O ID da ferramenta a ser buscada
+     * @return O objeto Ferramenta encontrado ou null se não encontrado
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public Ferramenta buscar(int id) throws SQLException {
         if (id <= 0) {
             throw new IllegalArgumentException("ID de ferramenta inválido: " + id);
@@ -36,6 +51,12 @@ public class FerramentaDAO {
         }
     }
 
+    /**
+     * Lista todas as ferramentas registradas no banco de dados.
+     *
+     * @return Uma lista de objetos Ferramenta representando todas as ferramentas registradas
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public List<Ferramenta> listar() throws SQLException {
         List<Ferramenta> ferramentas = new ArrayList<>();
         String sql = "SELECT id, nome, marca, custo_aquisicao FROM ferramentas";
@@ -53,6 +74,13 @@ public class FerramentaDAO {
         return ferramentas;
 
     }
+
+    /**
+     * Deleta uma ferramenta do banco de dados com base no ID da ferramenta.
+     *
+     * @param id O ID da ferramenta a ser deletada
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public void deletar(int id) throws SQLException {
         if (id <= 0) {
             throw new IllegalArgumentException("ID de ferramenta inválido: " + id);
@@ -64,6 +92,13 @@ public class FerramentaDAO {
             stmt.executeUpdate();
         }
     }
+
+    /**
+     * Atualiza as informações de uma ferramenta no banco de dados.
+     *
+     * @param ferramenta O objeto Ferramenta com as informações atualizadas
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public void atualizar(Ferramenta ferramenta) throws SQLException {
         if (ferramenta == null) {
             throw new IllegalArgumentException("Ferramenta não pode ser nula");
@@ -78,6 +113,13 @@ public class FerramentaDAO {
             stmt.executeUpdate();
         }
     }
+
+    /**
+     * Insere uma nova ferramenta no banco de dados.
+     *
+     * @param ferramenta A ferramenta a ser inserida
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public void inserir(Ferramenta ferramenta) throws SQLException {
         if (ferramenta == null) {
             throw new IllegalArgumentException("Ferramenta não pode ser nula");

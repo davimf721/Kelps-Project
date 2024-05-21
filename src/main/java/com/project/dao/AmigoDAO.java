@@ -5,15 +5,27 @@ import java.util.ArrayList;
 import com.project.model.Amigo;
 import java.sql.*;
 
+/**
+ * Esta classe implementa operações de acesso a dados para a entidade Amigo no banco de dados.
+ */
 public class AmigoDAO {
     private Connection conexao;
 
-    // Construtor para receber a conexão com o banco de dados
+    /**
+     * Construtor que inicializa a conexão com o banco de dados.
+     *
+     * @param conexao A conexão com o banco de dados
+     */
     public AmigoDAO(Connection conexao) {
         this.conexao = conexao;
     }
 
-    // Método para adicionar um novo amigo ao banco de dados
+    /**
+     * Insere um novo amigo no banco de dados.
+     *
+     * @param amigo O objeto Amigo a ser inserido
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public void inserir(Amigo amigo) throws SQLException {
         String query = "INSERT INTO amigos (nome, telefone) VALUES (?, ?)";
         try (PreparedStatement statement = conexao.prepareStatement(query)) {
@@ -23,7 +35,12 @@ public class AmigoDAO {
         }
     }
 
-    // Método para listar todos os amigos do banco de dados
+    /**
+     * Lista todos os amigos cadastrados no banco de dados.
+     *
+     * @return Uma lista de objetos Amigo representando todos os amigos cadastrados
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public List<Amigo> listar() throws SQLException {
         List<Amigo> amigos = new ArrayList<>();
         String sql = "SELECT * FROM amigos";
@@ -39,10 +56,12 @@ public class AmigoDAO {
         return amigos;
     }
 
-
-
-
-    // Método para atualizar um amigo no banco de dados
+    /**
+     * Atualiza as informações de um amigo no banco de dados.
+     *
+     * @param amigo O objeto Amigo com as informações atualizadas
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public void atualizar(Amigo amigo) throws SQLException {
         String sql = "UPDATE amigos SET nome = ?, telefone = ? WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -53,7 +72,12 @@ public class AmigoDAO {
     }
 
 
-    // Método para deletar um amigo do banco de dados
+    /**
+     * Deleta um amigo do banco de dados com base no ID.
+     *
+     * @param amigoId O ID do amigo a ser deletado
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public void deletar(int amigoId) throws SQLException {
         String query = "DELETE FROM amigos WHERE id=?";
         try (PreparedStatement statement = conexao.prepareStatement(query)) {
@@ -61,7 +85,14 @@ public class AmigoDAO {
             statement.executeUpdate();
         }
     }
-    // Método para buscar um amigo pelo ID
+
+    /**
+     * Busca um amigo no banco de dados com base no ID.
+     *
+     * @param id O ID do amigo a ser buscado
+     * @return O objeto Amigo encontrado ou null se não encontrado
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public Amigo buscar(int id) throws SQLException {
         if (id <= 0) {
             throw new IllegalArgumentException("ID de amigo inválido: " + id);
@@ -76,7 +107,7 @@ public class AmigoDAO {
                     String telefone = rs.getString("telefone");
                     return new Amigo(id, nome, telefone);
                 } else {
-                    return null; // Não encontrado
+                    return null;
                 }
             }
         }
