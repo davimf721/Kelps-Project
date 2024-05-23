@@ -14,32 +14,32 @@ Um cadastro de ferramentas  e de amigos:
 - emprestimos: armazena informações sobre os empréstimos (id_emprestimo, id_ferramenta, id_amigo, data_emprestimo, data_devolucao, devolvido).
 ## Requisitos Funcionais:
 ### Cadastro de Ferramentas:
-- O sistema deve permitir o cadastro de novas ferramentas com informações como nome, marca e custo de aquisição.
-- Deve ser possível editar e excluir ferramentas já cadastradas.
+- RF001 - O sistema deve permitir o cadastro de novas ferramentas com informações como nome, marca e custo de aquisição.
+- RF002 - Deve ser possível editar e excluir ferramentas já cadastradas.
 ### Cadastro de Amigos:
-- Deve ser possível cadastrar novos amigos com informações como nome e telefone.
-- O sistema deve permitir editar e excluir amigos já cadastrados.
+- RF003 - Deve ser possível cadastrar novos amigos com informações como nome e telefone.
+- RF004 - O sistema deve permitir editar e excluir amigos já cadastrados.
 ### Registro de Empréstimos:
-- Deve ser possível registrar empréstimos de uma ou mais ferramentas a um amigo específico.
-- O sistema deve registrar a data em que o empréstimo ocorreu e a data de devolução prevista.
-- Deve ser possível visualizar empréstimos ativos (não devolvidos) e histórico de todos os empréstimos realizados.
-- Ao registrar um novo empréstimo, o sistema deve verificar se o amigo já possui alguma ferramenta emprestada e informar ao usuário.
+- RF005 - Deve ser possível registrar empréstimos de uma ou mais ferramentas a um amigo específico.
+- RF006 - O sistema deve registrar a data em que o empréstimo ocorreu e a data de devolução prevista.
+- RF007 - Deve ser possível visualizar empréstimos ativos (não devolvidos) e histórico de todos os empréstimos realizados.
+- RF008 - Ao registrar um novo empréstimo, o sistema deve verificar se o amigo já possui alguma ferramenta emprestada e informar ao usuário.
 ### Relatórios:
-- O sistema deve gerar um relatório de ferramentas disponíveis, mostrando o nome, marca e custo de aquisição de cada ferramenta, juntamente com o valor total gasto.
-- Deve ser possível visualizar um relatório de empréstimos ativos, mostrando quais ferramentas foram emprestadas, para quem e a data de devolução prevista.
-- Deve ser possível visualizar um relatório de todos os empréstimos realizados, mostrando quais ferramentas foram emprestadas, para quem, a data de empréstimo e a data de devolução.
-- O sistema deve ser capaz de identificar quem fez mais empréstimos e se há alguém que nunca devolveu ferramentas.
+- RFO09 -  sistema deve gerar um relatório de ferramentas disponíveis, mostrando o nome, marca e custo de aquisição de cada ferramenta, juntamente com o valor total gasto.
+- RF010 - Deve ser possível visualizar um relatório de empréstimos ativos, mostrando quais ferramentas foram emprestadas, para quem e a data de devolução prevista.
+- RF011 - Deve ser possível visualizar um relatório de todos os empréstimos realizados, mostrando quais ferramentas foram emprestadas, para quem, a data de empréstimo e a data de devolução.
+- RF012 - O sistema deve ser capaz de identificar quem fez mais empréstimos e se há alguém que nunca devolveu ferramentas.
 ## Requisitos Não Funcionais:
 ### Localização:
-- O sistema deve ser executado localmente no computador do usuário, sem a necessidade de acesso à internet.
+- RNF001 - O sistema deve ser executado localmente no computador do usuário, sem a necessidade de acesso à internet.
 ### Usabilidade:
-- A interface do usuário deve ser intuitiva e de fácil utilização, especialmente para um público não técnico..
+- RNF002 - A interface do usuário deve ser intuitiva e de fácil utilização, especialmente para um público não técnico..
 ### Desempenho:
-- O sistema deve ser responsivo e executar de forma rápida, mesmo com uma grande quantidade de dados cadastrados.
+- RNF003 - O sistema deve ser responsivo e executar de forma rápida, mesmo com uma grande quantidade de dados cadastrados.
 ### Segurança:
-- Deve haver proteção dos dados sensíveis dos amigos e das ferramentas, garantindo que apenas usuários autorizados possam acessá-los.
+- RNF004 - Deve haver proteção dos dados sensíveis dos amigos e das ferramentas, garantindo que apenas usuários autorizados possam acessá-los.
 ### Manutenção:
-- O sistema deve ser facilmente mantido e atualizado, permitindo futuras correções de bugs e implementações de novas funcionalidades, se necessário.
+- RNF005 - O sistema deve ser facilmente mantido e atualizado, permitindo futuras correções de bugs e implementações de novas funcionalidades, se necessário.
 
 
 

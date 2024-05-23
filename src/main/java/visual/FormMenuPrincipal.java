@@ -1,4 +1,4 @@
-package java.visual;
+package visual;
 
 import javax.swing.*;
 
