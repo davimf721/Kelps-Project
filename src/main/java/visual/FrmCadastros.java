@@ -2,15 +2,13 @@
  * Created by JFormDesigner on Wed May 22 22:25:26 BRT 2024
  */
 
-package com.project.visual;
+package visual;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmCadastros extends JPanel {
     public FrmCadastros() {
         initComponents();

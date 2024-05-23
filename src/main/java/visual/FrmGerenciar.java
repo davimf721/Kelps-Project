@@ -2,15 +2,13 @@
  * Created by JFormDesigner on Wed May 22 22:31:02 BRT 2024
  */
 
-package com.project.visual;
+package visual;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmGerenciar extends JPanel {
     public FrmGerenciar() {
         initComponents();

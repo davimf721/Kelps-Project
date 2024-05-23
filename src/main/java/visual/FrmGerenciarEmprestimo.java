@@ -7,9 +7,7 @@ package visual;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmGerenciarEmprestimo extends JPanel {
     public FrmGerenciarEmprestimo() {
         initComponents();
