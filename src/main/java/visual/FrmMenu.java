@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Wed May 22 20:08:05 BRT 2024
  */
 
-package visual;
+package com.project.visual;
 
 import java.awt.*;
 import java.awt.event.*;
