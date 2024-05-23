@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import com.project.dao.AmigoDAO;
 import com.project.model.Amigo;
 
-
+import com.project.visual.FrmMenu;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -29,14 +29,10 @@ public class Main {
 //            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
 //        }
 
-    private void JBCadastroAmigoActionPerformed(java.awt.event.ActionEvent evt) {
-        // Instancia a tela de cadastro de aluno
-        FrmCadastroAmigo objeto = new FrmCadastroAmigo();
-        objeto.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-
+    public static void main (String [] args){
+        //Abre o Menu Principal
+        FrmMenu menu = new FrmMenu();
+        menu.setVisible (true);
 
     }
-    }
+}

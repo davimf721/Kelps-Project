@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Wed May 22 20:08:05 BRT 2024
- */
-
 package com.project.visual;
 
 import java.awt.*;
@@ -9,9 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmMenu extends JPanel {
     public FrmMenu() {
         initComponents();
@@ -24,6 +18,7 @@ public class FrmMenu extends JPanel {
     private void JBCadastroGeral(ActionEvent e) {
         // TODO add your code here
         
+
     }
 
     private void initComponents() {
@@ -32,16 +27,15 @@ public class FrmMenu extends JPanel {
         JBTitulo = new JLabel();
         JBCadastroGeral = new JButton();
         JBGerenciarGeral = new JButton();
-        button5 = new JButton();
+        JBRelatorio = new JButton();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
-        . swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing
-        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
-        Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
-        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
-        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName (
-        ) )) throw new RuntimeException( ); }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
+        EmptyBorder(0,0,0,0), "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e",javax.swing.border.TitledBorder.CENTER,javax.swing
+        .border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069al\u006fg",java.awt.Font.BOLD,12),
+        java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062or\u0064er".equals(e.getPropertyName()))
+        throw new RuntimeException();}});
 
         //---- JBTitulo ----
         JBTitulo.setText("Kelps Ferramentas");
@@ -53,15 +47,17 @@ public class FrmMenu extends JPanel {
         JBCadastroGeral.addActionListener(e -> {
 			JBCadastroAmigo(e);
 			JBCadastroGeral(e);
+			JBCadastroGeral(e);
+			JBCadastroGeral(e);
 		});
 
         //---- JBGerenciarGeral ----
         JBGerenciarGeral.setText("Gerenciar");
         JBGerenciarGeral.setFont(new Font("Segoe UI Black", Font.PLAIN, 13));
 
-        //---- button5 ----
-        button5.setText("Relatorio");
-        button5.setFont(new Font("Segoe UI Black", Font.PLAIN, 13));
+        //---- JBRelatorio ----
+        JBRelatorio.setText("Relatorio");
+        JBRelatorio.setFont(new Font("Segoe UI Black", Font.PLAIN, 13));
 
         GroupLayout layout = new GroupLayout(this);
         setLayout(layout);
@@ -76,7 +72,7 @@ public class FrmMenu extends JPanel {
                             .addComponent(JBGerenciarGeral, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(143, 143, 143)
-                            .addComponent(button5, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(JBRelatorio, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(54, Short.MAX_VALUE))
                 .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addGap(0, 78, Short.MAX_VALUE)
@@ -93,7 +89,7 @@ public class FrmMenu extends JPanel {
                         .addComponent(JBCadastroGeral)
                         .addComponent(JBGerenciarGeral))
                     .addGap(27, 27, 27)
-                    .addComponent(button5)
+                    .addComponent(JBRelatorio)
                     .addGap(0, 117, Short.MAX_VALUE))
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -104,6 +100,6 @@ public class FrmMenu extends JPanel {
     private JLabel JBTitulo;
     private JButton JBCadastroGeral;
     private JButton JBGerenciarGeral;
-    private JButton button5;
+    private JButton JBRelatorio;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

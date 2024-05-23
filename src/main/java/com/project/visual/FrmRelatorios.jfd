@@ -1,0 +1,31 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space ::101:x, par l {comp button1:::p:194:p, seq l {space :p:12:p, comp label1:::p::p}}, space :p:105:p}, seq l {space :p:152:p, comp button2:::p::p, space ::161:x}}"
+			"$verticalGroup": "par l {seq l {space :p:27:p, comp label1:::p::p, space :p:43:p, comp button1:::p:47:p, space ::79:x, comp button2:::p::p, space :p:29:p}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "RELATÓRIO"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 30 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Realizar Relatorio"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 13 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Cancelar"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 13 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}
