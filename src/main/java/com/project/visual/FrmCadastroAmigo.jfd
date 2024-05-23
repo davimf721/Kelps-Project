@@ -4,12 +4,39 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:400:x}"
-			"$verticalGroup": "par l {space :0:300:x}"
+			"$horizontalGroup": "par l {seq {par l {seq {space :p:37:p, par l:::p {comp label2::l:p:73:p, comp label3::l:p::p, comp JTFtelefone::l::315:x, comp JTFnome::l::315:x}}, seq l {space :p:72:p, comp label1:::p:251:p}, seq l {space :p:76:p, comp JBcadastrar:::p::p, space :p:54:p, comp JBcancelar:::p::p}}, space ::48:x}}"
+			"$verticalGroup": "par l {seq l {comp label1:::p:80:p, space :p:4:p, comp label2:::p::p, space :::p, comp JTFnome:::p::p, space s:::p, comp label3:::p:29:p, space :::p, comp JTFtelefone:::p::p, space s:::p, par b {comp JBcadastrar::b:p::p, comp JBcancelar::b:p::p}, space ::20:x}}"
 		} ) {
 			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "  CADASTRAR AMIGO "
+				"font": new java.awt.Font( "Kohinoor Devanagari", 1, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTFnome"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Nome:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Telefone:"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTFtelefone"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "JBcadastrar"
+				"text": "Cadastrar"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "JBcancelar"
+				"text": "Cancelar"
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
+			"location": new java.awt.Point( 260, 130 )
 			"size": new java.awt.Dimension( 400, 300 )
 		} )
 	}
