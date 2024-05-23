@@ -9,14 +9,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class FerramentaController {
     private final FerramentaDAO ferramentaDAO;
     private static final Logger LOGGER = Logger.getLogger(FerramentaController.class.getName());
 
+    /**
+     * Construtor da classe FerramentaController.
+     * @param conexao Objeto de conexão com o banco de dados.
+     */
     public FerramentaController(Connection conexao) {
         this.ferramentaDAO = new FerramentaDAO(conexao);
     }
 
+    /**
+     * Lista todas as ferramentas cadastradas no banco de dados.
+     */
     public void listarFerramentas() {
         try {
             List<Ferramenta> ferramentas = ferramentaDAO.listar();
@@ -28,6 +36,10 @@ public class FerramentaController {
         }
     }
 
+    /**
+     * Busca uma ferramenta pelo seu ID no banco de dados.
+     * @param id ID da ferramenta a ser buscada.
+     */
     public void buscarFerramenta(int id) {
         try {
             Ferramenta ferramenta = ferramentaDAO.buscar(id);
@@ -41,6 +53,10 @@ public class FerramentaController {
         }
     }
 
+    /**
+     * Insere uma nova ferramenta no banco de dados.
+     * @param ferramenta Ferramenta a ser inserida.
+     */
     public void inserirFerramenta(Ferramenta ferramenta) {
         try {
             ferramentaDAO.inserir(ferramenta);
@@ -50,6 +66,10 @@ public class FerramentaController {
         }
     }
 
+    /**
+     * Atualiza os dados de uma ferramenta no banco de dados.
+     * @param ferramenta Ferramenta a ser atualizada.
+     */
     public void atualizarFerramenta(Ferramenta ferramenta) {
         try {
             ferramentaDAO.atualizar(ferramenta);
@@ -59,6 +79,10 @@ public class FerramentaController {
         }
     }
 
+    /**
+     * Deleta uma ferramenta do banco de dados pelo seu ID.
+     * @param id ID da ferramenta a ser deletada.
+     */
     public void deletarFerramenta(int id) {
         try { ferramentaDAO.deletar(id);
             System.out.println("Ferramenta deletada com sucesso.");
