@@ -1,8 +1,8 @@
-package com.project.service;
+package service;
 
 import com.google.protobuf.ServiceException;
-import com.project.dao.FerramentaDAO;
-import com.project.model.Ferramenta;
+import dao.FerramentaDAO;
+import model.Ferramenta;
 
 import java.sql.SQLException;
 import java.util.List;

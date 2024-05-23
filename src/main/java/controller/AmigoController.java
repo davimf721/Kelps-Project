@@ -1,7 +1,7 @@
-package com.project.controller;
+package controller;
 
-import com.project.dao.AmigoDAO;
-import com.project.model.Amigo;
+import dao.AmigoDAO;
+import model.Amigo;
 
 import java.sql.Connection;
 import java.sql.SQLException;

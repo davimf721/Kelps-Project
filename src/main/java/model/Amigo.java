@@ -1,4 +1,4 @@
-package com.project.model;
+package model;
 
 /**
  * Representa um amigo cadastrado no sistema.

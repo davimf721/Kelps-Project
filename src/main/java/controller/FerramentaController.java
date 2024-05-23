@@ -1,7 +1,7 @@
-package com.project.controller;
+package controller;
 
-import com.project.dao.FerramentaDAO;
-import com.project.model.Ferramenta;
+import dao.FerramentaDAO;
+import model.Ferramenta;
 
 import java.sql.Connection;
 import java.sql.SQLException;

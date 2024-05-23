@@ -1,10 +1,10 @@
-package com.project.dao;
+package dao;
 
+import model.Ferramenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.project.model.Ferramenta;
 import java.util.ArrayList;
 import java.util.List;
 

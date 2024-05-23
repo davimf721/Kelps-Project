@@ -1,15 +1,15 @@
-package com.project.dao;
+package dao;
 
+import model.Amigo;
 import java.util.List;
 import java.util.ArrayList;
-import com.project.model.Amigo;
 import java.sql.*;
 
 /**
  * Esta classe implementa operações de acesso a dados para a entidade Amigo no banco de dados.
  */
 public class AmigoDAO {
-    private Connection conexao;
+    private final Connection conexao;
 
     /**
      * Construtor que inicializa a conexão com o banco de dados.

@@ -1,9 +1,9 @@
-package com.project.dao;
+package dao;
 
+import model.Emprestimo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import com.project.model.Emprestimo;
 
 /**
  * Esta classe implementa operações de acesso a dados para a entidade Emprestimo no banco de dados.

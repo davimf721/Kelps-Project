@@ -1,7 +1,7 @@
-package com.project.service;
+package service;
 
-import com.project.dao.AmigoDAO;
-import com.project.model.Amigo;
+import dao.AmigoDAO;
+import model.Amigo;
 
 import java.sql.SQLException;
 import java.util.List;

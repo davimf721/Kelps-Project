@@ -1,8 +1,8 @@
-package com.project.service;
+package service;
 
 import com.google.protobuf.ServiceException;
-import com.project.dao.EmprestimoDAO;
-import com.project.model.Emprestimo;
+import dao.EmprestimoDAO;
+import model.Emprestimo;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.project.dao;
+package dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,7 +12,7 @@ public class MySQLConnection {
         Connection connection = null;
         Properties props = new Properties();
 
-        try (FileInputStream in = new FileInputStream("src/main/java/com.project.resources/jdbc.properties")) {
+        try (FileInputStream in = new FileInputStream("src/main/java/jdbc.properties")) {
             props.load(in);
 
             String url = props.getProperty("url") + "/" + props.getProperty("database");

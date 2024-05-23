@@ -1,7 +1,7 @@
-package com.project.controller;
+package controller;
 
-import com.project.dao.EmprestimoDAO;
-import com.project.model.Emprestimo;
+import dao.EmprestimoDAO;
+import model.Emprestimo;
 
 import java.sql.Connection;
 import java.sql.SQLException;

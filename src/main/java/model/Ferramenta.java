@@ -1,4 +1,4 @@
-package com.project.model;
+package model;
 
 /**
  * Representa uma ferramenta utilizada no sistema.

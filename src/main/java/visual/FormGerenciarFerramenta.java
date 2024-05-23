@@ -1,4 +1,4 @@
-package com.project.visual;
+package java.visual;
 
 public class FormGerenciarFerramenta {
 }
