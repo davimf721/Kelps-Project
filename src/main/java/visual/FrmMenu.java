@@ -2,16 +2,14 @@
  * Created by JFormDesigner on Wed May 22 20:08:05 BRT 2024
  */
 
-package com.project.visual;
+package visual;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmMenu extends JPanel {
     public FrmMenu() {
         initComponents();

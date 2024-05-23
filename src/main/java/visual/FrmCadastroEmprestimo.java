@@ -8,9 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmCadastroEmprestimo extends JPanel {
     public FrmCadastroEmprestimo() {
         initComponents();

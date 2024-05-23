@@ -53,6 +53,7 @@ Um cadastro de ferramentas  e de amigos:
 ### Google Calendar API:
 
 - Para integração com o Google Agenda.
+
 ## Arquitetura:
 ### Camada de Apresentação:
 

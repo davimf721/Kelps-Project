@@ -2,15 +2,13 @@
  * Created by JFormDesigner on Wed May 22 22:35:59 BRT 2024
  */
 
-package com.project.visual;
+package visual;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmRelatorios extends JPanel {
     public FrmRelatorios() {
         initComponents();
