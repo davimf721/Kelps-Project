@@ -13,10 +13,17 @@ public class EmprestimoController {
     private final EmprestimoDAO emprestimoDAO;
     private static final Logger LOGGER = Logger.getLogger(EmprestimoController.class.getName());
 
+    /**
+     * Construtor da classe EmprestimoController.
+     * @param conexao Objeto de conexão com o banco de dados.
+     */
     public EmprestimoController(Connection conexao) {
         this.emprestimoDAO = new EmprestimoDAO(conexao);
     }
 
+    /**
+     * Lista todos os empréstimos cadastrados no banco de dados.
+     */
     public void listarEmprestimos() {
         try {
             List<Emprestimo> emprestimos = emprestimoDAO.listar();
@@ -28,6 +35,10 @@ public class EmprestimoController {
         }
     }
 
+    /**
+     * Busca um empréstimo pelo seu ID no banco de dados.
+     * @param id ID do empréstimo a ser buscado.
+     */
     public void buscarEmprestimo(int id) {
         try {
             Emprestimo emprestimo = emprestimoDAO.buscar(id);
@@ -41,6 +52,10 @@ public class EmprestimoController {
         }
     }
 
+    /**
+     * Insere um novo empréstimo no banco de dados.
+     * @param emprestimo Empréstimo a ser inserido.
+     */
     public void inserirEmprestimo(Emprestimo emprestimo) {
         try {
             emprestimoDAO.inserir(emprestimo);
@@ -50,6 +65,10 @@ public class EmprestimoController {
         }
     }
 
+    /**
+     * Atualiza os dados de um empréstimo no banco de dados.
+     * @param emprestimo Empréstimo a ser atualizado.
+     */
     public void atualizarEmprestimo(Emprestimo emprestimo) {
         try {
             emprestimoDAO.atualizar(emprestimo);
@@ -59,6 +78,10 @@ public class EmprestimoController {
         }
     }
 
+    /**
+     * Deleta um empréstimo do banco de dados pelo seu ID.
+     * @param id ID do empréstimo a ser deletado.
+     */
     public void deletarEmprestimo(int id) {
         try {
             emprestimoDAO.deletar(id);
