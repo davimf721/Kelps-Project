@@ -7,9 +7,7 @@ package com.project.visual;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmCadastroFerramenta extends JPanel {
     public FrmCadastroFerramenta() {
         initComponents();

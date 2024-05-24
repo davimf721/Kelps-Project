@@ -9,9 +9,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 
-/**
- * @author lucas
- */
+
 public class FrmMenu extends JPanel {
     public FrmMenu() {
         initComponents();
