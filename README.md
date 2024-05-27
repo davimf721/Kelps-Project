@@ -40,7 +40,10 @@ Um cadastro de ferramentas  e de amigos:
 - RNF004 - Deve haver proteção dos dados sensíveis dos amigos e das ferramentas, garantindo que apenas usuários autorizados possam acessá-los.
 ### Manutenção:
 - RNF005 - O sistema deve ser facilmente mantido e atualizado, permitindo futuras correções de bugs e implementações de novas funcionalidades, se necessário.
-
+### Tecnologias:
+- RNF006 - O sistema deve rodar em java 21
+- RNF007 - O sistem deve rodar utilizando o MySQL 8.0.36
+- RNF008 - O plugin utilizado para criacao de interface grafica foi jFromDesign 8.2.3
 
 
 ## Tecnologias Utilizadas:
