@@ -1,0 +1,55 @@
+JFDML JFormDesigner: "8.2.3.0.386" Java: "17.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:31:p, par l {seq l {comp label4:::p::p, space ::364:x}, seq {par l {comp label2:::p::p, comp label3:::p::p}, space :0:360:x}, seq t {par t {seq {space :0:24:x, comp label1:::p::p}, comp JTFNome::l::359:x, comp JTFMarca::l::359:x, seq l {comp button1:::p:104:p, space ::157:x, comp button2:::p:98:p}, comp JTFCusto::t::359:x}, space :p:55:p}}}}"
+			"$verticalGroup": "par l {seq l {space :p:19:p, comp label1:::p::p, space u:::p, comp label2:::p::p, space :::p, comp JTFNome:::p:29:p, space :p:18:p, comp label3:::p::p, space :::p, comp JTFMarca:::p:29:p, space u:::p, comp label4:::p::p, space :::p, comp JTFCusto:::p:29:p, space s:::p, par b {comp button2::b:p::p, comp button1::b:p::p}, space ::25:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "CADASTRO FERRAMENTA"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 26 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Nome:"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 16 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "Marca:"
+				"font": new java.awt.Font( "Segoe UI Black", 0, 16 )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "Custo:"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 16 )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTFNome"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTFMarca"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "JTFCusto"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Cadastrar"
+				"font": new java.awt.Font( "Segoe UI Black", 1, 13 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button2"
+				"text": "Cancelar"
+				"font": new java.awt.Font( "Segoe UI Black", 0, 13 )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 20, 5 )
+			"size": new java.awt.Dimension( 445, 345 )
+		} )
+	}
+}
