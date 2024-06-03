@@ -8,7 +8,11 @@ public class Amigo {
     private int id;// Identificador único do amigo
     private String nome;// Nome do amigo
     private String telefone;// Número de telefone do amigo
-
+    
+    
+    public Amigo(){
+        this(0,"","");
+    }
     /**
      * Construtor para criar um novo amigo sem ID atribuído.
      *
@@ -96,5 +100,9 @@ public class Amigo {
     @Override
     public String toString() {
         return "ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone;
+    }
+
+    public boolean inserirAmigo(String nome, String telefone) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
