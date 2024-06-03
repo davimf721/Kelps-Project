@@ -1,8 +1,5 @@
 package model;
 
-import dao.AmigoDAO;
-import java.sql.SQLException;
-import java.util.ArrayList;
 /**
  * Representa um amigo cadastrado no sistema.
  */
@@ -10,12 +7,21 @@ public class Amigo {
     // Atributos do amigo
     private int id;// Identificador único do amigo
     private String nome;// Nome do amigo
-    private int telefone;// Número de telefone do amigo
-    
-    private AmigoDAO dao;
-    
+    private String telefone;// Número de telefone do amigo
+
+
     public Amigo(){
-        this(0, "", 0);
+        this(0,"","");
+    }
+    /**
+     * Construtor para criar um novo amigo sem ID atribuído.
+     *
+     * @param nome Nome do amigo
+     * @param telefone Número de telefone do amigo
+     */
+    public Amigo(String nome, String telefone)  {
+        this.nome = nome;
+        this.telefone = telefone;
     }
 
     /**
@@ -25,12 +31,12 @@ public class Amigo {
      * @param nome Nome do amigo
      * @param telefone Número de telefone do amigo
      */
-    public Amigo(int id, String nome, int telefone) {
+    public Amigo(int id, String nome, String telefone) {
         this.id = id;// Define o ID do amigo
         this.nome = nome;// Define o nome do amigo
         this.telefone = telefone;// Define o telefone do amigo
-        this.dao = new AmigoDAO();
     }
+
     // Métodos de acesso aos atributos do amigo
     /**
      * Retorna o ID do amigo.
@@ -40,6 +46,7 @@ public class Amigo {
     public int getId() {
         return id;
     }
+
     /**
      * Define o ID do amigo.
      *
@@ -48,6 +55,7 @@ public class Amigo {
     public void  setId(int id){
         this.id  = id;
     }
+
     /**
      * Retorna o nome do amigo.
      *
@@ -56,6 +64,7 @@ public class Amigo {
     public String  getNome() {
         return nome;
     }
+
     /**
      * Define o nome do amigo.
      *
@@ -64,22 +73,25 @@ public class Amigo {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     /**
      * Retorna o número de telefone do amigo.
      *
      * @return O número de telefone do amigo
      */
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
+
     /**
      * Define o número de telefone do amigo.
      *
      * @param telefone O número de telefone do amigo
      */
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     /**
      * Sobrescreve o método toString para exibir informações do amigo.
      *
@@ -120,5 +132,9 @@ public class Amigo {
     public int maiorID() {
         return dao.maiorID();
 
+    }
+
+    public boolean inserirAmigo(String nome, String telefone) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
