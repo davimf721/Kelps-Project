@@ -16,8 +16,12 @@ public class AmigoDAO {
      *
      * @param conexao A conexão com o banco de dados
      */
-    public AmigoDAO(Connection conexao) {
+    public AmigoDAO(java.sql.Connection conexao) {
         this.conexao = conexao;
+    }
+
+    public AmigoDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -30,7 +34,7 @@ public class AmigoDAO {
         String query = "INSERT INTO amigos (nome, telefone) VALUES (?, ?)";
         try (PreparedStatement statement = conexao.prepareStatement(query)) {
             statement.setString(1, amigo.getNome());
-            statement.setString(2, amigo.getTelefone());
+            statement.setInt(2, amigo.getTelefone());
             statement.executeUpdate();
         }
     }
@@ -49,7 +53,7 @@ public class AmigoDAO {
         while (rs.next()) {
             int id = rs.getInt("id");
             String nome = rs.getString("nome");
-            String telefone = rs.getString("telefone");
+            int telefone = rs.getInt("telefone");
             Amigo amigo = new Amigo(id, nome, telefone);
             amigos.add(amigo);
         }
@@ -66,7 +70,7 @@ public class AmigoDAO {
         String sql = "UPDATE amigos SET nome = ?, telefone = ? WHERE id = ?";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, amigo.getNome());
-        stmt.setString(2, amigo.getTelefone());
+        stmt.setInt(2, amigo.getTelefone());
         stmt.setInt(3, amigo.getId());
         stmt.executeUpdate();
     }
@@ -104,7 +108,7 @@ public class AmigoDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     String nome = rs.getString("nome");
-                    String telefone = rs.getString("telefone");
+                    int telefone = rs.getInt("telefone");
                     return new Amigo(id, nome, telefone);
                 } else {
                     return null;
@@ -112,7 +116,37 @@ public class AmigoDAO {
             }
         }
     }
+    public Amigo carregarAmigo(int id) {
+        Amigo objeto = new Amigo();
+        objeto.setId(id);
+        try {
+            Statement statement = this.conexao.createStatement();            
+            ResultSet res = statement.executeQuery("SELECT * FROM tb_amigos WHERE id = " + id);
+            res.next();
 
+            objeto.setNome(res.getString("nome"));
+            objeto.setTelefone(res.getInt("telefone"));
+
+            statement.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+        }
+        return objeto;
     }
+    public int maiorID(){
+        int maiorID = 0;
+        try{
+            try (Statement statement = this.conexao.createStatement()) {
+                ResultSet res = statement.executeQuery("SELECT MAX(id) id FROM tb_amigos");
+                res.next();
+                maiorID = res.getInt("id");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro:" + ex);
+        }
+        return maiorID;
+    }
+
+}
 
 
