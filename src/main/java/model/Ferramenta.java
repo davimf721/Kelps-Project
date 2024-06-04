@@ -1,5 +1,9 @@
 package model;
 
+
+import dao.FerramentaDAO;
+import java.sql.SQLException;
+import java.util.ArrayList;
 /**
  * Representa uma ferramenta utilizada no sistema.
  */
@@ -10,6 +14,8 @@ public class Ferramenta {
     private String nome;// Nome da ferramenta
     private String marca;// Marca da ferramenta
     private double custoAquisicao;// Custo de aquisição da ferramenta
+    
+    private FerramentaDAO dao;
 
     /**
      * Construtor para criar uma nova ferramenta sem ID atribuído.
@@ -22,6 +28,8 @@ public class Ferramenta {
         this.nome = nome;// Define o nome da ferramenta
         this.marca = marca;// Define a marca da ferramenta
         this.custoAquisicao = custoAquisicao;// Define o custo de aquisição da ferramenta
+        this.dao = new FerramentaDAO();
+       
     }
 
     /**
@@ -37,6 +45,10 @@ public class Ferramenta {
         this.nome = nome;// Define o nome da ferramenta
         this.marca = marca;// Define a marca da ferramenta
         this.custoAquisicao = custoAquisicao;// Define o custo de aquisição da ferramenta
+    }
+
+    public Ferramenta() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     // Métodos de acesso aos atributos da ferramenta
@@ -121,5 +133,37 @@ public class Ferramenta {
     @Override
     public String toString() {
         return "ID: " + id + ", Nome: " + nome + ", Marca: " + marca + ", Custo de Aquisição: R$ " + custoAquisicao;
+    }
+    public ArrayList<Ferramenta> listar() throws SQLException {
+        return (ArrayList<Ferramenta>) dao.listar();
+    }
+
+    //Cadastrar novo amigo
+    public boolean inserir(int id, String nome, String marca, Double custoAquisicao) throws SQLException {
+        id = this.maiorID() + 1;
+        Ferramenta objeto = new Ferramenta(id, nome, marca, custoAquisicao);
+        dao.inserir(objeto);
+        return true;
+    }
+
+    //Deletar um amigo
+    public boolean deletar(int id) throws SQLException {
+        dao.deletar(id);
+        return true;
+    }
+
+    public boolean atualizar(int id, String nome, String marca, Double custoAquisicao) throws SQLException {
+        Ferramenta objeto = new Ferramenta(id, nome, marca, custoAquisicao);
+        dao.atualizar(objeto);
+        return true;
+    }
+    public Ferramenta carregaFerramenta(int id) {
+        return dao.carregarFerramenta(id);
+    }
+
+    //Retorna o maior ID da base de dados
+    public int maiorID() {
+        return dao.maiorID();
+
     }
 }
