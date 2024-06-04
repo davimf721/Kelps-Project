@@ -107,7 +107,7 @@ public class Amigo {
         return true;
     }
 
-    public boolean atualizar(String nome, int id, int telefone) throws SQLException {
+    public boolean atualizar(int id, String nome, int telefone) throws SQLException {
         Amigo objeto = new Amigo(id, nome, telefone);
         dao.atualizar(objeto);
         return true;
