@@ -12,7 +12,7 @@ public class MySQLConnection {
         Connection connection = null;
         Properties props = new Properties();
 
-        try (FileInputStream in = new FileInputStream("src/main/java/jdbc.properties")) {
+        try (FileInputStream in = new FileInputStream("resources/jdbc.properties")) {
             props.load(in);
 
             String url = props.getProperty("url") + "/" + props.getProperty("database");
