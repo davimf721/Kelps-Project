@@ -5,8 +5,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Esta classe implementa operações de acesso a dados para a entidade Ferramenta no banco de dados.
@@ -19,8 +21,12 @@ public class FerramentaDAO {
      *
      * @param conexao A conexão com o banco de dados
      */
-    public FerramentaDAO(Connection conexao) {
+    public FerramentaDAO(java.sql.Connection conexao) {
         this.conexao = conexao;
+    }
+
+    public FerramentaDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -132,6 +138,28 @@ public class FerramentaDAO {
             stmt.setDouble(3, ferramenta.getCustoAquisicao());
             stmt.executeUpdate();
         }
+    }
+    public Ferramenta carregarFerramenta(int id) {
+        Ferramenta objeto = new Ferramenta();
+        objeto.setId(id);
+        try {
+            Statement statement = this.conexao.createStatement();            
+            ResultSet res = statement.executeQuery("SELECT * FROM tb_amigos WHERE id = " + id);
+            res.next();
+
+            objeto.setNome(res.getString("nome"));
+            objeto.setMarca(res.getString("marca"));
+            objeto.setCustoAquisicao(res.getDouble("Custo de aquisição"));
+
+            statement.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro:" + erro);
+        }
+        return objeto;
+    }
+
+    public int maiorID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
