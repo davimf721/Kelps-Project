@@ -125,6 +125,19 @@ public class AmigoDAO extends ConexaoDAO {
         return amigo;
     }
 
+    public int maiorID() {
+        int MaiorID = 0;
+        try {
+            Statement smt = super.getConexao().createStatement();
+            ResultSet res = smt.executeQuery("select MAX(id)idAmigo from amigos");
+            res.next();
+            MaiorID = res.getInt("idAmigo");
+            smt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+        }
+        return MaiorID;
+    }
 }
 
 
