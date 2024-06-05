@@ -1,43 +1,44 @@
 package model;
+import dao.AmigoDAO;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Representa um amigo cadastrado no sistema.
  */
 public class Amigo {
-    // Atributos do amigo
-    private int id;// Identificador único do amigo
-    private String nome;// Nome do amigo
-    private String telefone;// Número de telefone do amigo
 
+    private int id;
+    private String nome;
+    private int telefone;
 
-    public Amigo(){
-        this(0,"","");
-    }
+    private AmigoDAO dao;
+
     /**
-     * Construtor para criar um novo amigo sem ID atribuído.
-     *
-     * @param nome Nome do amigo
-     * @param telefone Número de telefone do amigo
+     * Construtor padrão para a classe Amigo. Inicializa o amigo com id, nome e
+     * telefone vazios.
      */
-    public Amigo(String nome, String telefone)  {
+    public Amigo(){
+        this(0,"",0);
+    }
+
+    /**
+     * Construtor para a classe Amigo. Inicializa o amigo com o id, nome e
+     * telefone fornecidos.
+     *
+     * @param id O id do amigo
+     * @param nome O nome do amigo.
+     * @param telefone O telefone do amigo.
+     */
+
+    public Amigo( int id,String nome, int telefone) {
+        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
+        this.dao = new AmigoDAO();
     }
 
-    /**
-     * Construtor para criar um novo amigo com ID atribuído.
-     *
-     * @param id Identificador único do amigo
-     * @param nome Nome do amigo
-     * @param telefone Número de telefone do amigo
-     */
-    public Amigo(int id, String nome, String telefone) {
-        this.id = id;// Define o ID do amigo
-        this.nome = nome;// Define o nome do amigo
-        this.telefone = telefone;// Define o telefone do amigo
-    }
-
-    // Métodos de acesso aos atributos do amigo
     /**
      * Retorna o ID do amigo.
      *
@@ -79,7 +80,7 @@ public class Amigo {
      *
      * @return O número de telefone do amigo
      */
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
@@ -88,53 +89,107 @@ public class Amigo {
      *
      * @param telefone O número de telefone do amigo
      */
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
+
+
     /**
-     * Sobrescreve o método toString para exibir informações do amigo.
-     *
-     * @return Uma representação em string do amigo
+     * Método para obter a lista de amigos.
      */
-    @Override
-    public String toString() {
-        return "ID: " + id + ", Nome: " + nome + ", Telefone: " + telefone;
-    }
-    public ArrayList<Amigo> listar() throws SQLException {
-        return (ArrayList<Amigo>) dao.listar();
+    public ArrayList<Amigo> getListaAmigo() throws SQLException {
+        return dao.listar();
     }
 
-    //Cadastrar novo amigo
-    public boolean inserir(int id, String Nome, int telefone) throws SQLException {
-        id = this.maiorID() + 1;
-        Amigo objeto = new Amigo(id, Nome, telefone);
-        dao.inserir(objeto);
+    /**
+     * Insere um amigo no banco de dados.
+     *
+     * @param nome O nome do amigo a ser inserido.
+     * @param telefone O telefone do amigo a ser inserido.
+     * @return true se a inserção for bem-sucedida, false caso contrário.
+     */
+    public boolean insertAmigoDB(String nome, int telefone) throws SQLException {
+        int maiorID = dao.maiorID() + 1;
+        Amigo amigo = new Amigo(maiorID, nome, telefone);
+        dao.inserir(amigo);
         return true;
     }
 
-    //Deletar um amigo
-    public boolean deletar(int id) throws SQLException {
+    /**
+     * Método para deletar um amigo do banco de dados.
+     */
+    public boolean deleteAmigoBD(int id) throws SQLException {
         dao.deletar(id);
         return true;
     }
 
-    public boolean atualizar(int id, String nome, int telefone) throws SQLException {
-        Amigo objeto = new Amigo(id, nome, telefone);
-        dao.atualizar(objeto);
+    /**
+     * Retorna o índice de um amigo na lista.
+     *
+     * @param id O ID do amigo a ser buscado.
+     * @return O índice do amigo na lista.
+     */
+    private int procuraIndice(int id) {
+        int indice = -1;
+        for (int i = 0; i < AmigoDAO.listaAmigo.size(); i++) {
+            if (AmigoDAO.listaAmigo.get(i).getId() == id) {
+                indice = i;
+            }
+        }
+        return indice;
+    }
+    /**
+     * Método para atualizar um amigo no banco de dados.
+     */
+    public boolean updateAmigoDB(int id, String nome, int telefone) throws SQLException {
+        Amigo amigo = new Amigo(id, nome, telefone);
+        int indice = this.procuraIndice(id);
+        dao.atualizar(amigo);
         return true;
     }
-    public Amigo carregaAmigo(int id) {
-        return dao.carregarAmigo(id);
+
+    /**
+     * Método para carregar dados de um amigo específico pelo seu ID.
+     */
+    public Amigo retrieveAmigoDB(int id) throws SQLException {
+        return dao.buscar(id);
     }
 
-    //Retorna o maior ID da base de dados
+    /**
+     * Método para retornar o maior ID da base de dados.
+     */
     public int maiorID() {
         return dao.maiorID();
-
     }
 
-    public boolean inserirAmigo(String nome, String telefone) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean possuiEmprestimoAtivo(int id) {
+        boolean emprestimoAtivo = false;
+
+        Emprestimo emp = new Emprestimo();
+
+        ArrayList<Emprestimo> listaEmprestimo = emp.();
+
+        for (int i = 0; i < listaEmprestimo.size(); i++) {
+
+            if (listaEmprestimo.get(i).getIDAmigo() == id) {
+                emprestimoAtivo = true;
+
+            }
+
+        }
+        return emprestimoAtivo;
+    }
+
+    public int quantidadeEmprestimo(int id) {
+        int som = 0;
+        Emprestimo emp = new Emprestimo();
+        ArrayList<Emprestimo> listaEmprestimo = emp.listaEmprestimo();
+        for (int i = 0; i < listaEmprestimo.size(); i++) {
+            if (listaEmprestimo.get(i).getIDAmigo() == id) {
+                som++;
+            }
+        }
+        return som;
     }
 }
