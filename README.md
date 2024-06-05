@@ -43,7 +43,7 @@ Um cadastro de ferramentas  e de amigos:
 ### Tecnologias:
 - RNF006 - O sistema deve rodar em java 21
 - RNF007 - O sistem deve rodar utilizando o MySQL 8.0.36
-- RNF008 - O plugin utilizado para criacao de interface grafica foi jFromDesign 8.2.3
+
 
 
 ## Tecnologias Utilizadas:
