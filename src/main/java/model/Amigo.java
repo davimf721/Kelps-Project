@@ -1,5 +1,6 @@
 package model;
 import dao.AmigoDAO;
+import model.Emprestimo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -152,7 +153,7 @@ public class Amigo {
     /**
      * Método para carregar dados de um amigo específico pelo seu ID.
      */
-    public Amigo retrieveAmigoDB(int id) throws SQLException {
+    public Amigo buscarAmigoDB(int id) throws SQLException {
         return dao.buscar(id);
     }
 
@@ -168,13 +169,14 @@ public class Amigo {
 
         Emprestimo emp = new Emprestimo();
 
-        ArrayList<Emprestimo> listaEmprestimo = emp.();
+        ArrayList<Emprestimo> listaEmprestimo = emp.getListaEmprestimoAtivo();
 
-        for (int i = 0; i < listaEmprestimo.size(); i++) {
+        for (Emprestimo emprestimo : listaEmprestimo) {
 
-            if (listaEmprestimo.get(i).getIDAmigo() == id) {
+            if (emprestimo.getIdAmigo() == id) {
                 emprestimoAtivo = true;
 
+                break;
             }
 
         }
@@ -186,7 +188,7 @@ public class Amigo {
         Emprestimo emp = new Emprestimo();
         ArrayList<Emprestimo> listaEmprestimo = emp.listaEmprestimo();
         for (int i = 0; i < listaEmprestimo.size(); i++) {
-            if (listaEmprestimo.get(i).getIDAmigo() == id) {
+            if (listaEmprestimo.get(i).getIdAmigo() == id) {
                 som++;
             }
         }

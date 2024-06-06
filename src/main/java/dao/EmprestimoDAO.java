@@ -8,82 +8,111 @@ import java.util.List;
 /**
  * Esta classe implementa operações de acesso a dados para a entidade Emprestimo no banco de dados.
  */
-public class EmprestimoDAO {
-    private final Connection conexao;
-
-    /**
-     * Construtor que inicializa a conexão com o banco de dados.
-     *
-     * @param conexao A conexão com o banco de dados
-     */
-    public EmprestimoDAO(Connection conexao) {
-        this.conexao = conexao;
-    }
-
+public class EmprestimoDAO extends ConexaoDAO {
     /**
      * Insere um novo empréstimo no banco de dados.
      *
      * @param emprestimo O objeto Emprestimo a ser inserido
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
-    public void inserir(Emprestimo emprestimo) throws SQLException {
-        String sql = "INSERT INTO emprestimos (id_emprestimo, id_ferramenta, id_amigo, data_emprestimo, data_devolucao, devolvido) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, emprestimo.getIdEmprestimo());
-        stmt.setInt(2, emprestimo.getIdFerramenta());
-        stmt.setInt(3, emprestimo.getIdAmigo());
-        stmt.setDate(4, emprestimo.getDataEmprestimo());
-        stmt.setDate(5, emprestimo.getDataDevolucao());
-        stmt.setBoolean(6, emprestimo.isDevolvido());
-        stmt.executeUpdate();
+    public boolean inserir(Emprestimo emprestimo) throws SQLException {
+        String sql = "insert into emprestimos(id_Emprestimo,id_amigo,id_ferramenta,data_emprestimo,data_devolucao)values(?,?,?,?,?)";
+        try {
+            PreparedStatement smt = super.getConexao().prepareCall(sql);
+            smt.setInt(1, emprestimo.getIdEmprestimo());
+            smt.setInt(2, emprestimo.getIdAmigo());
+            smt.setInt(3, emprestimo.getIdFerramenta());
+            smt.setString(4, emprestimo.getDataEmprestimo());
+            smt.setString(5, emprestimo.getDataDevolucao());
+            smt.execute();
+            smt.close();
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    public int maiorIDEmprestimo() {
+        int MaiorID = 0;
+        try {
+            Statement smt = super.getConexao().createStatement();
+            ResultSet res = smt.executeQuery("select MAX(id_emprestimo)idEmprestimo from emprestimos");
+            res.next();
+            MaiorID = res.getInt("id_emprestimo");
+            smt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+        }
+        return MaiorID;
     }
 
+    // Lista para armazenar os dados dos empréstimos
+    public static ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
+
     /**
-     * Lista todos os empréstimos registrados no banco de dados.
+     * Estabelece uma conexão com o banco de dados de empréstimos.
      *
-     * @return Uma lista de objetos Emprestimo representando todos os empréstimos registrados
-     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     * @return Conexão com o banco de dados ou null se a conexão falhar.
      */
-    public List<Emprestimo> listar() throws SQLException {
-        List<Emprestimo> emprestimos = new ArrayList<>();
-        String sql = "SELECT * FROM emprestimos";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        while (rs.next()) {
-            int idEmprestimo = rs.getInt("id_emprestimo");
-            int idFerramenta = rs.getInt("id_ferramenta");
-            int idAmigo = rs.getInt("id_amigo");
-            Date dataEmprestimo = rs.getDate("data_emprestimo");
-            Date dataDevolucao = rs.getDate("data_devolucao");
-            boolean devolvido = rs.getBoolean("devolvido");
-            Emprestimo emprestimo = new Emprestimo(idEmprestimo, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao, devolvido);
-            emprestimos.add(emprestimo);
+    public ArrayList<Emprestimo> listar() {
+        // Limpa a lista para evitar duplicatas
+
+        listaEmprestimo.clear();
+        try {
+            // Cria uma declaração para executar a consulta SQL
+            Statement smt = super.getConexao().createStatement();
+            ResultSet res = smt.executeQuery("select * from emprestimos");
+
+            // Itera sobre o resultado da consulta e adiciona empréstimos à lista
+            while (res.next()) {
+                int idEmprestimo = res.getInt("IdEmprestimo");
+                int idAmigo = res.getInt("idAmigo");
+                int idFerramenta = res.getInt("idFerramenta");
+                String dataEmprestimo = res.getString("dataInicio");
+                String dataDevolucao = res.getString("dataDevolucao");
+                Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
+
+                listaEmprestimo.add(objeto);
+            }
+            // Fecha a declaração após a execução da consulta
+            smt.close();
+        } catch (SQLException erro) {
+            // Trata o erro caso ocorra algum problema na execução da consulta
+            System.out.println("Erro: " + erro);
         }
-        return emprestimos;
+        // Retorna a lista de empréstimos
+        return listaEmprestimo;
+
+    }
+
+    public static void setListaEmprestimo(ArrayList<Emprestimo> listaEmprestimo) {
+        EmprestimoDAO.listaEmprestimo = listaEmprestimo;
+
     }
 
     /**
      * Busca um empréstimo no banco de dados com base no ID do empréstimo.
      *
-     * @param idEmprestimo O ID do empréstimo a ser buscado
+     * @param IdEmprestimo O ID do empréstimo a ser buscado
      * @return O objeto Emprestimo encontrado ou null se não encontrado
-     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
-    public Emprestimo buscar(int idEmprestimo) throws SQLException {
-        String sql = "SELECT * FROM emprestimos WHERE id_emprestimo = ?";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, idEmprestimo);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            int idFerramenta = rs.getInt("id_ferramenta");
-            int idAmigo = rs.getInt("id_amigo");
-            Date dataEmprestimo = rs.getDate("data_emprestimo");
-            Date dataDevolucao = rs.getDate("data_devolucao");
-            boolean devolvido = rs.getBoolean("devolvido");
-            return new Emprestimo(idEmprestimo, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao, devolvido);
-        } else {
-            return null;
+    public Emprestimo buscar(int IdEmprestimo) {
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setIdEmprestimo(IdEmprestimo);
+        try {
+            Statement smt = super.getConexao().createStatement();
+            ResultSet res = smt.executeQuery("select * from emprestimos where id_emprestimo = " + IdEmprestimo);
+            res.next();
+            emprestimo.setIdEmprestimo(res.getInt("idEmprestimo"));
+            emprestimo.setDataDevolucao(res.getString("dataDevolucao"));
+            emprestimo.setDataEmprestimo(res.getString("dataInicio"));
+            emprestimo.setIdAmigo(res.getInt("idAmigo"));
+            emprestimo.setIdFerramenta(res.getInt("idFerramenta"));
+            smt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
         }
+        return emprestimo;
     }
 
     /**
@@ -92,28 +121,39 @@ public class EmprestimoDAO {
      * @param emprestimo O objeto Emprestimo com as informações atualizadas
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
-    public void atualizar(Emprestimo emprestimo) throws SQLException {
-        String sql = "UPDATE emprestimos SET id_ferramenta = ?, id_amigo = ?, data_emprestimo = ?, data_devolucao = ?, devolvido = ? WHERE id_emprestimo = ?";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, emprestimo.getIdFerramenta());
-        stmt.setInt(2, emprestimo.getIdAmigo());
-        stmt.setDate(3, emprestimo.getDataEmprestimo());
-        stmt.setDate(4, emprestimo.getDataDevolucao());
-        stmt.setBoolean(5, emprestimo.isDevolvido());
-        stmt.setInt(6, emprestimo.getIdEmprestimo());
-        stmt.executeUpdate();
+    public boolean atualizar(Emprestimo emprestimo) {
+        String res = "update emprestimos set id_emprestimo=?,id_amigo=?, id_ferramenta=?, data_emprestimo=?, data_devolucao=? where id_emprestimo=?";
+        try {
+            PreparedStatement smt = super.getConexao().prepareStatement(res);
+            smt.setInt(1, emprestimo.getIdEmprestimo());
+            smt.setInt(2, emprestimo.getIdAmigo());
+            smt.setInt(3, emprestimo.getIdFerramenta());
+            smt.setString(4, emprestimo.getDataEmprestimo());
+            smt.setString(5, emprestimo.getDataDevolucao());
+            smt.setInt(6, emprestimo.getIdEmprestimo());
+            smt.execute();
+            smt.close();
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+            throw new RuntimeException(erro);
+        }
     }
 
     /**
      * Deleta um empréstimo do banco de dados com base no ID do empréstimo.
      *
-     * @param idEmprestimo O ID do empréstimo a ser deletado
+     * @param IdEmprestimo O ID do empréstimo a ser deletado
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
-    public void deletar(int idEmprestimo) throws SQLException {
-        String sql = "DELETE FROM emprestimos WHERE id_emprestimo = ?";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, idEmprestimo);
-        stmt.executeUpdate();
+    public boolean deletar(int IdEmprestimo) throws SQLException {
+        try {
+            Statement smt = super.getConexao().createStatement();
+            smt.executeUpdate("delete from emprestimos where id_emprestimo=" + IdEmprestimo);
+            smt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+        }
+        return true;
     }
 }
