@@ -71,11 +71,11 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="JBExcluir" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="JBLimpar" min="-2" pref="106" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="JBCancelar" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="JBFechar" min="-2" pref="106" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="JBAplicaar" min="-2" pref="106" max="-2" attributes="0"/>
+                              <Component id="JBAplicar" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -112,9 +112,9 @@
                       <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JBCancelar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="JBAplicaar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="JBExcluir" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="JBFechar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="JBAplicar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="JBLimpar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
@@ -156,29 +156,32 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data Devoucao:"/>
+        <Property name="text" type="java.lang.String" value="Data Devolucao:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="JBExcluir">
+    <Component class="javax.swing.JButton" name="JBLimpar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBExcluirActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBLimparActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="JBCancelar">
+    <Component class="javax.swing.JButton" name="JBFechar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar"/>
+        <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBCancelarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBFecharActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="JBAplicaar">
+    <Component class="javax.swing.JButton" name="JBAplicar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aplicar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAplicarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
     </Component>
