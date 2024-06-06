@@ -99,7 +99,7 @@ public class Amigo {
     /**
      * Método para obter a lista de amigos.
      */
-    public ArrayList<Amigo> getListaAmigo() throws SQLException {
+    public ArrayList<Amigo> listarAmigo() throws SQLException {
         return dao.listar();
     }
 
@@ -110,7 +110,7 @@ public class Amigo {
      * @param telefone O telefone do amigo a ser inserido.
      * @return true se a inserção for bem-sucedida, false caso contrário.
      */
-    public boolean insertAmigoDB(String nome, int telefone) throws SQLException {
+    public boolean inserirAmigoDB(String nome, int telefone) throws SQLException {
         int maiorID = dao.maiorID() + 1;
         Amigo amigo = new Amigo(maiorID, nome, telefone);
         dao.inserir(amigo);
@@ -120,7 +120,7 @@ public class Amigo {
     /**
      * Método para deletar um amigo do banco de dados.
      */
-    public boolean deleteAmigoBD(int id) throws SQLException {
+    public boolean deletarAmigoBD(int id) throws SQLException {
         dao.deletar(id);
         return true;
     }
@@ -143,7 +143,7 @@ public class Amigo {
     /**
      * Método para atualizar um amigo no banco de dados.
      */
-    public boolean updateAmigoDB(int id, String nome, int telefone) throws SQLException {
+    public boolean atualizarAmigoDB(int id, String nome, int telefone) throws SQLException {
         Amigo amigo = new Amigo(id, nome, telefone);
         int indice = this.procuraIndice(id);
         dao.atualizar(amigo);
