@@ -193,7 +193,7 @@ import javax.swing.table.DefaultTableModel;
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaAmigos.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         //Carrega a lista de objetos aluno
-        ArrayList<Amigo> Amigos = objetoamigo.listar();
+        ArrayList<Amigo> Amigos = objetoamigo.listarAmigo();
         for (Amigo a : Amigos) {
           modelo.addRow(new Object[]{
             a.getId(),
@@ -220,7 +220,7 @@ import javax.swing.table.DefaultTableModel;
             
             if (respostaUsuario == 0) {// clicou em SIM
                 // envia os dados para o Aluno processar
-                if (this.objetoamigo.deletar(id)) {
+                if (this.objetoamigo.deletarAmigoBD(id)) {
                     // limpa os campos
                     this.JTFNome.setText("");
                     this.JTFTelefone.setText("");
@@ -228,7 +228,7 @@ import javax.swing.table.DefaultTableModel;
                 }
             }
             // atualiza a tabela.
-            System.out.println(this.objetoamigo.listar().toString());
+            System.out.println(this.objetoamigo.listarAmigo().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }   catch (SQLException ex) {
@@ -280,7 +280,7 @@ import javax.swing.table.DefaultTableModel;
                 id = Integer.parseInt(this.jTabelaAmigos.getValueAt(this.jTabelaAmigos.getSelectedRow(), 0).toString());
             }
             
-            if (this.objetoamigo.atualizar(id, nome, telefone)){
+            if (this.objetoamigo.atualizarAmigoDB(id, nome, telefone)){
                     // limpa os campos               
                 this.JTFId.setText("");
                 this.JTFNome.setText("");
@@ -288,7 +288,7 @@ import javax.swing.table.DefaultTableModel;
                 JOptionPane.showMessageDialog(rootPane, "Aluno Alterado com Sucesso!");
             }
                 //Exibe no console o aluno cadastrado
-            System.out.println(this.objetoamigo.listar().toString());
+            System.out.println(this.objetoamigo.listarAmigo().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {

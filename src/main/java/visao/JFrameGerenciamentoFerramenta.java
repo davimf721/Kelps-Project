@@ -19,7 +19,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
     /**
      * Creates new form JFrameGerenciamentoFerramenta
      */
-    public JFrameGerenciamentoFerramenta() {
+    public JFrameGerenciamentoFerramenta() throws SQLException {
         initComponents();
         this.objetoferramenta = new Ferramenta();
         this.carregaTabela();
@@ -28,7 +28,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaFerramentas.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         //Carrega a lista de objetos aluno
-        ArrayList<Ferramenta> Ferramentas = objetoferramenta.listar();
+        ArrayList<Ferramenta> Ferramentas = objetoferramenta.listarFerramenta();
         for (Ferramenta a : Ferramentas) {
           modelo.addRow(new Object[]{
             a.getId(),
@@ -224,7 +224,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
                 id = Integer.parseInt(this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 0).toString());
             }
             
-            if (this.objetoferramenta.atualizar(id, nome, marca, custoAquisicao)){
+            if (this.objetoferramenta.atualizarFerramentaDB(id, nome, marca, custoAquisicao)){
                     // limpa os campos               
                 this.JTFId.setText("");
                 this.JTFNome.setText("");
@@ -233,7 +233,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Ferramenta alterada com Sucesso!");
             }
                 //Exibe no console o aluno cadastrado
-            System.out.println(this.objetoferramenta.listar().toString());
+            System.out.println(this.objetoferramenta.listarFerramenta().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
@@ -272,7 +272,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
             
             if (respostaUsuario == 0) {// clicou em SIM
                 // envia os dados para o Aluno processar
-                if (this.objetoferramenta.deletar(id)) {
+                if (this.objetoferramenta.deletarFerramentaDB(id)) {
                     // limpa os campos
                     this.JTFNome.setText("");
                     this.JTFMarca.setText("");
@@ -281,9 +281,11 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
                 }
             }
             // atualiza a tabela.
-            System.out.println(this.objetoferramenta.listar().toString());
+            System.out.println(this.objetoferramenta.listarFerramenta().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         } finally {
             try {
                 // atualiza a tabela.
@@ -339,7 +341,11 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameGerenciamentoFerramenta().setVisible(true);
+                try {
+                    new JFrameGerenciamentoFerramenta().setVisible(true);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
