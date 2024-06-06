@@ -6,9 +6,7 @@ import dao.EmprestimoDAO;
 import model.Amigo;
 import model.Emprestimo;
 import model.Ferramenta;
-import service.AmigoService;
-import service.FerramentaService;
-import service.EmprestimoService;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
