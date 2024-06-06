@@ -13,7 +13,7 @@ public class ConexaoDAO {
 
             // Informações de conexão com o banco de dados
             String server = "localhost";
-            String database = "db_emprestimo";
+            String database = "kelps";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
             String password = "root";
