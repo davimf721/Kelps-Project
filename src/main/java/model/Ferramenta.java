@@ -14,41 +14,17 @@ public class Ferramenta {
     private String nome;// Nome da ferramenta
     private String marca;// Marca da ferramenta
     private double custoAquisicao;// Custo de aquisição da ferramenta
-    
-    private FerramentaDAO dao;
-
-    /**
-     * Construtor para criar uma nova ferramenta sem ID atribuído.
-     *
-     * @param nome Nome da ferramenta
-     * @param marca Marca da ferramenta
-     * @param custoAquisicao Custo de aquisição da ferramenta
-     */
-    public Ferramenta(String nome, String marca, double custoAquisicao) {
-        this.nome = nome;// Define o nome da ferramenta
-        this.marca = marca;// Define a marca da ferramenta
-        this.custoAquisicao = custoAquisicao;// Define o custo de aquisição da ferramenta
-        this.dao = new FerramentaDAO();
-       
-    }
-
-    /**
-     * Construtor para criar uma nova ferramenta com ID atribuído.
-     *
-     * @param id Identificador único da ferramenta
-     * @param nome Nome da ferramenta
-     * @param marca Marca da ferramenta
-     * @param custoAquisicao Custo de aquisição da ferramenta
-     */
-    public Ferramenta(int id, String nome, String marca, double custoAquisicao) {
-        this.id = id;// Define o ID da ferramenta
-        this.nome = nome;// Define o nome da ferramenta
-        this.marca = marca;// Define a marca da ferramenta
-        this.custoAquisicao = custoAquisicao;// Define o custo de aquisição da ferramenta
-    }
+    FerramentaDAO dao;
 
     public Ferramenta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this(0, "", "", 0);
+    }
+    public Ferramenta(int id, String nome, String marca,  double custoAquisicao) {
+        this.id = id;
+        this.nome = nome;
+        this.marca = marca; // Inicializa a marca como uma string vazia
+        this.custoAquisicao = custoAquisicao;
+        this.dao = new FerramentaDAO();
     }
 
     // Métodos de acesso aos atributos da ferramenta
@@ -125,45 +101,28 @@ public class Ferramenta {
         this.custoAquisicao = custoAquisicao;
     }
 
-    /**
-     * Sobrescreve o método toString para exibir informações da ferramenta.
-     *
-     * @return Uma representação em string da ferramenta
-     */
-    @Override
-    public String toString() {
-        return "ID: " + id + ", Nome: " + nome + ", Marca: " + marca + ", Custo de Aquisição: R$ " + custoAquisicao;
+    public String getDisponivel(int id) {
+        String disponivel = "Sim";
+        Emprestimo emp = new Emprestimo();
+        ArrayList<Emprestimo> listaEmprestimoAtivo = emp.getListaEmprestimoAtivo();
+        for (int i = 0; i < listaEmprestimoAtivo.size(); i++) {
+            if (listaEmprestimoAtivo.get(i).getIdFerramenta() == id) {
+                disponivel = "Não";
+            }
+        }
+        return disponivel;
     }
-    public ArrayList<Ferramenta> listar() throws SQLException {
-        return (ArrayList<Ferramenta>) dao.listar();
+    public ArrayList<Ferramenta> listaFerramenta() throws SQLException {
+        return dao.listar();
     }
 
-    //Cadastrar novo amigo
-    public boolean inserir(int id, String nome, String marca, Double custoAquisicao) throws SQLException {
-        id = this.maiorID() + 1;
-        Ferramenta objeto = new Ferramenta(id, nome, marca, custoAquisicao);
-        dao.inserir(objeto);
+    public boolean InsertFerramentaDB(String nome, String marca, double custoAquisicao) throws SQLException {
+        int maiorID = dao.maiorIDFerramenta() + 1;
+
+        Ferramenta ferramenta = new Ferramenta(maiorID, nome, custoAquisicao, marca);
+        dao.inserir(ferramenta);
         return true;
-    }
-
-    //Deletar um amigo
-    public boolean deletar(int id) throws SQLException {
-        dao.deletar(id);
-        return true;
-    }
-
-    public boolean atualizar(int id, String nome, String marca, Double custoAquisicao) throws SQLException {
-        Ferramenta objeto = new Ferramenta(id, nome, marca, custoAquisicao);
-        dao.atualizar(objeto);
-        return true;
-    }
-    public Ferramenta carregaFerramenta(int id) {
-        return dao.carregarFerramenta(id);
-    }
-
-    //Retorna o maior ID da base de dados
-    public int maiorID() {
-        return dao.maiorID();
 
     }
+
 }
