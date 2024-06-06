@@ -1,7 +1,8 @@
-package visual;
+package visao;
 
 import model.Amigo;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
 import java.sql.SQLException;
 
 
@@ -178,7 +179,7 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             }
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
-        } catch (NumberFormatException erro2) {
+        } catch (NumberFormatException | SQLException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
 
@@ -226,21 +227,11 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
 
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                 UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
