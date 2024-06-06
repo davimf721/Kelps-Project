@@ -2,7 +2,8 @@ package visual;
 
 import model.Amigo;
 import javax.swing.JOptionPane;
-import service.AmigoService;
+import java.sql.SQLException;
+
 
 /**
  *
@@ -30,8 +31,8 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
     private void initComponents() {
 
         JBAplicar = new javax.swing.JButton();
-        JBCancelar = new javax.swing.JButton();
-        JBExcluir = new javax.swing.JButton();
+        JBFechar = new javax.swing.JButton();
+        JBLimpar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         JTFNome = new javax.swing.JTextField();
@@ -49,17 +50,17 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             }
         });
 
-        JBCancelar.setText("Cancelar");
-        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
+        JBFechar.setText("Fechar");
+        JBFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBCancelarActionPerformed(evt);
+                JBFecharActionPerformed(evt);
             }
         });
 
-        JBExcluir.setText("Excluir");
-        JBExcluir.addActionListener(new java.awt.event.ActionListener() {
+        JBLimpar.setText("Limpar");
+        JBLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBExcluirActionPerformed(evt);
+                JBLimparActionPerformed(evt);
             }
         });
 
@@ -107,9 +108,9 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
                             .addComponent(JTFNome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JTFTelefone, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(JBExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
                                 .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
@@ -136,8 +137,8 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jLabel5)
                 .addContainerGap())
@@ -154,7 +155,7 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
         try {
             //Recebendo e validando dados da interface gráfica.
             String nome = "";
-            String telefone = "";
+            int telefone = 0;
 
             if (this.JTFNome.getText().length() < 2) {
                 throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
@@ -163,13 +164,13 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             }
 
             if (this.JTFTelefone.getText().length() == 9) {
-                telefone = (this.JTFTelefone.getText());
+                telefone = Integer.parseInt(this.JTFTelefone.getText());
             } else {
                 throw new Mensagem("Informe um número válido.");
             }
 
             //Envia os dados para o Controlador cadastrar
-            if (this.objetoamigo.inserirAmigo(nome, telefone)) {
+            if (this.objetoamigo.inserirAmigoDB(nome, telefone)) {
                 JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!");
                 //Limpa campos da interface
                 this.JTFNome.setText("");
@@ -180,34 +181,34 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
         } catch (NumberFormatException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
-        
-}
+
+    }
 
     public class Mensagem extends Exception {
 
         public Mensagem(String message) {
             super(message);
         }
-    
+
 
     }//GEN-LAST:event_JBAplicarActionPerformed
 
-    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+    private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
         // TODO add your handling code here
         this.dispose();
-    }//GEN-LAST:event_JBCancelarActionPerformed
+    }//GEN-LAST:event_JBFecharActionPerformed
 
     private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFNomeActionPerformed
 
-    private void JBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExcluirActionPerformed
+    private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
         // TODO add your handling code here:
         JTFNome.setText("");
         JTFTelefone.setText("");
-        
-    }//GEN-LAST:event_JBExcluirActionPerformed
-    
+
+    }//GEN-LAST:event_JBLimparActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -223,27 +224,23 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class  
+            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JFrameCadastroAmigo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -257,8 +254,8 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBAplicar;
-    private javax.swing.JButton JBCancelar;
-    private javax.swing.JButton JBExcluir;
+    private javax.swing.JButton JBFechar;
+    private javax.swing.JButton JBLimpar;
     private javax.swing.JTextField JTFNome;
     private javax.swing.JTextField JTFTelefone;
     private javax.swing.JLabel jLabel1;

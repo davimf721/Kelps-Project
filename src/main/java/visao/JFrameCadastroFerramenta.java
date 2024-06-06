@@ -4,17 +4,22 @@
  */
 package visual;
 
+import javax.swing.JOptionPane;
+import model.Ferramenta;
+
 /**
  *
  * @author joaomanuel
  */
 public class JFrameCadastroFerramenta extends javax.swing.JFrame {
+    public Ferramenta objetoferramenta;
 
     /**
      * Creates new form JFrameCadastroFerramenta
      */
     public JFrameCadastroFerramenta() {
         initComponents();
+        this.objetoferramenta = new Ferramenta();
     }
 
     /**
@@ -33,8 +38,8 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         JTFNome = new javax.swing.JTextField();
         JBAplicar = new javax.swing.JButton();
-        JBCancelar = new javax.swing.JButton();
-        JBExcluir = new javax.swing.JButton();
+        JBFechar = new javax.swing.JButton();
+        JBLimpar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         JTFMarca = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -60,13 +65,23 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
         });
 
         JBAplicar.setText("Aplicar");
-
-        JBCancelar.setText("Cancelar");
-
-        JBExcluir.setText("Excluir");
-        JBExcluir.addActionListener(new java.awt.event.ActionListener() {
+        JBAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBExcluirActionPerformed(evt);
+                JBAplicarActionPerformed(evt);
+            }
+        });
+
+        JBFechar.setText("Fechar");
+        JBFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBFecharActionPerformed(evt);
+            }
+        });
+
+        JBLimpar.setText("Limpar");
+        JBLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBLimparActionPerformed(evt);
             }
         });
 
@@ -103,9 +118,9 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(JTFCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(JBExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35)
-                                .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(44, 44, 44))
@@ -132,8 +147,8 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
                 .addComponent(JTFCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -145,9 +160,12 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFNomeActionPerformed
 
-    private void JBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExcluirActionPerformed
+    private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JBExcluirActionPerformed
+        JTFNome.setText("");
+        JTFMarca.setText("");
+        JTFCusto.setText("");
+    }//GEN-LAST:event_JBLimparActionPerformed
 
     private void JTFMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFMarcaActionPerformed
         // TODO add your handling code here:
@@ -156,6 +174,60 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
     private void JTFCustoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFCustoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFCustoActionPerformed
+
+    private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_JBFecharActionPerformed
+
+    private void JBAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarActionPerformed
+        // TODO add your handling code here:
+        try {
+            //Recebendo e validando dados da interface gráfica.
+            String nome = "";
+            double custoAquisicao = 0;
+            String marca = "";
+
+            if (this.JTFNome.getText().length() < 2) {
+                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+            } else {
+                nome = this.JTFNome.getText();
+            }
+
+            if (this.JTFCusto.getText().length() == 9) {
+                custoAquisicao = Double.parseDouble(this.JTFCusto.getText());
+            } else {
+                throw new Mensagem("Informe um número válido.");
+            }
+            
+            if (this.JTFMarca.getText().length() < 2) {
+                throw new Mensagem("Marca deve conter ao menos 2 caracteres.");
+            } else {
+                nome = this.JTFMarca.getText();
+            }
+
+            //Envia os dados para o Controlador cadastrar
+            if (this.objetoferramenta.inserirFerramentaDB(nome, marca, custoAquisicao)) {
+                JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!");
+                //Limpa campos da interface
+                this.JTFNome.setText("");
+                this.JTFCusto.setText("");
+                this.JTFMarca.setText("");
+            }
+        } catch (Mensagem error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        } catch (NumberFormatException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+        }
+
+    }
+
+    public class Mensagem extends Exception {
+
+        public Mensagem(String message) {
+            super(message);
+        }
+    }//GEN-LAST:event_JBAplicarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,8 +266,8 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBAplicar;
-    private javax.swing.JButton JBCancelar;
-    private javax.swing.JButton JBExcluir;
+    private javax.swing.JButton JBFechar;
+    private javax.swing.JButton JBLimpar;
     private javax.swing.JTextField JTFCusto;
     private javax.swing.JTextField JTFMarca;
     private javax.swing.JTextField JTFNome;
