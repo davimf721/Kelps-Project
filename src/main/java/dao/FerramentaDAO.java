@@ -13,20 +13,36 @@ import java.util.List;
 /**
  * Esta classe implementa operações de acesso a dados para a entidade Ferramenta no banco de dados.
  */
-public class FerramentaDAO {
-    private final Connection conexao; /** Assumindo que a conexão seja fornecida ou injetada */
+public class FerramentaDAO extends ConexaoDAO {
+    /**
+     * Lista de ferramentas em armazenamento.
+     */
+    public static ArrayList<Ferramenta> listaFerramenta = new ArrayList<>();
 
     /**
-     * Construtor que inicializa a conexão com o banco de dados.
+     * Obtém a lista de ferramentas do banco de dados.
      *
-     * @param conexao A conexão com o banco de dados
+     * @return Lista de ferramentas.
      */
-    public FerramentaDAO(java.sql.Connection conexao) {
-        this.conexao = conexao;
-    }
+    public ArrayList<Ferramenta> listar() {
+        listaFerramenta.clear();
+        try {
+            Statement smt = super.getConexao().createStatement();
+            ResultSet res = smt.executeQuery("select * from ferramentas");
+            while (res.next()) {
+                int id = res.getInt("id");
+                String nome = res.getString("nome");
+                String marca = res.getString("marca");
+                double custoAquisicao = res.getDouble("custo_aquisicao");
+                Ferramenta objeto = new Ferramenta(id, nome, custoAquisicao, marca);
 
-    public FerramentaDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                listaFerramenta.add(objeto);
+            }
+            smt.close();
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+        }
+        return listaFerramenta;
     }
 
     /**
@@ -55,30 +71,6 @@ public class FerramentaDAO {
                 }
             }
         }
-    }
-
-    /**
-     * Lista todas as ferramentas registradas no banco de dados.
-     *
-     * @return Uma lista de objetos Ferramenta representando todas as ferramentas registradas
-     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
-     */
-    public List<Ferramenta> listar() throws SQLException {
-        List<Ferramenta> ferramentas = new ArrayList<>();
-        String sql = "SELECT id, nome, marca, custo_aquisicao FROM ferramentas";
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String nome = rs.getString("nome");
-                    String marca = rs.getString("marca");
-                    double custoAquisicao = rs.getDouble("custo_aquisicao");
-                    ferramentas.add(new Ferramenta(id, nome, marca, custoAquisicao));
-                }
-            }
-        }
-        return ferramentas;
-
     }
 
     /**
