@@ -105,24 +105,49 @@ public class Ferramenta {
         String disponivel = "Sim";
         Emprestimo emp = new Emprestimo();
         ArrayList<Emprestimo> listaEmprestimoAtivo = emp.getListaEmprestimoAtivo();
-        for (int i = 0; i < listaEmprestimoAtivo.size(); i++) {
-            if (listaEmprestimoAtivo.get(i).getIdFerramenta() == id) {
+        for (Emprestimo emprestimo : listaEmprestimoAtivo) {
+            if (emprestimo.getIdFerramenta() == id) {
                 disponivel = "Não";
+                break;
             }
         }
         return disponivel;
     }
-    public ArrayList<Ferramenta> listaFerramenta() throws SQLException {
+    public ArrayList<Ferramenta> listarFerramenta() throws SQLException {
         return dao.listar();
     }
 
-    public boolean InsertFerramentaDB(String nome, String marca, double custoAquisicao) throws SQLException {
+    public boolean inserirFerramentaDB(String nome, String marca, double custoAquisicao) throws SQLException {
         int maiorID = dao.maiorIDFerramenta() + 1;
 
-        Ferramenta ferramenta = new Ferramenta(maiorID, nome, custoAquisicao, marca);
+        Ferramenta ferramenta = new Ferramenta(maiorID, nome, marca, custoAquisicao);
         dao.inserir(ferramenta);
         return true;
 
     }
 
+    public boolean deletarFerramentaDB(int id) {
+        dao.deletar(id);
+        return true;
+    }
+
+    private int procuraIndice(int id) {
+        int indice = -1;
+        for (int i = 0; i < FerramentaDAO.listaFerramenta.size(); i++) {
+            if (FerramentaDAO.listaFerramenta.get(i).getId() == id) {
+                indice = i;
+            }
+
+        }
+        return indice;
+    }
+
+    public boolean atualizarFerramentaDB(int id, String nome, String marca, double custo) {
+        Ferramenta ferramenta = new Ferramenta(id, nome, marca, custoAquisicao);
+        dao.atualizar(ferramenta);
+        return true;
+    }
+    public Ferramenta buscarFerramentaDB(int id) {
+        return dao.buscar(id);
+    }
 }
