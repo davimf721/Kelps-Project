@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package visual;
+package visao;
 
 import javax.swing.JOptionPane;
 import model.Ferramenta;
+
+import java.sql.SQLException;
 
 /**
  *
@@ -216,7 +218,7 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
             }
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
-        } catch (NumberFormatException erro2) {
+        } catch (NumberFormatException | SQLException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
 
