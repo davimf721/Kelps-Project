@@ -89,7 +89,6 @@ public class AmigoDAO extends ConexaoDAO {
      * Deleta um amigo do banco de dados com base no ID.
      *
      * @param id O ID do amigo a ser deletado
-     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
     public boolean deletar(int id) {
         try {
@@ -107,7 +106,6 @@ public class AmigoDAO extends ConexaoDAO {
      *
      * @param Id O ID do amigo a ser buscado
      * @return O objeto Amigo encontrado ou null se não encontrado
-     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
     public Amigo buscar(int Id) {
         Amigo amigo = new Amigo();
