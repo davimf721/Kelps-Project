@@ -2,19 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package visual;
+package visao;
+
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import model.Emprestimo;
 
 /**
  *
  * @author joaomanuel
  */
 public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
+    public Emprestimo objetoemprestimo;
 
     /**
      * Creates new form JFrameCadastroEmprestimo
      */
     public JFrameCadastroEmprestimo() {
         initComponents();
+        this.objetoemprestimo = new Emprestimo();
     }
 
     /**
@@ -30,7 +36,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        JTFNomedoamigo = new javax.swing.JTextField();
+        JTFIDdoamigo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         JTFIDferramenta = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -38,10 +44,11 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
         JBLimpar = new javax.swing.JButton();
         JBFechar = new javax.swing.JButton();
         JBAplicar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        JTFDataEmprestimo = new javax.swing.JTextField();
+        JTFDataDevolucao = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,7 +78,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Data Retirada:");
+        jLabel4.setText("Data Emprestimo:");
 
         jLabel5.setText("Data Devolucao:");
 
@@ -96,11 +103,12 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/visao/pequenaLOGO.png"))); // NOI18N
-
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel7.setText("Kelps.");
+
+        jLabel6.setText("yyyy-mm-dd");
+
+        jLabel8.setText("yyyy-mm-dd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,31 +123,43 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(JTFNomedoamigo)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTFIDdoamigo)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel2))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(54, 54, 54)
                                         .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(JTFIDferramenta)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4))
-                                        .addGap(125, 125, 125)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel6)))
+                                        .addGap(217, 217, 217)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(JTFIDferramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 43, Short.MAX_VALUE))
+                                            .addComponent(JTFDataDevolucao)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(jLabel8))
+                                                    .addComponent(jLabel5))
+                                                .addGap(0, 10, Short.MAX_VALUE)))))))
+                        .addGap(43, 43, 43))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -150,31 +170,29 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFNomedoamigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JTFIDdoamigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JTFIDferramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel7)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(jLabel7)
                 .addContainerGap())
         );
 
@@ -187,7 +205,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
     private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
         // TODO add your handling code here:
-        JTFNomedoamigo.setText("");
+        JTFIDdoamigo.setText("");
         JTFIDferramenta.setText("");
     }//GEN-LAST:event_JBLimparActionPerformed
 
@@ -198,6 +216,66 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
     private void JBAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarActionPerformed
         // TODO add your handling code here:
+        try {
+            //Recebendo e validando dados da interface gráfica.
+            int idamigo = 0;
+            int idferramenta = 0;
+            String dataemprestimo = "";
+            String datadevolucao = "";
+
+            System.out.println("Validando nome");
+            if (this.JTFIDdoamigo.getText().length() >= 1) {
+                idamigo = Integer.parseInt(this.JTFIDdoamigo.getText());
+            } else {
+                throw new Mensagem("Informe um ID válido.");
+            }
+
+            System.out.println("Validando ID");
+            if (this.JTFIDferramenta.getText().length() >= 1) {
+                idferramenta = Integer.parseInt(this.JTFIDferramenta.getText());
+            } else {
+                throw new Mensagem("Informe um ID válido.");
+            }
+            System.out.println("Validando Data Emprestimo");
+            if (this.JTFDataEmprestimo.getText().length() == 10) {
+                dataemprestimo = this.JTFDataEmprestimo.getText();
+            } else {
+                throw new Mensagem("Informe uma data valida.");
+            }
+            System.out.println("Validando Data Devolucao");
+            if (this.JTFDataDevolucao.getText().length() == 10) {
+                datadevolucao = this.JTFDataDevolucao.getText();
+            } else {
+                throw new Mensagem("Informe uma data valida.");
+            }
+            
+            
+
+            //Envia os dados para o Controlador cadastrar
+            System.out.println("Chamando inserirEmprestimoDB");
+            if (this.objetoemprestimo.inserirEmprestimoDB(idamigo, idferramenta, dataemprestimo, datadevolucao)) {
+                JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso!");
+                //Limpa campos da interface
+                this.JTFIDdoamigo.setText("");
+                this.JTFIDferramenta.setText("");
+                this.JTFDataEmprestimo.setText("");
+                this.JTFDataDevolucao.setText("");
+                
+            }
+        } catch (Mensagem error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        } catch (NumberFormatException | SQLException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+                }
+
+    
+}
+    public class Mensagem extends Exception {
+
+        public Mensagem(String message) {
+            super(message);
+        }
+
     }//GEN-LAST:event_JBAplicarActionPerformed
 
     /**
@@ -239,10 +317,10 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JButton JBAplicar;
     private javax.swing.JButton JBFechar;
     private javax.swing.JButton JBLimpar;
+    private javax.swing.JTextField JTFDataDevolucao;
+    private javax.swing.JTextField JTFDataEmprestimo;
+    private javax.swing.JTextField JTFIDdoamigo;
     private javax.swing.JTextField JTFIDferramenta;
-    private javax.swing.JTextField JTFNomedoamigo;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -250,6 +328,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
