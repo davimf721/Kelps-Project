@@ -158,12 +158,14 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             String nome = "";
             int telefone = 0;
 
+            System.out.println("Validando nome");
             if (this.JTFNome.getText().length() < 2) {
                 throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
             } else {
                 nome = this.JTFNome.getText();
             }
 
+            System.out.println("Validando telefone");
             if (this.JTFTelefone.getText().length() == 9) {
                 telefone = Integer.parseInt(this.JTFTelefone.getText());
             } else {
@@ -171,6 +173,7 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             }
 
             //Envia os dados para o Controlador cadastrar
+            System.out.println("Chamando inserirAmigoDB");
             if (this.objetoamigo.inserirAmigoDB(nome, telefone)) {
                 JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!");
                 //Limpa campos da interface

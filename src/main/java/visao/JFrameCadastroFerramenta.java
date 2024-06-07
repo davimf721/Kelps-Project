@@ -14,6 +14,7 @@ import java.sql.SQLException;
  * @author joaomanuel
  */
 public class JFrameCadastroFerramenta extends javax.swing.JFrame {
+
     public Ferramenta objetoferramenta;
 
     /**
@@ -190,31 +191,37 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
             double custoAquisicao = 0;
             String marca = "";
 
+            System.out.println("Validando nome");
             if (this.JTFNome.getText().length() < 2) {
                 throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
             } else {
                 nome = this.JTFNome.getText();
             }
 
-            if (this.JTFCusto.getText().length() == 9) {
+            System.out.println("Validando custo");
+            if (this.JTFCusto.getText().length() > 2) {
                 custoAquisicao = Double.parseDouble(this.JTFCusto.getText());
             } else {
                 throw new Mensagem("Informe um número válido.");
             }
-            
+
+            System.out.println("Validando marca");
             if (this.JTFMarca.getText().length() < 2) {
                 throw new Mensagem("Marca deve conter ao menos 2 caracteres.");
             } else {
-                nome = this.JTFMarca.getText();
+                marca = this.JTFMarca.getText();
             }
 
             //Envia os dados para o Controlador cadastrar
+            System.out.println("Chamando inserirFerramentaDB");
             if (this.objetoferramenta.inserirFerramentaDB(nome, marca, custoAquisicao)) {
-                JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!");
+                JOptionPane.showMessageDialog(null, "Ferramenta Cadastrada com Sucesso!");
                 //Limpa campos da interface
                 this.JTFNome.setText("");
                 this.JTFCusto.setText("");
                 this.JTFMarca.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar ferramenta.");
             }
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
