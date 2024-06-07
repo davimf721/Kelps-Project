@@ -60,13 +60,12 @@ public class FerramentaDAO extends ConexaoDAO {
     }
 
     public boolean inserir(Ferramenta ferramenta) {
-        String res = "insert into ferramentas(id,nome,marca,custo_aquisicao)values(?,?,?,?)";
+        String res = "insert into ferramentas(nome,marca,custo_aquisicao)values(?,?,?)";
         try {
             PreparedStatement smt = super.getConexao().prepareCall(res);
-            smt.setInt(1, ferramenta.getId());
-            smt.setString(2, ferramenta.getNome());
-            smt.setString(3, ferramenta.getMarca());
-            smt.setDouble(4, ferramenta.getCustoAquisicao());
+            smt.setString(1, ferramenta.getNome());
+            smt.setString(2, ferramenta.getMarca());
+            smt.setDouble(3, ferramenta.getCustoAquisicao());
             smt.execute();
             smt.close();
             return true;

@@ -4,7 +4,7 @@
  */
 package visao;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import model.Ferramenta;
 
 import java.sql.SQLException;
@@ -199,14 +199,14 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
             }
 
             System.out.println("Validando custo");
-            if (this.JTFCusto.getText().length() > 2) {
+            if (this.JTFCusto.getText().length() > 1) {
                 custoAquisicao = Double.parseDouble(this.JTFCusto.getText());
             } else {
                 throw new Mensagem("Informe um número válido.");
             }
 
             System.out.println("Validando marca");
-            if (this.JTFMarca.getText().length() < 2) {
+            if (this.JTFMarca.getText().length() < 1) {
                 throw new Mensagem("Marca deve conter ao menos 2 caracteres.");
             } else {
                 marca = this.JTFMarca.getText();
