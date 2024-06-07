@@ -138,9 +138,9 @@ public class Emprestimo {
         return dao.listar();
     }
 
-    public boolean inserirEmprestimoDB(int idAmigo, int idFerramenta, String dataEmprestimo) throws SQLException {
+    public boolean inserirEmprestimoDB(int idAmigo, int idFerramenta, String dataEmprestimo,String  dataDevolucao) throws SQLException {
         int maiorID = dao.maiorIDEmprestimo() + 1;
-        Emprestimo emprestimo = new Emprestimo(maiorID, idAmigo, idFerramenta, dataEmprestimo, null);
+        Emprestimo emprestimo = new Emprestimo(maiorID, idAmigo, idFerramenta, dataEmprestimo,dataDevolucao);
         dao.inserir(emprestimo);
         return true;
     }
