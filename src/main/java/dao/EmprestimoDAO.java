@@ -16,14 +16,13 @@ public class EmprestimoDAO extends ConexaoDAO {
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
     public boolean inserir(Emprestimo emprestimo) throws SQLException {
-        String sql = "insert into emprestimos(id_Emprestimo,id_amigo,id_ferramenta,data_emprestimo,data_devolucao)values(?,?,?,?,?)";
+        String sql = "insert into emprestimos (id_amigo,id_ferramenta,data_emprestimo,data_devolucao)values(?,?,?,?)";
         try {
             PreparedStatement smt = super.getConexao().prepareCall(sql);
-            smt.setInt(1, emprestimo.getIdEmprestimo());
-            smt.setInt(2, emprestimo.getIdAmigo());
-            smt.setInt(3, emprestimo.getIdFerramenta());
-            smt.setString(4, emprestimo.getDataEmprestimo());
-            smt.setString(5, emprestimo.getDataDevolucao());
+            smt.setInt(1, emprestimo.getIdAmigo());
+            smt.setInt(2, emprestimo.getIdFerramenta());
+            smt.setString(3, emprestimo.getDataEmprestimo());
+            smt.setString(4, emprestimo.getDataDevolucao());
             smt.execute();
             smt.close();
             return true;

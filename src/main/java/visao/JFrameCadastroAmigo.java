@@ -231,6 +231,8 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JFrameCadastroAmigo().setVisible(true);
+                
+                
             }
         });
     }
