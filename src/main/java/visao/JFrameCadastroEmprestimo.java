@@ -68,7 +68,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         jLabel1.setText("Cadastro Emprestimo");
 
-        jLabel2.setText("Nome do Amigo:");
+        jLabel2.setText("ID do Amigo:");
 
         jLabel3.setText("ID da Ferramenta:");
 
@@ -223,7 +223,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             String dataemprestimo = "";
             String datadevolucao = "";
 
-            System.out.println("Validando nome");
+            System.out.println("Validando ID");
             if (this.JTFIDdoamigo.getText().length() >= 1) {
                 idamigo = Integer.parseInt(this.JTFIDdoamigo.getText());
             } else {
