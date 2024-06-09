@@ -29,9 +29,9 @@ public class JFrameCadastrar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBCadastrarAmigo = new javax.swing.JButton();
+        JBCadastroFerramenta = new javax.swing.JButton();
+        JBCadastroEmprestimo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         JBVoltar = new javax.swing.JButton();
 
@@ -40,24 +40,24 @@ public class JFrameCadastrar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setText("Cadastrar");
 
-        jButton1.setText("Cadastrar Amigo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        JBCadastrarAmigo.setText("Cadastrar Amigo");
+        JBCadastrarAmigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                JBCadastrarAmigoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cadastrar Ferramenta");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        JBCadastroFerramenta.setText("Cadastrar Ferramenta");
+        JBCadastroFerramenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                JBCadastroFerramentaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Cadastrar Emprestimo");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        JBCadastroEmprestimo.setText("Cadastrar Emprestimo");
+        JBCadastroEmprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                JBCadastroEmprestimoActionPerformed(evt);
             }
         });
 
@@ -87,9 +87,9 @@ public class JFrameCadastrar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(126, 126, 126)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(JBCadastroFerramenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(JBCadastroEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(JBCadastrarAmigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(137, 137, 137)
                                 .addComponent(jLabel1)))
@@ -105,11 +105,11 @@ public class JFrameCadastrar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBCadastrarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBCadastroFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBCadastroEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
                         .addComponent(JBVoltar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -118,17 +118,42 @@ public class JFrameCadastrar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void JBCadastrarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarAmigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            JFrameCadastroAmigo frame = new JFrameCadastroAmigo();
+            frame.setVisible(true);
+            
+         }
+      });
+        this.dispose();
+            
+    }//GEN-LAST:event_JBCadastrarAmigoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void JBCadastroFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroFerramentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            JFrameCadastroFerramenta frame = new JFrameCadastroFerramenta();
+            frame.setVisible(true);
+            
+         }
+      });
+        this.dispose();
+    }//GEN-LAST:event_JBCadastroFerramentaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void JBCadastroEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroEmprestimoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            JFrameCadastroEmprestimo frame = new JFrameCadastroEmprestimo();
+            frame.setVisible(true);
+            
+         }
+      });
+        this.dispose();
+    }//GEN-LAST:event_JBCadastroEmprestimoActionPerformed
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
@@ -178,10 +203,10 @@ public class JFrameCadastrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBCadastrarAmigo;
+    private javax.swing.JButton JBCadastroEmprestimo;
+    private javax.swing.JButton JBCadastroFerramenta;
     private javax.swing.JButton JBVoltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables

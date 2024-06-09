@@ -6,6 +6,7 @@ package visao;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import model.Emprestimo;
 
 /**
@@ -50,6 +51,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
         JTFDataDevolucao = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        JBVoltar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,6 +113,13 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
         jLabel8.setText("yyyy-mm-dd");
 
+        JBVoltar.setText("Voltar");
+        JBVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,12 +164,13 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
                                                         .addGap(6, 6, 6)
                                                         .addComponent(jLabel8))
                                                     .addComponent(jLabel5))
-                                                .addGap(0, 10, Short.MAX_VALUE)))))))
+                                                .addGap(0, 4, Short.MAX_VALUE)))))))
                         .addGap(43, 43, 43))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,13 +197,15 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addComponent(jLabel7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(JBVoltar))
                 .addContainerGap())
         );
 
@@ -277,6 +289,17 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JBAplicarActionPerformed
 
+    private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            JFrameCadastrar frame = new JFrameCadastrar();
+            frame.setVisible(true);
+         }
+      });
+        this.dispose();
+    }//GEN-LAST:event_JBVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,6 +339,7 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
     private javax.swing.JButton JBAplicar;
     private javax.swing.JButton JBFechar;
     private javax.swing.JButton JBLimpar;
+    private javax.swing.JButton JBVoltar;
     private javax.swing.JTextField JTFDataDevolucao;
     private javax.swing.JTextField JTFDataEmprestimo;
     private javax.swing.JTextField JTFIDdoamigo;

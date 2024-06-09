@@ -48,6 +48,7 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         JTFCusto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        JBVoltar = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -108,6 +109,13 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel8.setText("Kelps.");
 
+        JBVoltar.setText("Voltar");
+        JBVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,7 +142,9 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
                         .addGap(50, 50, 50))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBVoltar)
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jLabel4)
@@ -157,13 +167,15 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JTFCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jLabel8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(JBVoltar))
                 .addContainerGap())
         );
 
@@ -249,6 +261,18 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_JBAplicarActionPerformed
 
+    private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            JFrameCadastrar frame = new JFrameCadastrar();
+            frame.setVisible(true);
+         }
+      });
+        this.dispose();
+        
+    }//GEN-LAST:event_JBVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,6 +312,7 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
     private javax.swing.JButton JBAplicar;
     private javax.swing.JButton JBFechar;
     private javax.swing.JButton JBLimpar;
+    private javax.swing.JButton JBVoltar;
     private javax.swing.JTextField JTFCusto;
     private javax.swing.JTextField JTFMarca;
     private javax.swing.JTextField JTFNome;

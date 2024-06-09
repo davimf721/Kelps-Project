@@ -5,6 +5,7 @@
 package visao;
 
 import javax.swing.SwingUtilities;
+import java.sql.SQLException;
 
 /**
  *
@@ -29,9 +30,9 @@ public class JFrameGerenciar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBGerenciarAmigo = new javax.swing.JButton();
+        JBGerenciarFerramenta = new javax.swing.JButton();
+        JBGerenciarEmprestimo = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         JBVoltar = new javax.swing.JButton();
 
@@ -40,11 +41,26 @@ public class JFrameGerenciar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         jLabel1.setText("Gerenciar");
 
-        jButton1.setText("Gerenciar Amigo");
+        JBGerenciarAmigo.setText("Gerenciar Amigo");
+        JBGerenciarAmigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerenciarAmigoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Gerenciar Ferramenta");
+        JBGerenciarFerramenta.setText("Gerenciar Ferramenta");
+        JBGerenciarFerramenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerenciarFerramentaActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Gerenciar Emprestimo");
+        JBGerenciarEmprestimo.setText("Gerenciar Emprestimo");
+        JBGerenciarEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerenciarEmprestimoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel5.setText("Kelps.");
@@ -64,15 +80,16 @@ public class JFrameGerenciar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 115, Short.MAX_VALUE)
+                        .addGap(0, 111, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, Short.MAX_VALUE))))
-                        .addGap(127, 127, 127))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(JBGerenciarFerramenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(JBGerenciarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JBGerenciarEmprestimo))
+                        .addGap(110, 110, 110))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -92,11 +109,11 @@ public class JFrameGerenciar extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBGerenciarAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBGerenciarFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBGerenciarEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 62, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -114,6 +131,60 @@ public class JFrameGerenciar extends javax.swing.JFrame {
       });
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
+
+    private void JBGerenciarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarAmigoActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrameGerenciamentoAmigo frame = null;
+                try {
+                    frame = new JFrameGerenciamentoAmigo();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                frame.setVisible(true);
+            }
+        });
+        this.dispose();
+        
+         
+        
+    }//GEN-LAST:event_JBGerenciarAmigoActionPerformed
+
+    private void JBGerenciarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarFerramentaActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrameGerenciamentoFerramenta frame = null;
+                try {
+                    frame = new JFrameGerenciamentoFerramenta();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                frame.setVisible(true);
+            }
+        });
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_JBGerenciarFerramentaActionPerformed
+
+    private void JBGerenciarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarEmprestimoActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrameGerenciamentoEmprestimo frame = null;
+                try {
+                    frame = new JFrameGerenciamentoEmprestimo();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                frame.setVisible(true);
+            }
+        });
+        this.dispose();
+        
+    }//GEN-LAST:event_JBGerenciarEmprestimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,10 +222,10 @@ public class JFrameGerenciar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBGerenciarAmigo;
+    private javax.swing.JButton JBGerenciarEmprestimo;
+    private javax.swing.JButton JBGerenciarFerramenta;
     private javax.swing.JButton JBVoltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
