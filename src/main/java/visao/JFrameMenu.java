@@ -34,6 +34,7 @@ public class JFrameMenu extends javax.swing.JFrame {
         JBGerenciar = new javax.swing.JButton();
         JBRelatorio = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        JBFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class JFrameMenu extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel4.setText("Kelps.");
 
+        JBFechar.setText("Fechar");
+        JBFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBFecharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,7 +87,9 @@ public class JFrameMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel4)
+                        .addGap(121, 121, 121)
+                        .addComponent(JBFechar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel2))
@@ -109,8 +119,10 @@ public class JFrameMenu extends javax.swing.JFrame {
                         .addGap(28, 48, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(9, 9, 9))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(JBFechar))
+                        .addGap(6, 6, 6))))
         );
 
         pack();
@@ -150,6 +162,11 @@ public class JFrameMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBRelatorioActionPerformed
 
+    private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_JBFecharActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,6 +204,7 @@ public class JFrameMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCadastrar;
+    private javax.swing.JButton JBFechar;
     private javax.swing.JButton JBGerenciar;
     private javax.swing.JButton JBRelatorio;
     private javax.swing.JLabel jLabel1;
