@@ -86,7 +86,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Amigo", "Ferramenta", "Emprestimo ", "Data devolução", "Data emprestimo"
+                "Emprestimo", "Ferramenta", "Amigo ", "Data devolução", "Data emprestimo"
             }
         ));
         JTabelaEmprestimos.addMouseListener(new java.awt.event.MouseAdapter() {
