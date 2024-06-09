@@ -132,12 +132,14 @@
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JTFAmigo" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="JTFFerramenta" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="JTFEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JTFDevolucao" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="JTFDataEmprestimo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="JTFAmigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="JTFEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
