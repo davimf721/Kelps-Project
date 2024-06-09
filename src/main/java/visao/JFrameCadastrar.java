@@ -127,6 +127,7 @@ public class JFrameCadastrar extends javax.swing.JFrame {
             
          }
       });
+        
         this.dispose();
             
     }//GEN-LAST:event_JBCadastrarAmigoActionPerformed
