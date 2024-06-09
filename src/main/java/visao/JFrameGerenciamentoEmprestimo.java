@@ -299,12 +299,13 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             } else {
                 idAmigo = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
             }
-            if (this.JTFDevolucao.getText().length() < 2) {
-                dataDevolucao = this.JTFDevolucao.getText();
-            }
             if (this.JTFDataEmprestimo.getText().length() < 2) {
                 dataEmprestimo = this.JTFDataEmprestimo.getText();
             }
+            if (this.JTFDevolucao.getText().length() < 2) {
+                dataDevolucao = this.JTFDevolucao.getText();
+            }
+
             
             
             if (this.objetoemprestimo.atualizarEmprestimoDB(idAmigo, idFerramenta, idEmprestimo, dataDevolucao, dataEmprestimo)){
@@ -316,7 +317,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 this.JTFDataEmprestimo.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo alterado com Sucesso!");
             }
-                //Exibe no console o aluno cadastrado
+                //Exibe no console o Amigo cadastrado
                 System.out.println(this.objetoemprestimo.listaEmprestimo().toString());
             } catch (Mensagem erro) {
                 JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -371,11 +372,11 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
         ArrayList<Emprestimo> Emprestimos = objetoemprestimo.listaEmprestimo();
         for (Emprestimo a : Emprestimos) {
           modelo.addRow(new Object[]{
-            a.getIdAmigo(),
-            a.getIdFerramenta(),
-            a.getIdEmprestimo(),
-            a.getDataDevolucao(),
-            a.getDataEmprestimo(),
+                  a.getIdEmprestimo(),
+                  a.getIdFerramenta(),
+                  a.getIdAmigo(),
+                  a.getDataDevolucao(),
+                  a.getDataEmprestimo(),
           });
         }
     }

@@ -67,7 +67,7 @@ public class EmprestimoDAO extends ConexaoDAO {
             // Itera sobre o resultado da consulta e adiciona empréstimos à lista
             while (res.next()) {
                 int idEmprestimo = res.getInt("id_emprestimo");
-                int idFerramenta = res.getInt("id_erramenta");
+                int idFerramenta = res.getInt("id_ferramenta");
                 int idAmigo = res.getInt("id_amigo");
                 String dataEmprestimo = res.getString("data_emprestimo");
                 String dataDevolucao = res.getString("data_devolucao");
