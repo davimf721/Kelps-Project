@@ -119,7 +119,6 @@ public class Ferramenta {
 
     public boolean inserirFerramentaDB(String nome, String marca, double custoAquisicao) throws SQLException {
         int maiorID = dao.maiorIDFerramenta() + 1;
-
         Ferramenta ferramenta = new Ferramenta(maiorID, nome, marca, custoAquisicao);
         dao.inserir(ferramenta);
         return true;
