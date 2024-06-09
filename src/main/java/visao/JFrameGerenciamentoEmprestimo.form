@@ -55,20 +55,70 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="JBAlterar" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                      <Component id="JBSalvar" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="JBApagar" min="-2" pref="105" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                                      <Component id="JBCancelar" min="-2" pref="105" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="jScrollPane2" min="-2" pref="646" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="JBAlterar" min="-2" pref="105" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                      <Component id="JTFAmigo" min="-2" pref="71" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="JLAmigo" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="JLFerramenta" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="JTFFerramenta" min="-2" pref="71" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="JBSalvar" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="JTFEmprestimo" min="-2" pref="71" max="-2" attributes="0"/>
+                                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                              <Component id="JBApagar" min="-2" pref="105" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="JBCancelar" min="-2" pref="105" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel7" min="-2" pref="107" max="-2" attributes="0"/>
+                                                  <Component id="JTFDevolucao" min="-2" pref="71" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="JTFDataEmprestimo" min="-2" pref="71" max="-2" attributes="0"/>
+                                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -84,26 +134,37 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="120" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JBAlterar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="JBSalvar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="JBApagar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="JBCancelar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane2" min="-2" pref="120" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="JLAmigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JLFerramenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="JTFDataEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JTFDevolucao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JTFEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JTFFerramenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JTFAmigo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="JBAlterar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="JBSalvar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="JBApagar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="JBCancelar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -126,19 +187,21 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable2">
+        <Component class="javax.swing.JTable" name="JTabelaEmprestimos">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="6" rowCount="4">
+              <Table columnCount="5" rowCount="4">
                 <Column editable="true" title="Amigo" type="java.lang.Object"/>
                 <Column editable="true" title="Ferramenta" type="java.lang.Object"/>
                 <Column editable="true" title="Emprestimo " type="java.lang.Object"/>
                 <Column editable="true" title="Data devolu&#xe7;&#xe3;o" type="java.lang.Object"/>
                 <Column editable="true" title="Data emprestimo" type="java.lang.Object"/>
-                <Column editable="true" title="Devolvido" type="java.lang.Boolean"/>
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="JTabelaEmprestimosMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -154,6 +217,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Apagar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBApagarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBSalvar">
       <Properties>
@@ -170,6 +236,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBAlterarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -188,6 +257,41 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Kelps."/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="JLAmigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Amigo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="JLFerramenta">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ferramenta:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Emprestimo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data de devolu&#xe7;&#xe3;o:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data do emprestimo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="JTFDataEmprestimo">
+    </Component>
+    <Component class="javax.swing.JTextField" name="JTFDevolucao">
+    </Component>
+    <Component class="javax.swing.JTextField" name="JTFEmprestimo">
+    </Component>
+    <Component class="javax.swing.JTextField" name="JTFFerramenta">
+    </Component>
+    <Component class="javax.swing.JTextField" name="JTFAmigo">
     </Component>
   </SubComponents>
 </Form>
