@@ -149,29 +149,29 @@ public class Emprestimo {
         return dao.maiorIDEmprestimo();
     }
 
-    public boolean deletarEmprestimoDB(int idEmprestimo) throws SQLException {
-        dao.deletar(idEmprestimo);
+    public boolean deletarEmprestimoDB(int id_emprestimo) throws SQLException {
+        dao.deletar(id_emprestimo);
         return true;
     }
-    private int procuraIndice(int idEmprestimo) {
+    private int procuraIndice(int id_emprestimo) {
         int indice = -1;
         for (int i = 0; i < EmprestimoDAO.listaEmprestimo.size(); i++) {
-            if (EmprestimoDAO.listaEmprestimo.get(i).getIdEmprestimo() == idEmprestimo) {
+            if (EmprestimoDAO.listaEmprestimo.get(i).getIdEmprestimo() == id_emprestimo) {
                 indice = i;
             }
         }
         return indice;
     }
 
-    public boolean atualizarEmprestimoDB(int idEmprestimo, int idAmigo, int idFerramenta, String dataEmprestimo, String dataDevolucao) throws SQLException {
-        Emprestimo emprestimo = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
-        int indice = this.procuraIndice(idEmprestimo);
+    public boolean atualizarEmprestimoDB(int id_emprestimo, int id_amigo, int id_ferramenta, String data_emprestimo, String data_devolucao) throws SQLException {
+        Emprestimo emprestimo = new Emprestimo(id_emprestimo, id_amigo, id_ferramenta, data_emprestimo, data_devolucao);
+        int indice = this.procuraIndice(id_emprestimo);
         dao.atualizar(emprestimo);
         return true;
     }
 
-    public Emprestimo buscarEmprestimoDB(int idEmprestimo) {
-        return dao.buscar(idEmprestimo);
+    public Emprestimo buscarEmprestimoDB(int id_emprestimo) {
+        return dao.buscar(id_emprestimo);
     }
     public ArrayList<Emprestimo> getListaEmprestimoAtivo() {
         ArrayList<Emprestimo> listaEmprestimoAtivo = new ArrayList<>();

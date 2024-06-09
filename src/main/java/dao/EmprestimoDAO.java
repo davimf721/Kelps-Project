@@ -104,11 +104,11 @@ public class EmprestimoDAO extends ConexaoDAO {
             Statement smt = super.getConexao().createStatement();
             ResultSet res = smt.executeQuery("select * from emprestimos where id_emprestimo = " + IdEmprestimo);
             res.next();
-            emprestimo.setIdEmprestimo(res.getInt("idEmprestimo"));
-            emprestimo.setDataDevolucao(res.getString("dataDevolucao"));
-            emprestimo.setDataEmprestimo(res.getString("dataInicio"));
-            emprestimo.setIdAmigo(res.getInt("idAmigo"));
-            emprestimo.setIdFerramenta(res.getInt("idFerramenta"));
+            emprestimo.setIdEmprestimo(res.getInt("id_emprestimo"));
+            emprestimo.setDataDevolucao(res.getString("data_devolucao"));
+            emprestimo.setDataEmprestimo(res.getString("data_emprestimo"));
+            emprestimo.setIdAmigo(res.getInt("id_amigo"));
+            emprestimo.setIdFerramenta(res.getInt("id_ferramenta"));
             smt.close();
         } catch (SQLException erro) {
             System.out.println("Erro: " + erro);
@@ -144,13 +144,13 @@ public class EmprestimoDAO extends ConexaoDAO {
     /**
      * Deleta um empréstimo do banco de dados com base no ID do empréstimo.
      *
-     * @param IdEmprestimo O ID do empréstimo a ser deletado
+     * @param id_emprestimo O ID do empréstimo a ser deletado
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
-    public boolean deletar(int IdEmprestimo) throws SQLException {
+    public boolean deletar(int id_emprestimo) throws SQLException {
         try {
             Statement smt = super.getConexao().createStatement();
-            smt.executeUpdate("delete from emprestimos where id_emprestimo=" + IdEmprestimo);
+            smt.executeUpdate("delete from emprestimos where id_emprestimo=" + id_emprestimo);
             smt.close();
         } catch (SQLException erro) {
             System.out.println("Erro: " + erro);
