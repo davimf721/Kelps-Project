@@ -1,12 +1,12 @@
 package visao;
 
 import java.sql.SQLException;
-import model.Amigo;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Amigo;
 /**
  *
  * @author bento
@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTabelaAmigos = new javax.swing.JTable();
+        JTabelaAmigos = new javax.swing.JTable();
         JBCancelar = new javax.swing.JButton();
         JBApagar = new javax.swing.JButton();
         JBAlterar = new javax.swing.JButton();
@@ -45,7 +45,7 @@ import javax.swing.table.DefaultTableModel;
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         jLabel1.setText("Gerenciar Amigos");
 
-        jTabelaAmigos.setModel(new javax.swing.table.DefaultTableModel(
+        JTabelaAmigos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -56,12 +56,12 @@ import javax.swing.table.DefaultTableModel;
                 "Id", "Nome", "Telefone"
             }
         ));
-        jTabelaAmigos.addMouseListener(new java.awt.event.MouseAdapter() {
+        JTabelaAmigos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTabelaAmigosMouseClicked(evt);
+                JTabelaAmigosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTabelaAmigos);
+        jScrollPane1.setViewportView(JTabelaAmigos);
 
         JBCancelar.setText("Cancelar");
         JBCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,7 +206,7 @@ import javax.swing.table.DefaultTableModel;
         this.dispose();
     }//GEN-LAST:event_JBCancelarActionPerformed
     public void carregaTabela() throws SQLException {
-        DefaultTableModel modelo = (DefaultTableModel) this.jTabelaAmigos.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) this.JTabelaAmigos.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         //Carrega a lista de objetos aluno
         ArrayList<Amigo> Amigos = objetoamigo.listarAmigo();
@@ -223,38 +223,38 @@ import javax.swing.table.DefaultTableModel;
         try {
             // validando dados da interface gráfica.
             int id = 0;
-            if (this.jTabelaAmigos.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um Amigo para APAGAR");
+            if (this.JTabelaAmigos.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro Selecione um amigo para APAGAR");
             } else {
-                id = Integer.parseInt(this.jTabelaAmigos.
-                    getValueAt(this.jTabelaAmigos.getSelectedRow(), 0).toString());
+                id = Integer.parseInt(this.JTabelaAmigos.
+                    getValueAt(this.JTabelaAmigos.getSelectedRow(), 0).toString());
             }
                 // retorna 0 -> primeiro botão | 1 -> segundo botão | 2 -> terceiro botão
             int respostaUsuario = JOptionPane.
-                showConfirmDialog(null,
-                "Tem certeza que deseja apagar este Aluno ?");
+                showConfirmDialog(null,"Tem certeza que deseja apagar este amigo ?");
             
             if (respostaUsuario == 0) {// clicou em SIM
                 // envia os dados para o Aluno processar
                 if (this.objetoamigo.deletarAmigoBD(id)) {
                     // limpa os campos
+                    this.JTFId.setText("");
                     this.JTFNome.setText("");
                     this.JTFTelefone.setText("");
-                    JOptionPane.showMessageDialog(rootPane,"Aluno Apagado com Sucesso!");
+                    JOptionPane.showMessageDialog(rootPane,"Amigo apagado com sucesso");
                 }
             }
             // atualiza a tabela.
-            System.out.println(this.objetoamigo.listarAmigo().toString());
-        } catch (Mensagem erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
-        }   catch (SQLException ex) {
-                Logger.getLogger(JFrameGerenciamentoAmigo.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(this.objetoamigo.listarAmigo().toString());
+            } catch (Mensagem erro) {
+                JOptionPane.showMessageDialog(null, erro.getMessage());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             } finally {
-            try {
+                try {
                 // atualiza a tabela.
                 carregaTabela();
             } catch (SQLException ex) {
-                Logger.getLogger(JFrameGerenciamentoAmigo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(JFrameGerenciamentoFerramenta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_JBApagarActionPerformed
@@ -273,7 +273,7 @@ import javax.swing.table.DefaultTableModel;
 
     private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
         // TODO add your handling code here:
-        try {
+         try {
             // recebendo e validando dados da interface gráfica.
             int id = 0;
             String nome = "";
@@ -285,15 +285,15 @@ import javax.swing.table.DefaultTableModel;
                 nome = this.JTFNome.getText();
             }    
             if (this.JTFTelefone.getText().length() < 9) {
-                throw new Mensagem("O número deve conter 9 dígitos.");
+                throw new Mensagem("O telefone deve ter 9 digitos.");
             } else {
-                nome = this.JTFTelefone.getText();
+                telefone = Integer.parseInt(this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 0).toString());
             }  
             
-            if (this.jTabelaAmigos.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um Aluno para Alterar");
+            if (this.JTabelaAmigos.getSelectedRow() == -1) {
+                throw new Mensagem("Primeiro selecione um amigo para alterar");
             } else {
-                id = Integer.parseInt(this.jTabelaAmigos.getValueAt(this.jTabelaAmigos.getSelectedRow(), 0).toString());
+                id = Integer.parseInt(this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 0).toString());
             }
             
             if (this.objetoamigo.atualizarAmigoDB(id, nome, telefone)){
@@ -301,25 +301,24 @@ import javax.swing.table.DefaultTableModel;
                 this.JTFId.setText("");
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
-                JOptionPane.showMessageDialog(rootPane, "Aluno Alterado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Amigo alterado com Sucesso!");
             }
                 //Exibe no console o aluno cadastrado
-            System.out.println(this.objetoamigo.listarAmigo().toString());
-        } catch (Mensagem erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
-        } catch (NumberFormatException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um número válido.");
-        } catch (SQLException ex) {
-            Logger.getLogger(JFrameGerenciamentoAmigo.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
+                System.out.println(this.objetoamigo.listarAmigo().toString());
+            } catch (Mensagem erro) {
+                JOptionPane.showMessageDialog(null, erro.getMessage());
+            } catch (NumberFormatException erro2) {
+                JOptionPane.showMessageDialog(null, "Informe um número válido.");
+            } catch (SQLException ex) {
+                Logger.getLogger(JFrameGerenciamentoAmigo.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
                 // atualiza a tabela.
                 carregaTabela();
             } catch (SQLException ex) {
                 Logger.getLogger(JFrameGerenciamentoAmigo.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
+        }         
     }//GEN-LAST:event_JBAlterarActionPerformed
 
     private void JBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBuscarActionPerformed
@@ -337,10 +336,10 @@ import javax.swing.table.DefaultTableModel;
 
     private void JTabelaAmigosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaAmigosMouseClicked
         // TODO add your handling code here:
-        if (this.jTabelaAmigos.getSelectedRow() != -1) {
-        String id = this.jTabelaAmigos.getValueAt(this.jTabelaAmigos.getSelectedRow(), 1).toString();
-        String nome = this.jTabelaAmigos.getValueAt(this.jTabelaAmigos.getSelectedRow(), 2).toString();
-        String telefone = this.jTabelaAmigos.getValueAt(this.jTabelaAmigos.getSelectedRow(), 3).toString();        
+        if (this.JTabelaAmigos.getSelectedRow() != -1) {
+        String id = this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 1).toString();
+        String nome = this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 2).toString();
+        String telefone = this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 3).toString();        
         
         this.JTFId.setText(id);
         this.JTFNome.setText(nome);
@@ -400,6 +399,7 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JTextField JTFId;
     private javax.swing.JTextField JTFNome;
     private javax.swing.JTextField JTFTelefone;
+    private javax.swing.JTable JTabelaAmigos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -407,6 +407,5 @@ import javax.swing.table.DefaultTableModel;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTabelaAmigos;
     // End of variables declaration//GEN-END:variables
 }
