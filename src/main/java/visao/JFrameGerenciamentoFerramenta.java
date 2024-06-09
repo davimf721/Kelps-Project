@@ -220,7 +220,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAlterarActionPerformed
-        // TODO add your handling code here:
+
         try {
             // recebendo e validando dados da interface gráfica.
             int id = 0;
@@ -272,12 +272,12 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_JBAlterarActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
-        // TODO add your handling code here:
+
         this.dispose();
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
-        // TODO add your handling code here:]
+
         try {
             // validando dados da interface gráfica.
             int id = 0;
@@ -318,7 +318,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
     }//GEN-LAST:event_JBApagarActionPerformed
 
     private void jTabelaFerramentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabelaFerramentasMouseClicked
-        // TODO add your handling code here:
+
         if (this.jTabelaFerramentas.getSelectedRow() != -1) {
         String id = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 1).toString();
         String nome = this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 2).toString();
