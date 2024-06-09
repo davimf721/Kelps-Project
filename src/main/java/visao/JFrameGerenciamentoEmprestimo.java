@@ -290,8 +290,8 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             } else {
                 idEmprestimo = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
             } 
-            if (this.JTFFerramenta.getText().length() < 2) {
-                throw new Mensagem("A ferramenta deve conter ao menos 2 caracteres.");
+            if (this.JTFFerramenta.getText().isEmpty()) {
+                throw new Mensagem("A ferramenta deve conter ao menos 1 caracteres.");
             } else {
                 idFerramenta = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
             }
