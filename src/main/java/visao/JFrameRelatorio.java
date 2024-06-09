@@ -4,6 +4,9 @@
  */
 package visao;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 
 /**
@@ -29,16 +32,22 @@ public class JFrameRelatorio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        JBGerarRelatorioFerramenta = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         JBVoltar = new javax.swing.JButton();
+        JBGerarRelatorioEmprestimo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel1.setText("Relatório");
 
-        jButton1.setText("Gerar Relatorio");
+        JBGerarRelatorioFerramenta.setText("Gerar Relatorio Ferramenta");
+        JBGerarRelatorioFerramenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerarRelatorioFerramentaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel4.setText("Kelps.");
@@ -50,39 +59,47 @@ public class JFrameRelatorio extends javax.swing.JFrame {
             }
         });
 
+        JBGerarRelatorioEmprestimo.setText("Gerar Relatorio Emprestimo");
+        JBGerarRelatorioEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGerarRelatorioEmprestimoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(JBVoltar)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBVoltar)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 104, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(108, 108, 108))))
+                    .addComponent(JBGerarRelatorioEmprestimo)
+                    .addComponent(JBGerarRelatorioFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 67, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(106, 106, 106)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel4)))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(JBGerarRelatorioFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JBGerarRelatorioEmprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JBVoltar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
 
@@ -99,6 +116,39 @@ public class JFrameRelatorio extends javax.swing.JFrame {
       });
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
+
+    private void JBGerarRelatorioFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerarRelatorioFerramentaActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrameRelatorioEmprestimo frame = null;
+                try {
+                    frame = new JFrameRelatorioEmprestimo();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                frame.setVisible(true);
+            }
+        });
+        this.dispose();
+        
+    }//GEN-LAST:event_JBGerarRelatorioFerramentaActionPerformed
+
+    private void JBGerarRelatorioEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerarRelatorioEmprestimoActionPerformed
+        // TODO add your handling code here:
+        SwingUtilities.invokeLater(new Runnable() {
+         public void run() {
+            JFrameRelatorioEmprestimo frame = null;
+             try {
+                 frame = new JFrameRelatorioEmprestimo();
+             } catch (SQLException ex) {
+                 Logger.getLogger(JFrameRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+             }
+            frame.setVisible(true);
+         }
+      });
+        this.dispose();
+    }//GEN-LAST:event_JBGerarRelatorioEmprestimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,8 +186,9 @@ public class JFrameRelatorio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBGerarRelatorioEmprestimo;
+    private javax.swing.JButton JBGerarRelatorioFerramenta;
     private javax.swing.JButton JBVoltar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
