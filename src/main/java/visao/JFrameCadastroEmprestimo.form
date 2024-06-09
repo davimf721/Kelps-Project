@@ -95,7 +95,7 @@
                                                   </Group>
                                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -107,7 +107,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="JBVoltar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -141,14 +142,17 @@
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="JBAplicar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="JBFechar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="JBLimpar" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JBVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -235,6 +239,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="yyyy-mm-dd"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="JBVoltar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBVoltarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
