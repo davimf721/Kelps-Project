@@ -30,10 +30,12 @@ create table emprestimos
     data_emprestimo date                 not null,
     data_devolucao  date                 null,
     devolvido       tinyint(1) default 0 not null,
-    constraint emprestimos_ibfk_1
-        foreign key (id_ferramenta) references ferramentas (id),
-    constraint emprestimos_ibfk_2
-        foreign key (id_amigo) references amigos (id)
+    constraint emprestimos_ibfk_1 foreign key (id_ferramenta) references ferramentas (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    constraint emprestimos_ibfk_2 foreign key (id_amigo) references amigos (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 create index id_amigo
@@ -41,3 +43,4 @@ create index id_amigo
 
 create index id_ferramenta
     on emprestimos (id_ferramenta);
+

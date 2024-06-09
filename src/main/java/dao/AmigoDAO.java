@@ -88,12 +88,12 @@ public class AmigoDAO extends ConexaoDAO {
     /**
      * Deleta um amigo do banco de dados com base no ID.
      *
-     * @param id O ID do amigo a ser deletado
+     * @param idAmigo O ID do amigo a ser deletado
      */
-    public boolean deletar(int id) {
+    public boolean deletar(int idAmigo) {
         try {
             Statement smt = super.getConexao().createStatement();
-            smt.executeUpdate("delete from amigos where id = " + id);
+            smt.executeUpdate("delete from amigos where id = " + idAmigo);
             smt.close();
         } catch (SQLException erro) {
             System.out.println("Erro: " + erro);
@@ -104,15 +104,15 @@ public class AmigoDAO extends ConexaoDAO {
     /**
      * Busca um amigo no banco de dados com base no ID.
      *
-     * @param Id O ID do amigo a ser buscado
+     * @param IdAmigo O ID do amigo a ser buscado
      * @return O objeto Amigo encontrado ou null se não encontrado
      */
-    public Amigo buscar(int Id) {
+    public Amigo buscar(int IdAmigo) {
         Amigo amigo = new Amigo();
-        amigo.setId(Id);
+        amigo.setId(IdAmigo);
         try {
             Statement smt = super.getConexao().createStatement();
-            ResultSet res = smt.executeQuery("select * from amigos where idAmigo = " + Id);
+            ResultSet res = smt.executeQuery("select * from amigos where id = " + IdAmigo);
             res.next();
             amigo.setNome(res.getString("nomeAmigo"));
             amigo.setTelefone(res.getInt("telefone"));
