@@ -16,11 +16,13 @@ public class EmprestimoDAO extends ConexaoDAO {
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
     public boolean inserir(Emprestimo emprestimo) throws SQLException {
-        String sql = "insert into emprestimos (id_amigo,id_ferramenta,data_emprestimo,data_devolucao)values(?,?,?,?)";
+        String sql = "insert into emprestimos (id_ferramenta,id_amigo,data_emprestimo,data_devolucao)values(?,?,?,?)";
         try {
             PreparedStatement smt = super.getConexao().prepareCall(sql);
-            smt.setInt(1, emprestimo.getIdAmigo());
-            smt.setInt(2, emprestimo.getIdFerramenta());
+            smt.setInt(1, emprestimo.getIdFerramenta());
+            System.out.println("emprestimo.getIdFerramenta: " + emprestimo.getIdFerramenta());
+            smt.setInt(2, emprestimo.getIdAmigo());
+            System.out.println("emprestimo.getIdAmigo: " + emprestimo.getIdAmigo());
             smt.setString(3, emprestimo.getDataEmprestimo());
             smt.setString(4, emprestimo.getDataDevolucao());
             smt.execute();
@@ -32,17 +34,17 @@ public class EmprestimoDAO extends ConexaoDAO {
         }
     }
     public int maiorIDEmprestimo() {
-        int MaiorID = 0;
+        int MaiorIDEmprestimo = 0;
         try {
             Statement smt = super.getConexao().createStatement();
             ResultSet res = smt.executeQuery("select MAX(id_emprestimo)idEmprestimo from emprestimos");
             res.next();
-            MaiorID = res.getInt("id_emprestimo");
+            MaiorIDEmprestimo = res.getInt("id_emprestimo");
             smt.close();
         } catch (SQLException erro) {
             System.out.println("Erro: " + erro);
         }
-        return MaiorID;
+        return MaiorIDEmprestimo;
     }
 
     // Lista para armazenar os dados dos empréstimos
@@ -65,11 +67,11 @@ public class EmprestimoDAO extends ConexaoDAO {
             // Itera sobre o resultado da consulta e adiciona empréstimos à lista
             while (res.next()) {
                 int idEmprestimo = res.getInt("IdEmprestimo");
-                int idAmigo = res.getInt("idAmigo");
                 int idFerramenta = res.getInt("idFerramenta");
+                int idAmigo = res.getInt("idAmigo");
                 String dataEmprestimo = res.getString("dataInicio");
                 String dataDevolucao = res.getString("dataDevolucao");
-                Emprestimo objeto = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
+                Emprestimo objeto = new Emprestimo(idEmprestimo, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao);
 
                 listaEmprestimo.add(objeto);
             }
@@ -121,12 +123,12 @@ public class EmprestimoDAO extends ConexaoDAO {
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
     public boolean atualizar(Emprestimo emprestimo) {
-        String res = "update emprestimos set id_emprestimo=?,id_amigo=?, id_ferramenta=?, data_emprestimo=?, data_devolucao=? where id_emprestimo=?";
+        String res = "update emprestimos set id_emprestimo=?,id_ferramenta=?, id_amigo=?, data_emprestimo=?, data_devolucao=? where id_emprestimo=?";
         try {
             PreparedStatement smt = super.getConexao().prepareStatement(res);
             smt.setInt(1, emprestimo.getIdEmprestimo());
-            smt.setInt(2, emprestimo.getIdAmigo());
-            smt.setInt(3, emprestimo.getIdFerramenta());
+            smt.setInt(2, emprestimo.getIdFerramenta());
+            smt.setInt(3, emprestimo.getIdAmigo());
             smt.setString(4, emprestimo.getDataEmprestimo());
             smt.setString(5, emprestimo.getDataDevolucao());
             smt.setInt(6, emprestimo.getIdEmprestimo());

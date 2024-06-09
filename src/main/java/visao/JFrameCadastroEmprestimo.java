@@ -13,6 +13,7 @@ import model.Emprestimo;
  * @author joaomanuel
  */
 public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
+
     public Emprestimo objetoemprestimo;
 
     /**
@@ -224,18 +225,18 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             String datadevolucao = "";
 
             System.out.println("Validando ID");
+            if (this.JTFIDferramenta.getText().length() >= 1) {
+                idferramenta = Integer.parseInt(this.JTFIDferramenta.getText());
+            } else {
+                throw new Mensagem("Informe um ID válido.");
+            }
+            System.out.println("Validando ID");
             if (this.JTFIDdoamigo.getText().length() >= 1) {
                 idamigo = Integer.parseInt(this.JTFIDdoamigo.getText());
             } else {
                 throw new Mensagem("Informe um ID válido.");
             }
 
-            System.out.println("Validando ID");
-            if (this.JTFIDferramenta.getText().length() >= 1) {
-                idferramenta = Integer.parseInt(this.JTFIDferramenta.getText());
-            } else {
-                throw new Mensagem("Informe um ID válido.");
-            }
             System.out.println("Validando Data Emprestimo");
             if (this.JTFDataEmprestimo.getText().length() == 10) {
                 dataemprestimo = this.JTFDataEmprestimo.getText();
@@ -248,28 +249,26 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             } else {
                 throw new Mensagem("Informe uma data valida.");
             }
-            
-            
 
             //Envia os dados para o Controlador cadastrar
             System.out.println("Chamando inserirEmprestimoDB");
-            if (this.objetoemprestimo.inserirEmprestimoDB(idamigo, idferramenta, dataemprestimo, datadevolucao)) {
+            if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, dataemprestimo, datadevolucao)) {
                 JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso!");
                 //Limpa campos da interface
                 this.JTFIDdoamigo.setText("");
                 this.JTFIDferramenta.setText("");
                 this.JTFDataEmprestimo.setText("");
                 this.JTFDataDevolucao.setText("");
-                
+
             }
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         } catch (NumberFormatException | SQLException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
-                }
+        }
 
-    
-}
+    }
+
     public class Mensagem extends Exception {
 
         public Mensagem(String message) {
