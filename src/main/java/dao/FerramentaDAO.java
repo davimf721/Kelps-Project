@@ -125,7 +125,7 @@ public class FerramentaDAO extends ConexaoDAO {
     /**
      * Deleta uma ferramenta do banco de dados com base no ID da ferramenta.
      *
-     * @param id O ID da ferramenta a ser deletada
+     * @param IdFerramenta O ID da ferramenta a ser deletada
      * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
      */
     public boolean deletar(int IdFerramenta) {

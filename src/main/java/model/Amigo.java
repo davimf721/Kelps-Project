@@ -120,8 +120,8 @@ public class Amigo {
     /**
      * Método para deletar um amigo do banco de dados.
      */
-    public boolean deletarAmigoBD(int id) throws SQLException {
-        dao.deletar(id);
+    public boolean deletarAmigoBD(int idAmigo) throws SQLException {
+        dao.deletar(idAmigo);
         return true;
     }
 
