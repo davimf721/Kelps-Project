@@ -119,18 +119,7 @@ public class JFrameRelatorio extends javax.swing.JFrame {
 
     private void JBGerarRelatorioFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerarRelatorioFerramentaActionPerformed
         // TODO add your handling code here:
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                JFrameRelatorioEmprestimo frame = null;
-                try {
-                    frame = new JFrameRelatorioEmprestimo();
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-                frame.setVisible(true);
-            }
-        });
-        this.dispose();
+        
         
     }//GEN-LAST:event_JBGerarRelatorioFerramentaActionPerformed
 
