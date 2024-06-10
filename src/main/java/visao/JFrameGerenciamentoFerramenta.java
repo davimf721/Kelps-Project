@@ -224,11 +224,18 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
             } else {
                 nome = this.JTFNome.getText();
             }    
-            if (this.JTFCustoAquisicao.getText().length() !=0) {
+            if (this.JTFCustoAquisicao.getText().length() == 0.0) {
                 throw new Mensagem("O custo deve ser diferente de 0.");
             } else {
-                nome = this.JTFCustoAquisicao.getText();
+                custoAquisicao = Double.parseDouble(this.JTFCustoAquisicao.getText());
+                System.out.println(custoAquisicao);
             }  
+            if (this.JTFMarca.getText().length() < 2) {
+                throw new Mensagem("marca deve conter ao menos 2 caracteres.");
+            } else {
+                marca = this.JTFMarca.getText();
+            }    
+            
             
             if (this.jTabelaFerramentas.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro selecione uma Ferramenta para alterar");
@@ -244,7 +251,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
                 this.JTFCustoAquisicao.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Ferramenta alterada com Sucesso!");
             }
-                //Exibe no console o aluno cadastrado
+                //Exibe no console a ferramenta cadastrada
             System.out.println(this.objetoferramenta.listarFerramenta().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -319,7 +326,8 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
         this.JTFId.setText(id);
         this.JTFNome.setText(nome);
         this.JTFMarca.setText(marca);
-        this.JTFCustoAquisicao.setText(custoAquisicao);       
+        this.JTFCustoAquisicao.setText(custoAquisicao);  
+        
         }
     }//GEN-LAST:event_jTabelaFerramentasMouseClicked
 
