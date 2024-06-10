@@ -15,7 +15,7 @@ public class Ferramenta {
     private String marca;// Marca da ferramenta
     private double custoAquisicao;// Custo de aquisição da ferramenta
     private double total;// Total dos Preços
-    FerramentaDAO dao;
+    private FerramentaDAO dao;
 
     public Ferramenta() {
         this(0, "", "", 0);
