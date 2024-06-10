@@ -88,13 +88,28 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             new String [] {
                 "Emprestimo", "Ferramenta", "Amigo ", "Data devolução", "Data emprestimo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         JTabelaEmprestimos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JTabelaEmprestimosMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(JTabelaEmprestimos);
+        if (JTabelaEmprestimos.getColumnModel().getColumnCount() > 0) {
+            JTabelaEmprestimos.getColumnModel().getColumn(0).setResizable(false);
+            JTabelaEmprestimos.getColumnModel().getColumn(1).setResizable(false);
+            JTabelaEmprestimos.getColumnModel().getColumn(2).setResizable(false);
+            JTabelaEmprestimos.getColumnModel().getColumn(3).setResizable(false);
+            JTabelaEmprestimos.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         JBFechar.setText("Fechar");
         JBFechar.addActionListener(new java.awt.event.ActionListener() {
