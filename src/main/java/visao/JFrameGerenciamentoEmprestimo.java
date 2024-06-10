@@ -307,8 +307,8 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             String dataEmprestimo = "";
             String dataDevolucao = "";
  
-            if (!this.JTFEmprestimo.getText().isEmpty()) {
-                throw new Mensagem("O emprestimo deve conter ao menos 2 caracteres.");
+            if (this.JTFEmprestimo.getText().length() < 1) {
+                throw new Mensagem("O emprestimo deve conter ao menos 1 caracter.");
             } else {
                 idEmprestimo = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
             } 
