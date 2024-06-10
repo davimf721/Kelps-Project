@@ -28,7 +28,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
     public void carregaTabela() throws SQLException {
         DefaultTableModel modelo = (DefaultTableModel) this.jTabelaFerramentas.getModel();
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
-        //Carrega a lista de objetos aluno
+
         ArrayList<Ferramenta> Ferramentas = objetoferramenta.listarFerramenta();
         for (Ferramenta a : Ferramentas) {
           modelo.addRow(new Object[]{
@@ -304,7 +304,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
                 showConfirmDialog(null,"Tem certeza que deseja apagar esta Ferramenta ?");
             
             if (respostaUsuario == 0) {// clicou em SIM
-                // envia os dados para o Aluno processar
+
                 if (this.objetoferramenta.deletarFerramentaDB(id)) {
                     // limpa os campos
                     this.JTFNome.setText("");
@@ -313,7 +313,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane,"Ferramenta Apagada com Sucesso!");
                 }
             }
-            // atualiza a tabela.
+
             System.out.println(this.objetoferramenta.listarFerramenta().toString());
         } catch (Mensagem erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -385,7 +385,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
