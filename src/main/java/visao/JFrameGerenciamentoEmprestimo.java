@@ -62,13 +62,13 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null,null,null,null},
+                {null, null,null,null,null},
+                {null, null,null,null,null},
+                {null, null,null,null,null}
             },
             new String [] {
-                "Nome", "Telefone"
+                    "idAmigo", "idFerramenta", "idEmprestimo", "dataDevolucao","dataEmprestimom"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -86,7 +86,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Emprestimo", "Ferramenta", "Amigo ", "Data devolução", "Data emprestimo"
+                "Emprestimo", "Ferramenta", "Amigo", "Data devolução", "Data emprestimo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -264,8 +264,8 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 showConfirmDialog(null,"Tem certeza que deseja apagar este emprestimo ?");
             
             if (respostaUsuario == 0) {// clicou em SIM
-                // envia os dados para o Aluno processar
-                if (this.objetoemprestimo.deletarEmprestimoDB(PROPERTIES)) {
+
+                if (this.objetoemprestimo.deletarEmprestimoDB(id)) {
                     // limpa os campos
                     this.JTFAmigo.setText("");
                     this.JTFFerramenta.setText("");
