@@ -167,7 +167,11 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
 
     private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
         // TODO add your handling code here:
+        
+        // Limpa o texto do campo de entrada de nome
         JTFNome.setText("");
+        
+        // Limpa o texto do campo de entrada de telefone
         JTFTelefone.setText("");
     }//GEN-LAST:event_JBLimparActionPerformed
 
@@ -178,22 +182,27 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
 
     private void JBAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAplicarActionPerformed
         try {
-            //Recebendo e validando dados da interface gráfica.
+            // Recebe e valida os dados da interface gráfica.
             String nome = "";
             int telefone = 0;
 
+            // Validando o nome
             System.out.println("Validando nome");
             if (this.JTFNome.getText().length() < 2) {
+                // Exibe uma mensagem de erro caso o nome tenha menos de 2 caracteres
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
                 JOptionPane.showMessageDialog(null, "Nome deve conter ao menos 2 caracteres.","Calma ai parceiro!", 0,customIcon);
             } else {
                 nome = this.JTFNome.getText();
             }
 
+            // Validando o telefone
             System.out.println("Validando telefone");
             if (this.JTFTelefone.getText().length() == 9) {
+                // Converte o texto do campo telefone para um número inteiro
                 telefone = Integer.parseInt(this.JTFTelefone.getText());
             } else {
+                // Exibe uma mensagem de erro caso o telefone não tenha 9 dígitos
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
                 JOptionPane.showMessageDialog(null, "Informe um número válido.","Calma ai parceiro!", 0,customIcon);
             }
@@ -201,6 +210,7 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             //Envia os dados para o Controlador cadastrar
             System.out.println("Chamando inserirAmigoDB");
             if (this.objetoamigo.inserirAmigoDB(nome, telefone)) {
+                // Exibe uma mensagem de sucesso caso o amigo seja cadastrado com sucesso
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
                 JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE,customIcon);
                 //Limpa campos da interface
@@ -208,6 +218,7 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
                 this.JTFTelefone.setText("");
             }
         } catch (NumberFormatException | SQLException erro2) {
+            // Exibe uma mensagem de erro caso ocorra uma exceção ao tentar cadastrar o amigo
             ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
             JOptionPane.showMessageDialog(null, "Informe um número válido.","Calma ai parceiro!", 0,customIcon);
         }
@@ -224,9 +235,13 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
+        
+        // Cria uma nova thread para manipular a interface gráfica de forma segura
         SwingUtilities.invokeLater(new Runnable() {
          public void run() {
+             // Cria uma instância do JFrameCadastrar
             JFrameCadastrar frame = new JFrameCadastrar();
+            // Torna o JFrame visível na tela
             frame.setVisible(true);
          }
       });
