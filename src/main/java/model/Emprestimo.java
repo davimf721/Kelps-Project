@@ -7,6 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 
 /**
  * Representa um empréstimo de ferramenta realizado no sistema.
@@ -17,13 +20,13 @@ public class Emprestimo {
     private int idEmprestimo;// Identificador único do empréstimo
     private int idFerramenta;// Identificador da ferramenta emprestada
     private int idAmigo;// Identificador do amigo que realizou o empréstimo
-    private String dataEmprestimo;// Data em que o empréstimo foi realizado
-    private String dataDevolucao;// Data prevista para devolução da ferramenta
+    private Date dataEmprestimo;// Data em que o empréstimo foi realizado
+    private Date dataDevolucao;// Data prevista para devolução da ferramenta
     EmprestimoDAO dao;
 
 
     public Emprestimo() {
-        this(0, 0, 0, "", "");
+        this(0, 0, 0, null, null);
     }
 
     /**
@@ -35,7 +38,7 @@ public class Emprestimo {
      * @param dataEmprestimo Data em que o empréstimo foi realizado
      * @param dataDevolucao Data prevista para devolução da ferramenta
      */
-    public Emprestimo(int idEmprestimo, int idFerramenta, int idAmigo, String dataEmprestimo, String dataDevolucao){
+    public Emprestimo(int idEmprestimo, int idFerramenta, int idAmigo, Date dataEmprestimo, Date dataDevolucao){
         this.idEmprestimo = idEmprestimo;// Define o ID do empréstimo
         this.idFerramenta = idFerramenta;// Define o ID da ferramenta emprestada
         this.idAmigo = idAmigo;// Define o ID do amigo que realizou o empréstimo
@@ -104,7 +107,7 @@ public class Emprestimo {
      *
      * @return A data de empréstimo
      */
-    public String getDataEmprestimo() {
+    public Date getDataEmprestimo() {
         return dataEmprestimo;
     }
 
@@ -113,7 +116,7 @@ public class Emprestimo {
      *
      * @param dataEmprestimo A data de empréstimo
      */
-    public void setDataEmprestimo(String dataEmprestimo) {
+    public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
@@ -122,15 +125,15 @@ public class Emprestimo {
      *
      * @return A data de devolução prevista
      */
-    public String getDataDevolucao() {
+    public Date getDataDevolucao() {
         return dataDevolucao;
     }
     /**
      * Define a data prevista para devolução da ferramenta.
      *
-     * @param dataDevolucao A data de devolução prevista
+     * @param dataDevolucao A data de devolução previstate
      */
-    public void setDataDevolucao(String dataDevolucao) {
+    public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 
@@ -138,7 +141,7 @@ public class Emprestimo {
         return dao.listar();
     }
 
-    public boolean inserirEmprestimoDB(int idFerramenta, int idAmigo, String dataEmprestimo, String dataDevolucao) throws SQLException {
+    public boolean inserirEmprestimoDB(int idFerramenta, int idAmigo, Date dataEmprestimo, Date dataDevolucao) throws SQLException {
         int maiorID = dao.maiorIDEmprestimo() + 1;
         Emprestimo emprestimo = new Emprestimo(maiorID, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao);
         dao.inserir(emprestimo);
@@ -164,10 +167,21 @@ public class Emprestimo {
     }
 
     public boolean atualizarEmprestimoDB(int id_emprestimo, int id_amigo, int id_ferramenta, String data_emprestimo, String data_devolucao) throws SQLException {
-        Emprestimo emprestimo = new Emprestimo(id_emprestimo, id_amigo, id_ferramenta, data_emprestimo, data_devolucao);
-        int indice = this.procuraIndice(id_emprestimo);
-        dao.atualizar(emprestimo);
-        return true;
+        try {
+            Date dataEmprestimo = convertStringToDate(data_emprestimo);
+            Date dataDevolucao = convertStringToDate(data_devolucao);
+
+            Emprestimo emprestimo = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
+            int indice = this.procuraIndice(idEmprestimo);
+            return dao.atualizar(emprestimo);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private Date convertStringToDate(String dateString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return (Date) formatter.parse(dateString);
     }
 
     public Emprestimo buscarEmprestimoDB(int id_emprestimo) {
@@ -176,27 +190,24 @@ public class Emprestimo {
     public ArrayList<Emprestimo> getListaEmprestimoAtivo() {
         ArrayList<Emprestimo> listaEmprestimoAtivo = new ArrayList<>();
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            ArrayList<Emprestimo> listaEmprestimo = this.listaEmprestimo();
+            ArrayList<Emprestimo> listaEmprestimo = dao.listar(); // Chama a função listar para obter a lista de empréstimos
+
+            LocalDate dataAtual = LocalDate.now();
 
             for (Emprestimo emprestimo : listaEmprestimo) {
 
                 if (emprestimo.getDataDevolucao() == null) {
                     listaEmprestimoAtivo.add(emprestimo);
+                } else {
+                    LocalDate dataDevolucao = emprestimo.getDataDevolucao().toLocalDate();
 
-                }
-                if (emprestimo.getDataDevolucao() != null) {
-                    Date dataDevolucao = (Date) sdf.parse(emprestimo.getDataDevolucao());
-                    Date dataAtual = (Date) sdf.parse(LocalDate.now() + "");
-
-                    if (dataAtual.compareTo(dataDevolucao) < 0) {
+                    if (dataAtual.isBefore(dataDevolucao)) {
                         listaEmprestimoAtivo.add(emprestimo);
-
                     }
                 }
-
             }
-        } catch (ParseException ignored) {
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
         }
 
         return listaEmprestimoAtivo;
