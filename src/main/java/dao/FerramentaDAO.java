@@ -44,7 +44,21 @@ public class FerramentaDAO extends ConexaoDAO {
         }
         return listaFerramenta;
     }
-
+    public double calcularTotalCusto() {
+    double total = 0.0;
+    try {
+        Statement smt = super.getConexao().createStatement();
+        ResultSet res = smt.executeQuery("SELECT SUM(custo_aquisicao) AS total FROM ferramentas");
+        if (res.next()) {
+            total = res.getDouble("total");
+        }
+        smt.close();
+    } catch (SQLException erro) {
+        System.out.println("Erro: " + erro);
+    }
+    return total;
+}
+    
     public int maiorIDFerramenta() {
         int MaiorID = 0;
         try {
@@ -138,5 +152,6 @@ public class FerramentaDAO extends ConexaoDAO {
         }
         return true;
     }
+    
 
 }

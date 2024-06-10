@@ -6,9 +6,12 @@ package visao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import model.Emprestimo;
+import model.Ferramenta;
 
 /**
  *
@@ -16,12 +19,18 @@ import model.Emprestimo;
  */
 public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
 
+    
+    private Ferramenta objetorelatorioferramenta;
+
     /**
-     * Creates new form JFrameRelatorioFerramenta
+     * Creates new form JFrameRelatorioEmprestimo
      */
-    public JFrameRelatorioFerramenta() {
+    public JFrameRelatorioFerramenta() throws SQLException {
         initComponents();
+        this.objetorelatorioferramenta = new Ferramenta();
+        this.carregaTabela();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,36 +43,38 @@ public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
 
         jLabelRF = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        JTRelatorioEmprestimo = new javax.swing.JTable();
+        JTRelatorioFerramenta = new javax.swing.JTable();
         JBFechar = new javax.swing.JToggleButton();
         JBVoltar = new javax.swing.JButton();
+        jLabelTotal = new javax.swing.JLabel();
+        jLabelTotalAmostra = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelRF.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabelRF.setText("Relatório Ferramenta");
 
-        JTRelatorioEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
+        JTRelatorioFerramenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID da Ferramenta", "Nomes", "Marcas", "Custo", "Total"
+                "ID da Ferramenta", "Nomes", "Marcas", "Custo"
             }
         ));
-        JTRelatorioEmprestimo.addAncestorListener(new javax.swing.event.AncestorListener() {
+        JTRelatorioFerramenta.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                JTRelatorioEmprestimoAncestorAdded(evt);
+                JTRelatorioFerramentaAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane1.setViewportView(JTRelatorioEmprestimo);
+        jScrollPane1.setViewportView(JTRelatorioFerramenta);
 
         JBFechar.setText("Fechar");
         JBFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,46 +90,66 @@ public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
             }
         });
 
+        jLabelTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelTotal.setText("Total");
+
+        jLabelTotalAmostra.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabelTotalAmostra.setText("Total");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(274, 274, 274))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(285, 285, 285)
-                        .addComponent(jLabelRF))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(jLabelRF)
+                                .addGap(171, 171, 171)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(168, 168, 168)
-                                .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(202, 202, 202)
-                                .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabelTotal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabelTotalAmostra)))
+                        .addGap(51, 51, 51))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabelRF)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelTotalAmostra, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTotal))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTRelatorioEmprestimoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTRelatorioEmprestimoAncestorAdded
+    
+    private void JTRelatorioFerramentaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTRelatorioFerramentaAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTRelatorioEmprestimoAncestorAdded
+    }//GEN-LAST:event_JTRelatorioFerramentaAncestorAdded
 
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
         // TODO add your handling code here:
@@ -135,47 +166,40 @@ public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
       });
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
+    
+    public void carregaTabela() throws SQLException {
+        DefaultTableModel modelo = (DefaultTableModel) this.JTRelatorioFerramenta.getModel();
+        modelo.setNumRows(0); // Posiciona na primeira linha da tabela
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        ArrayList<Ferramenta> Ferramentas = objetorelatorioferramenta.listarFerramenta();
+        double totalCustos = 0.0;
+        for (Ferramenta a : Ferramentas) {
+            modelo.addRow(new Object[]{
+                    a.getId(),
+                    a.getNome(),
+                    a.getMarca(),
+                    a.getCustoAquisicao()
+            });
+            totalCustos += a.getCustoAquisicao();
         }
-        //</editor-fold>
+        jLabelTotal.setText("Total dos Custos: " + totalCustos); // Atualiza o JLabel com o total dos custos
+    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFrameRelatorioFerramenta().setVisible(true);
-            }
-        });
+    public static void main(String args[]) {
+        try {
+            new JFrameRelatorioFerramenta().setVisible(true);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton JBFechar;
     private javax.swing.JButton JBVoltar;
-    private javax.swing.JTable JTRelatorioEmprestimo;
+    private javax.swing.JTable JTRelatorioFerramenta;
     private javax.swing.JLabel jLabelRF;
+    private javax.swing.JLabel jLabelTotal;
+    private javax.swing.JLabel jLabelTotalAmostra;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

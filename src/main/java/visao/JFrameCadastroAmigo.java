@@ -7,6 +7,8 @@ package visao;
 import model.Amigo;
 import javax.swing.*;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -191,13 +193,15 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
             if (this.JTFTelefone.getText().length() == 9) {
                 telefone = Integer.parseInt(this.JTFTelefone.getText());
             } else {
-                throw new Mensagem("Informe um número válido.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe um número válido.","Error!", 0,customIcon);
             }
 
             //Envia os dados para o Controlador cadastrar
             System.out.println("Chamando inserirAmigoDB");
             if (this.objetoamigo.inserirAmigoDB(nome, telefone)) {
-                JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!", "Error!", JOptionPane.PLAIN_MESSAGE,customIcon);
                 //Limpa campos da interface
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
@@ -205,7 +209,8 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         } catch (NumberFormatException | SQLException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+            ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+            JOptionPane.showMessageDialog(null, "Informe um número válido.","Error!", 0,customIcon);
         }
 
         }

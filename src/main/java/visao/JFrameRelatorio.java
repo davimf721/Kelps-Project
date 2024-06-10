@@ -117,7 +117,11 @@ public class JFrameRelatorio extends javax.swing.JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrameRelatorioFerramenta frame = null;
-                frame = new JFrameRelatorioFerramenta();
+                try {
+                    frame = new JFrameRelatorioFerramenta();
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFrameRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 frame.setVisible(true);
             }
         });
