@@ -166,7 +166,7 @@ public class Emprestimo {
         return indice;
     }
 
-    public boolean atualizarEmprestimoDB(int id_emprestimo, int id_amigo, int id_ferramenta, Date data_emprestimo, Date data_devolucao) throws SQLException {
+    public boolean atualizarEmprestimoDB(int idEmprestimo, int idAmigo, int idFerramenta, Date dataEmprestimo, Date dataDevolucao) throws SQLException {
 
             Emprestimo emprestimo = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
             int indice = this.procuraIndice(idEmprestimo);
