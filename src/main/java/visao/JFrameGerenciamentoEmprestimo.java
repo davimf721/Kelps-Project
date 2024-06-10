@@ -4,7 +4,10 @@
  */
 package visao;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,7 +89,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Emprestimo", "Ferramenta", "Amigo ", "Data devolução", "Data emprestimo"
+                "Emprestimo", "Ferramenta", "Amigo ", "Data Emprestimo", "Data Devolucao"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -189,17 +192,21 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                                                     .addComponent(JTFAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addGap(37, 37, 37)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(JTFDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(24, 24, 24)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(JBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(143, 143, 143)
+                                                .addComponent(JBAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(JTFDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(205, 205, 205)
                                 .addComponent(jLabel1)))
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                        .addGap(0, 21, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -210,24 +217,25 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JLAmigo)
-                        .addComponent(JLFerramenta)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(jLabel8)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JLAmigo)
+                    .addComponent(JLFerramenta)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JTFFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTFEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTFAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JTFDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTFFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTFDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,17 +329,30 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 dataDevolucao = this.JTFDevolucao.getText();
             }
 
-            
-            
-            if (this.objetoemprestimo.atualizarEmprestimoDB(idAmigo, idFerramenta, idEmprestimo, dataDevolucao, dataEmprestimo)){
+
+            Date sqlDataEmprestimo = null;
+            Date sqlDataDevolucao = null;
+
+            if (!dataEmprestimo.isEmpty()) {
+                sqlDataEmprestimo = convertStringToDate(dataEmprestimo);
+            }
+            if (!dataDevolucao.isEmpty()) {
+                sqlDataDevolucao = convertStringToDate(dataDevolucao);
+            }
+
+
+
+            if (this.objetoemprestimo.atualizarEmprestimoDB(idAmigo, idFerramenta, idEmprestimo, sqlDataEmprestimo, sqlDataDevolucao)){
                     // limpa os campos               
                 this.JTFAmigo.setText("");
                 this.JTFFerramenta.setText("");
                 this.JTFEmprestimo.setText("");
-                this.JTFDevolucao.setText("");
                 this.JTFDataEmprestimo.setText("");
+                this.JTFDevolucao.setText("");
+                
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo alterado com Sucesso!");
             }
+
                 //Exibe no console o Amigo cadastrado
                 System.out.println(this.objetoemprestimo.listaEmprestimo().toString());
             } catch (Mensagem erro) {
@@ -340,7 +361,9 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Informe um número válido.");
             } catch (SQLException ex) {
                 Logger.getLogger(JFrameGerenciamentoEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
+            } catch (ParseException e) {
+            throw new RuntimeException(e);
+        } finally {
                 try {
                 // atualiza a tabela.
                 carregaTabela();
@@ -348,7 +371,16 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 Logger.getLogger(JFrameGerenciamentoEmprestimo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+
     }//GEN-LAST:event_JBAlterarActionPerformed
+
+    private Date convertStringToDate(String dateString) throws ParseException {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date date = formatter.parse(dateString);
+            return new java.sql.Date(date.getTime());
+        }
+
 
     private void JTabelaEmprestimosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTabelaEmprestimosMouseClicked
         // TODO add your handling code here:
@@ -356,16 +388,16 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
         String idEmprestimo = this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 1).toString();
         String idFerramenta = this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 2).toString();
         String idAmigo = this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 3).toString();
-        String dataDevolucao = this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 4).toString();
         String dataEmprestimo = this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 5).toString();
+        String dataDevolucao = this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 4).toString();
         
         
         
         this.JTFEmprestimo.setText(idEmprestimo);
         this.JTFFerramenta.setText(idFerramenta);
         this.JTFAmigo.setText(idAmigo);
-        this.JTFDevolucao.setText(dataDevolucao);
         this.JTFDataEmprestimo.setText(dataEmprestimo);
+        this.JTFDevolucao.setText(dataDevolucao);
         
         }
     }//GEN-LAST:event_JTabelaEmprestimosMouseClicked
