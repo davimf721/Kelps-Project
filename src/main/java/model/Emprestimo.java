@@ -156,6 +156,13 @@ public class Emprestimo {
         dao.deletar(id_emprestimo);
         return true;
     }
+    
+    /**
+     * Procura o índice de um empréstimo na lista de empréstimos.
+     *
+     * @param id_emprestimo O ID do empréstimo a ser procurado
+     * @return O índice do empréstimo na lista, ou -1 se não encontrado
+     */
     private int procuraIndice(int id_emprestimo) {
         int indice = -1;
         for (int i = 0; i < EmprestimoDAO.listaEmprestimo.size(); i++) {
@@ -165,21 +172,52 @@ public class Emprestimo {
         }
         return indice;
     }
-
+    
+    /**
+     * Atualiza um empréstimo existente no banco de dados.
+     *
+     * @param idEmprestimo O ID do empréstimo a ser atualizado
+     * @param idAmigo O novo ID do amigo associado ao empréstimo
+     * @param idFerramenta O novo ID da ferramenta associada ao empréstimo
+     * @param dataEmprestimo A nova data de empréstimo
+     * @param dataDevolucao A nova data prevista de devolução
+     * @return true se a atualização for bem-sucedida, false caso contrário
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public boolean atualizarEmprestimoDB(int idEmprestimo, int idAmigo, int idFerramenta, Date dataEmprestimo, Date dataDevolucao) throws SQLException {
 
             Emprestimo emprestimo = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
             return dao.atualizar(emprestimo);
 
     }
+    
+    /**
+     * Converte uma string para um objeto Date.
+     *
+     * @param dateString A string contendo a data no formato "yyyy-MM-dd"
+     * @return O objeto Date correspondente à data
+     * @throws ParseException Se a string não puder ser convertida para uma data válida
+     */
     private Date convertStringToDate(String dateString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         return (Date) formatter.parse(dateString);
     }
-
+    
+    /**
+     * Busca um empréstimo no banco de dados com base no ID.
+     *
+     * @param id_emprestimo O ID do empréstimo a ser buscado
+     * @return O objeto Emprestimo correspondente ao ID, ou null se não encontrado
+     */
     public Emprestimo buscarEmprestimoDB(int id_emprestimo) {
         return dao.buscar(id_emprestimo);
     }
+    
+     /**
+     * Obtém uma lista de empréstimos ativos.
+     *
+     * @return Lista de empréstimos ativos
+     */
     public ArrayList<Emprestimo> getListaEmprestimoAtivo() {
         ArrayList<Emprestimo> listaEmprestimoAtivo = new ArrayList<>();
         try {
@@ -205,6 +243,13 @@ public class Emprestimo {
 
         return listaEmprestimoAtivo;
     }
+    
+    /**
+     * Verifica se um empréstimo está ativo com base no ID do empréstimo.
+     *
+     * @param idEmprestimo O ID do empréstimo a ser verificado
+     * @return "Sim" se o empréstimo estiver ativo, "Não" caso contrário
+     */
     public String emprestimoAtivo(int idEmprestimo){
         String ativo = "Não";
         Emprestimo emp = new Emprestimo();
