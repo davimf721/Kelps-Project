@@ -277,14 +277,15 @@ import model.Amigo;
             if (this.JTFTelefone.getText().length() < 9) {
                 throw new Mensagem("O telefone deve ter 9 digitos.");
             } else {
-                telefone = Integer.parseInt(this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 0).toString());
+                telefone = Integer.parseInt(this.JTFTelefone.getText());
             }  
             
-            if (this.JTabelaAmigos.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro selecione um amigo para alterar");
+            if (this.JTFId.getText().length() == -1) {
+                throw new Mensagem("Informe um Id Valido");
             } else {
-                id = Integer.parseInt(this.JTabelaAmigos.getValueAt(this.JTabelaAmigos.getSelectedRow(), 0).toString());
-            }
+                id = Integer.parseInt(this.JTFId.getText());
+            }  
+            
             
             if (this.objetoamigo.atualizarAmigoDB(id, nome, telefone)){
                     // limpa os campos               
@@ -338,10 +339,6 @@ import model.Amigo;
         }
     }//GEN-LAST:event_jTabelaAmigosMouseClicked
 
-    private void JTFIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFIdActionPerformed
-
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
         SwingUtilities.invokeLater(new Runnable() {
@@ -352,6 +349,10 @@ import model.Amigo;
       });
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
+
+    private void JTFIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFIdActionPerformed
     
     /**
      * @param args the command line arguments
