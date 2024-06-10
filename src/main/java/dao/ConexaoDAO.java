@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexaoDAO {
+    /**
+     * Estabelece uma conexão com o banco de dados.
+     *
+     * @return A conexão com o banco de dados, ou null se ocorrer um erro
+     */
     public Connection getConexao() {
         Connection connection = null;
         try {

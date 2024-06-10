@@ -9,7 +9,14 @@ import java.sql.*;
  * Esta classe implementa operações de acesso a dados para a entidade Amigo no banco de dados.
  */
 public class AmigoDAO extends ConexaoDAO {
-
+    
+/**
+     * Insere um novo amigo no banco de dados.
+     *
+     * @param amigo O objeto Amigo a ser inserido
+     * @return true se a operação for bem-sucedida, false caso contrário
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public boolean inserir(Amigo amigo) throws SQLException {
         String res = "insert into amigos(id,nome,telefone)values(?,?,?)";
         try {
@@ -89,6 +96,7 @@ public class AmigoDAO extends ConexaoDAO {
      * Deleta um amigo do banco de dados com base no ID.
      *
      * @param idAmigo O ID do amigo a ser deletado
+     * @return true se a operação for bem-sucedida, false caso contrário
      */
     public boolean deletar(int idAmigo) {
         try {
