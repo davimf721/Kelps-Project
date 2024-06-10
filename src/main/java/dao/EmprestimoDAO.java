@@ -33,6 +33,12 @@ public class EmprestimoDAO extends ConexaoDAO {
             throw new RuntimeException(erro);
         }
     }
+    
+    /**
+     * Retorna o maior ID de empréstimo cadastrado no banco de dados.
+     *
+     * @return O maior ID de empréstimo cadastrado
+     */
     public int maiorIDEmprestimo() {
         int MaiorIDEmprestimo = 0;
         try {
@@ -57,7 +63,7 @@ public class EmprestimoDAO extends ConexaoDAO {
      */
     public ArrayList<Emprestimo> listar() {
         // Limpa a lista para evitar duplicatas
-
+        
         listaEmprestimo.clear();
         try {
             // Cria uma declaração para executar a consulta SQL
@@ -85,7 +91,12 @@ public class EmprestimoDAO extends ConexaoDAO {
         return listaEmprestimo;
 
     }
-
+    
+    /**
+     * Define a lista de empréstimos.
+     *
+     * @param listaEmprestimo Lista de empréstimos a ser definida
+     */
     public static void setListaEmprestimo(ArrayList<Emprestimo> listaEmprestimo) {
         EmprestimoDAO.listaEmprestimo = listaEmprestimo;
 
