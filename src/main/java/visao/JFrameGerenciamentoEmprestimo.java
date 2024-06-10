@@ -57,7 +57,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         JTFDataEmprestimo = new javax.swing.JTextField();
-        JTFDevolucao = new javax.swing.JTextField();
+        JTFDataDevolucao = new javax.swing.JTextField();
         JTFEmprestimo = new javax.swing.JTextField();
         JTFFerramenta = new javax.swing.JTextField();
         JTFAmigo = new javax.swing.JTextField();
@@ -201,7 +201,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                                                     .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(JTFDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(JTFDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(205, 205, 205)
@@ -233,7 +233,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JTFDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTFDataDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(JTFDataEmprestimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -276,7 +276,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                     // limpa os campos
                     this.JTFAmigo.setText("");
                     this.JTFFerramenta.setText("");
-                    this.JTFDevolucao.setText("");
+                    this.JTFDataDevolucao.setText("");
                     this.JTFDataEmprestimo .setText("");
                     JOptionPane.showMessageDialog(rootPane,"Emprestimo apagado com sucesso");
                 }
@@ -319,7 +319,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             }
             idAmigo = Integer.parseInt(this.JTFAmigo.getText());
             dataEmprestimo = this.JTFDataEmprestimo.getText();
-            dataDevolucao = this.JTFDevolucao.getText();
+            dataDevolucao = this.JTFDataDevolucao.getText();
 
 
             Date sqlDataEmprestimo = null;
@@ -340,7 +340,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 this.JTFFerramenta.setText("");
                 this.JTFEmprestimo.setText("");
                 this.JTFDataEmprestimo.setText("");
-                this.JTFDevolucao.setText("");
+                this.JTFDataDevolucao.setText("");
                 
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo alterado com Sucesso!");
             }
@@ -389,7 +389,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
         this.JTFFerramenta.setText(idFerramenta);
         this.JTFAmigo.setText(idAmigo);
         this.JTFDataEmprestimo.setText(dataEmprestimo);
-        this.JTFDevolucao.setText(dataDevolucao);
+        this.JTFDataDevolucao.setText(dataDevolucao);
         
         }
     }//GEN-LAST:event_JTabelaEmprestimosMouseClicked
@@ -466,8 +466,8 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
     private javax.swing.JLabel JLAmigo;
     private javax.swing.JLabel JLFerramenta;
     private javax.swing.JTextField JTFAmigo;
+    private javax.swing.JTextField JTFDataDevolucao;
     private javax.swing.JTextField JTFDataEmprestimo;
-    private javax.swing.JTextField JTFDevolucao;
     private javax.swing.JTextField JTFEmprestimo;
     private javax.swing.JTextField JTFFerramenta;
     private javax.swing.JTable JTabelaEmprestimos;

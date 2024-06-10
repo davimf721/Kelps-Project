@@ -95,7 +95,7 @@
                                               </Group>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="JTFDevolucao" min="-2" pref="110" max="-2" attributes="0"/>
+                                                  <Component id="JTFDataDevolucao" min="-2" pref="110" max="-2" attributes="0"/>
                                                   <Component id="jLabel7" min="-2" pref="119" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -142,7 +142,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JTFDevolucao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTFDataDevolucao" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="JTFDataEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -288,7 +288,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="JTFDataEmprestimo">
     </Component>
-    <Component class="javax.swing.JTextField" name="JTFDevolucao">
+    <Component class="javax.swing.JTextField" name="JTFDataDevolucao">
     </Component>
     <Component class="javax.swing.JTextField" name="JTFEmprestimo">
     </Component>
