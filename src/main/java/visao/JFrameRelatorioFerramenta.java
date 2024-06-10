@@ -10,21 +10,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import model.Emprestimo;
 
-
 /**
  *
- * @author joaomanuel
+ * @author marlos
  */
-public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
-    private Emprestimo objetorelatorioemprestimo;
+public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFrameRelatorioEmprestimo
+     * Creates new form JFrameRelatorioFerramenta
      */
-    public JFrameRelatorioEmprestimo() throws SQLException {
+    public JFrameRelatorioFerramenta() {
         initComponents();
-        this.objetorelatorioemprestimo = new Emprestimo();
-        this.carregaTabela();
     }
 
     /**
@@ -36,19 +32,38 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        JBFechar = new javax.swing.JToggleButton();
-        JBVoltar = new javax.swing.JButton();
+        jLabelRF = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTRelatorioEmprestimo = new javax.swing.JTable();
-
-        jLabel1.setText("jLabel1");
+        JBFechar = new javax.swing.JToggleButton();
+        JBVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel2.setText("Relatório Emprestimo");
+        jLabelRF.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabelRF.setText("Relatório Ferramenta");
+
+        JTRelatorioEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID da Ferramenta", "Nomes", "Marcas", "Custo", "Total"
+            }
+        ));
+        JTRelatorioEmprestimo.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                JTRelatorioEmprestimoAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jScrollPane1.setViewportView(JTRelatorioEmprestimo);
 
         JBFechar.setText("Fechar");
         JBFechar.addActionListener(new java.awt.event.ActionListener() {
@@ -64,55 +79,46 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        JTRelatorioEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Amigo", "Ferramenta", "Emprestimo", "Data Emprestimo", "Data Devolucao", "Ativos"
-            }
-        ));
-        jScrollPane1.setViewportView(JTRelatorioEmprestimo);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(284, 284, 284)
-                        .addComponent(jLabel2))
+                        .addGap(285, 285, 285)
+                        .addComponent(jLabelRF))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(168, 168, 168)
+                                .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(202, 202, 202)
+                                .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabelRF)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JTRelatorioEmprestimoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_JTRelatorioEmprestimoAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTRelatorioEmprestimoAncestorAdded
 
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
         // TODO add your handling code here:
@@ -130,22 +136,6 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
 
-    public void carregaTabela() throws SQLException {
-        DefaultTableModel modelo = (DefaultTableModel) this.JTRelatorioEmprestimo.getModel();
-        modelo.setNumRows(0); //Posiciona na primeira linha da tabela
-        //Carrega a lista de objetos aluno
-        ArrayList<Emprestimo> Emprestimos = objetorelatorioemprestimo.listaEmprestimo();
-        for (Emprestimo a : Emprestimos) {
-          modelo.addRow(new Object[]{
-            a.getIdAmigo(),
-            a.getIdFerramenta(),
-            a.getIdEmprestimo(),
-            a.getDataEmprestimo(),
-            a.getDataDevolucao(),
-           
-          });
-        }
-    }
     /**
      * @param args the command line arguments
      */
@@ -163,24 +153,20 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameRelatorioEmprestimo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameRelatorioFerramenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new JFrameRelatorioEmprestimo().setVisible(true);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+                new JFrameRelatorioFerramenta().setVisible(true);
             }
         });
     }
@@ -189,8 +175,7 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
     private javax.swing.JToggleButton JBFechar;
     private javax.swing.JButton JBVoltar;
     private javax.swing.JTable JTRelatorioEmprestimo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelRF;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
