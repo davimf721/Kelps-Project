@@ -116,10 +116,13 @@ public class JFrameRelatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+                // Declaração inicial da variável frame
                 JFrameRelatorioFerramenta frame = null;
                 try {
+                    // Tenta criar uma nova instância da classe JFrameRelatorioFerramenta
                     frame = new JFrameRelatorioFerramenta();
                 } catch (SQLException ex) {
+                    // Se ocorrer uma exceção ao criar a janela, registra o erro
                     Logger.getLogger(JFrameRelatorio.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 frame.setVisible(true);

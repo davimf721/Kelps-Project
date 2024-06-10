@@ -127,8 +127,11 @@ public class JFrameGerenciar extends javax.swing.JFrame {
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
+
+        // Executar a criação e exibição da janela do menu na fila de eventos do Swing
         SwingUtilities.invokeLater(new Runnable() {
-         public void run() {
+            // Implementação da interface Runnable para executar a tarefa na fila de eventos do Swing
+            public void run() {
             JFrameMenu frame = new JFrameMenu();
             frame.setVisible(true);
          }
@@ -138,12 +141,16 @@ public class JFrameGerenciar extends javax.swing.JFrame {
 
     private void JBGerenciarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarAmigoActionPerformed
         // TODO add your handling code here:
+
+        // Executar a criação e exibição da janela de gerenciamento de amigo na fila de eventos do Swing
         SwingUtilities.invokeLater(new Runnable() {
+            // Implementação da interface Runnable para executar a tarefa na fila de eventos do Swing
             public void run() {
                 JFrameGerenciamentoAmigo frame = null;
                 try {
                     frame = new JFrameGerenciamentoAmigo();
                 } catch (SQLException e) {
+                    // Em caso de exceção ao criar a janela, lançar uma RuntimeException
                     throw new RuntimeException(e);
                 }
                 frame.setVisible(true);
@@ -157,7 +164,10 @@ public class JFrameGerenciar extends javax.swing.JFrame {
 
     private void JBGerenciarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarFerramentaActionPerformed
         // TODO add your handling code here:
+
+        // Executar a criação e exibição da janela de gerenciamento de ferramenta na fila de eventos do Swing
         SwingUtilities.invokeLater(new Runnable() {
+            // Implementação da interface Runnable para executar a tarefa na fila de eventos do Swing
             public void run() {
                 JFrameGerenciamentoFerramenta frame = null;
                 try {
@@ -175,12 +185,16 @@ public class JFrameGerenciar extends javax.swing.JFrame {
 
     private void JBGerenciarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerenciarEmprestimoActionPerformed
         // TODO add your handling code here:
+
+        // Executar a criação e exibição da janela de gerenciamento de empréstimo na fila de eventos do Swing
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+                // Implementação da interface Runnable para executar a tarefa na fila de eventos do Swing
                 JFrameGerenciamentoEmprestimo frame = null;
                 try {
                     frame = new JFrameGerenciamentoEmprestimo();
                 } catch (SQLException e) {
+                    // Em caso de exceção ao criar a janela, lançar uma RuntimeException
                     throw new RuntimeException(e);
                 }
                 frame.setVisible(true);
