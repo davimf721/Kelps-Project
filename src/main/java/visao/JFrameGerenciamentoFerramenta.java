@@ -232,28 +232,41 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
             String nome = "";
             String marca = "";
             double custoAquisicao = 0.0;
- 
+
+            // Validar o comprimento do nome inserido
             if (this.JTFNome.getText().length() < 2) {
+                // Lançar uma exceção se o comprimento do nome for menor que 2 caracteres
                 throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
             } else {
+                // Atribuir o texto do campo JTFNome à variável nome se o comprimento for válido
                 nome = this.JTFNome.getText();
-            }    
+            }
+
+            // Validar se o custo de aquisição foi inserido
             if (this.JTFCustoAquisicao.getText().length() == 0.0) {
+                // Lançar uma exceção se o custo de aquisição for igual a 0
                 throw new Mensagem("O custo deve ser diferente de 0.");
             } else {
+                // Converter o texto do campo JTFCustoAquisicao para double e atribuir à variável custoAquisicao
                 custoAquisicao = Double.parseDouble(this.JTFCustoAquisicao.getText());
                 System.out.println(custoAquisicao);
-            }  
+            }
+
+            // Validar o comprimento da marca inserida
             if (this.JTFMarca.getText().length() < 2) {
+                // Lançar uma exceção se o comprimento da marca for menor que 2 caracteres
                 throw new Mensagem("marca deve conter ao menos 2 caracteres.");
             } else {
+                // Atribuir o texto do campo JTFMarca à variável marca se o comprimento for válido
                 marca = this.JTFMarca.getText();
-            }    
-            
-            
+            }
+
+            // Verificar se nenhuma linha está selecionada na tabela de ferramentas
             if (this.jTabelaFerramentas.getSelectedRow() == -1) {
+                // Lançar uma exceção se nenhuma linha estiver selecionada, indicando que é necessário selecionar uma ferramenta
                 throw new Mensagem("Primeiro selecione uma Ferramenta para alterar");
             } else {
+                // Se uma linha estiver selecionada, obter o ID da ferramenta da primeira coluna da linha selecionada na tabela
                 id = Integer.parseInt(this.jTabelaFerramentas.getValueAt(this.jTabelaFerramentas.getSelectedRow(), 0).toString());
             }
             
@@ -294,8 +307,10 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
             // validando dados da interface gráfica.
             int id = 0;
             if (this.jTabelaFerramentas.getSelectedRow() == -1) {
+                // Lançar uma exceção se nenhuma linha estiver selecionada, indicando que é necessário selecionar uma ferramenta
                 throw new Mensagem("Primeiro Selecione uma Ferramenta para APAGAR");
             } else {
+                // Se uma linha estiver selecionada, obter o ID da ferramenta da primeira coluna da linha selecionada na tabela
                 id = Integer.parseInt(this.jTabelaFerramentas.
                     getValueAt(this.jTabelaFerramentas.getSelectedRow(), 0).toString());
             }
@@ -305,6 +320,7 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
             
             if (respostaUsuario == 0) {// clicou em SIM
 
+                // Excluir a ferramenta do banco de dados
                 if (this.objetoferramenta.deletarFerramentaDB(id)) {
                     // limpa os campos
                     this.JTFNome.setText("");
@@ -347,8 +363,11 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
+
+        // Executar a criação e exibição da janela de gerenciamento de JFrame na thread de despacho de eventos Swing
         SwingUtilities.invokeLater(new Runnable() {
-         public void run() {
+            // Implementação da interface Runnable para executar a tarefa na thread de despacho de eventos Swing
+            public void run() {
             JFrameGerenciar frame = new JFrameGerenciar();
             frame.setVisible(true);
             
@@ -386,11 +405,14 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
         //</editor-fold>
 
 
+        // Executar a criação e exibição da janela de gerenciamento de ferramenta na fila de eventos AWT
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     new JFrameGerenciamentoFerramenta().setVisible(true);
                 } catch (SQLException e) {
+
+                    // Lidar com exceções SQLException lançando uma RuntimeException
                     throw new RuntimeException(e);
                 }
             }
