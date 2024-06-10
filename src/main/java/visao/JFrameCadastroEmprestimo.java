@@ -4,7 +4,10 @@
  */
 package visao;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import model.Emprestimo;
@@ -262,9 +265,12 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
                 throw new Mensagem("Informe uma data valida.");
             }
 
-            //Envia os dados para o Controlador cadastrar
+            Date sqlDataEmprestimo = convertStringToDate(dataemprestimo);
+            Date sqlDataDevolucao = convertStringToDate(datadevolucao);
+
+
             System.out.println("Chamando inserirEmprestimoDB");
-            if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, dataemprestimo, datadevolucao)) {
+            if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, sqlDataEmprestimo, sqlDataDevolucao)) {
                 JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso!");
                 //Limpa campos da interface
                 this.JTFIDdoamigo.setText("");
@@ -275,10 +281,15 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             }
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
-        } catch (NumberFormatException | SQLException erro2) {
+        } catch (NumberFormatException | SQLException | ParseException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
 
+    }
+    private Date convertStringToDate(String dateString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = formatter.parse(dateString);
+        return new java.sql.Date(date.getTime());
     }
 
     public class Mensagem extends Exception {
