@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import model.Emprestimo;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -243,26 +245,30 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
             if (this.JTFIDferramenta.getText().length() >= 1) {
                 idferramenta = Integer.parseInt(this.JTFIDferramenta.getText());
             } else {
-                throw new Mensagem("Informe um ID válido.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe um id válido.","Calma ai parceiro!", 0,customIcon);
             }
             System.out.println("Validando ID");
             if (this.JTFIDdoamigo.getText().length() >= 1) {
                 idamigo = Integer.parseInt(this.JTFIDdoamigo.getText());
             } else {
-                throw new Mensagem("Informe um ID válido.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe um id válido.","Calma ai parceiro!", 0,customIcon);
             }
 
             System.out.println("Validando Data Emprestimo");
             if (this.JTFDataEmprestimo.getText().length() == 10) {
                 dataemprestimo = this.JTFDataEmprestimo.getText();
             } else {
-                throw new Mensagem("Informe uma data valida.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe uma data válida.","Calma ai parceiro!", 0,customIcon);
             }
             System.out.println("Validando Data Devolucao");
             if (this.JTFDataDevolucao.getText().length() == 10) {
                 datadevolucao = this.JTFDataDevolucao.getText();
             } else {
-                throw new Mensagem("Informe uma data valida.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe uma data válida.","Calma ai parceiro!", 0,customIcon);
             }
 
             Date sqlDataEmprestimo = convertStringToDate(dataemprestimo);
@@ -270,19 +276,22 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
 
             System.out.println("Chamando inserirEmprestimoDB");
+
             if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, sqlDataEmprestimo, sqlDataDevolucao)) {
                 JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso!");
+
                 //Limpa campos da interface
                 this.JTFIDdoamigo.setText("");
                 this.JTFIDferramenta.setText("");
                 this.JTFDataEmprestimo.setText("");
                 this.JTFDataDevolucao.setText("");
 
-            }
+
         } catch (Mensagem error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         } catch (NumberFormatException | SQLException | ParseException erro2) {
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
+
         }
 
     }

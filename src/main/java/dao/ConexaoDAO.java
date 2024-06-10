@@ -1,4 +1,5 @@
 package dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -31,11 +32,13 @@ public class ConexaoDAO {
 
         } catch (ClassNotFoundException erro) {
             // Trata o erro caso o driver não seja encontrado
-            System.out.println("O driver não foi encontrado. " + erro.getMessage());
+            System.out.println("O driver não foi encontrado: " + erro.getMessage());
+            erro.printStackTrace();
             return null;
         } catch (SQLException erro) {
             // Trata o erro caso a conexão com o banco de dados falhe
-            System.out.println("Não foi possível conectar...");
+            System.out.println("Erro ao tentar conectar ao banco de dados: " + erro.getMessage());
+            erro.printStackTrace();
             return null;
         }
     }

@@ -14,6 +14,7 @@ public class Ferramenta {
     private String nome;// Nome da ferramenta
     private String marca;// Marca da ferramenta
     private double custoAquisicao;// Custo de aquisição da ferramenta
+    private double total;// Total dos Preços
     FerramentaDAO dao;
 
     public Ferramenta() {
@@ -99,6 +100,18 @@ public class Ferramenta {
      */
     public void setCustoAquisicao(double custoAquisicao) {
         this.custoAquisicao = custoAquisicao;
+    }
+    
+    public double getTotal(){
+        return total;
+    }
+    /**
+     * Define o total dos custos das ferramentas.
+     *
+     * @param total O total dos custos
+     */
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public String getDisponivel(int id) {

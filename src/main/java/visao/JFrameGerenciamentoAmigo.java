@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import model.Amigo;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author bento
@@ -227,7 +229,8 @@ import model.Amigo;
             // validando dados da interface gráfica.
             int id = 0;
             if (this.JTabelaAmigos.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um amigo para APAGAR");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Primeiro Selecione um amigo para APAGAR!","Calma ai parceiro!", 0,customIcon);
             } else {
                 id = Integer.parseInt(this.JTabelaAmigos.
                     getValueAt(this.JTabelaAmigos.getSelectedRow(), 0).toString());
@@ -243,13 +246,12 @@ import model.Amigo;
                     this.JTFId.setText("");
                     this.JTFNome.setText("");
                     this.JTFTelefone.setText("");
-                    JOptionPane.showMessageDialog(rootPane,"Amigo apagado com sucesso");
+                    ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                    JOptionPane.showMessageDialog(null, "Amigo apagado com sucesso!","Sucesso!", 0,customIcon);
                 }
             }
             // atualiza a tabela.
                 System.out.println(this.objetoamigo.listarAmigo().toString());
-            } catch (Mensagem erro) {
-                JOptionPane.showMessageDialog(null, erro.getMessage());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             } finally {
@@ -283,18 +285,21 @@ import model.Amigo;
             int telefone = 0;
  
             if (this.JTFNome.getText().length() < 2) {
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+                    ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                    JOptionPane.showMessageDialog(null, "Nome deve conter ao menos 2 caracteres!","Calma ai parceiro!", 0,customIcon);
             } else {
                 nome = this.JTFNome.getText();
             }    
             if (this.JTFTelefone.getText().length() < 9) {
-                throw new Mensagem("O telefone deve ter 9 digitos.");
+                    ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                    JOptionPane.showMessageDialog(null, "O telefone deve ter 9 digitos!","Calma ai parceiro!", 0,customIcon);
             } else {
                 telefone = Integer.parseInt(this.JTFTelefone.getText());
             }  
             
             if (this.JTFId.getText().length() == -1) {
-                throw new Mensagem("Informe um Id Valido");
+                    ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                    JOptionPane.showMessageDialog(null, "Informe um Id Valido!","Calma ai parceiro!", 0,customIcon);
             } else {
                 id = Integer.parseInt(this.JTFId.getText());
             }  
@@ -305,14 +310,14 @@ import model.Amigo;
                 this.JTFId.setText("");
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
-                JOptionPane.showMessageDialog(rootPane, "Amigo alterado com Sucesso!");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Amigo alterado com Sucesso!","Sucesso!", 0,customIcon);
             }
                 //Exibe no console o Amigo cadastrado
                 System.out.println(this.objetoamigo.listarAmigo().toString());
-            } catch (Mensagem erro) {
-                JOptionPane.showMessageDialog(null, erro.getMessage());
             } catch (NumberFormatException erro2) {
-                JOptionPane.showMessageDialog(null, "Informe um número válido.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe um número válido!","Erro!", 0,customIcon);
             } catch (SQLException ex) {
                 Logger.getLogger(JFrameGerenciamentoAmigo.class.getName()).log(Level.SEVERE, null, ex);
             } finally {

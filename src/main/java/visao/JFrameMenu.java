@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 
 /**
  *
- * @author lucas
+ * @author marlos
  */
 public class JFrameMenu extends javax.swing.JFrame {
 
