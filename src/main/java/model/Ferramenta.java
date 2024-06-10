@@ -4,6 +4,7 @@ package model;
 import dao.FerramentaDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 /**
  * Representa uma ferramenta utilizada no sistema.
  */
@@ -17,9 +18,23 @@ public class Ferramenta {
     private double total;// Total dos Preços
     private FerramentaDAO dao;
 
+    
+    /**
+     * Construtor padrão para a classe Ferramenta.
+     * Inicializa os atributos com valores padrão.
+     */
     public Ferramenta() {
         this(0, "", "", 0);
     }
+    
+    /**
+     * Construtor para criar uma nova ferramenta com atributos definidos.
+     *
+     * @param id Identificador único da ferramenta
+     * @param nome Nome da ferramenta
+     * @param marca Marca da ferramenta
+     * @param custoAquisicao Custo de aquisição da ferramenta
+     */
     public Ferramenta(int id, String nome, String marca,  double custoAquisicao) {
         this.id = id;
         this.nome = nome;
@@ -113,7 +128,13 @@ public class Ferramenta {
     public void setTotal(double total) {
         this.total = total;
     }
-
+    
+    /**
+     * Verifica a disponibilidade de uma ferramenta com base no seu ID.
+     *
+     * @param id O ID da ferramenta a ser verificada
+     * @return "Sim" se a ferramenta estiver disponível, "Não" caso contrário
+     */
     public String getDisponivel(int id) {
         String disponivel = "Sim";
         Emprestimo emp = new Emprestimo();
@@ -126,10 +147,25 @@ public class Ferramenta {
         }
         return disponivel;
     }
+    
+    /**
+     * Obtém uma lista de todas as ferramentas cadastradas.
+     *
+     * @return Lista de ferramentas
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public ArrayList<Ferramenta> listarFerramenta() throws SQLException {
         return dao.listar();
     }
-
+    /**
+     * Insere uma nova ferramenta no banco de dados.
+     *
+     * @param nome Nome da ferramenta a ser inserida
+     * @param marca Marca da ferramenta a ser inserida
+     * @param custoAquisicao Custo de aquisição da ferramenta a ser inserida
+     * @return true se a inserção for bem-sucedida, false caso contrário
+     * @throws SQLException Se ocorrer um erro durante a execução da operação SQL
+     */
     public boolean inserirFerramentaDB(String nome, String marca, double custoAquisicao) throws SQLException {
         int maiorID = dao.maiorIDFerramenta() + 1;
         Ferramenta ferramenta = new Ferramenta(maiorID, nome, marca, custoAquisicao);
@@ -138,11 +174,23 @@ public class Ferramenta {
 
     }
 
+    /**
+     * Deleta uma ferramenta do banco de dados com base no seu ID.
+     *
+     * @param id O ID da ferramenta a ser deletada
+     * @return true se a exclusão for bem-sucedida, false caso contrário
+     */
     public boolean deletarFerramentaDB(int id) {
         dao.deletar(id);
         return true;
     }
-
+    
+    /**
+     * Procura o índice de uma ferramenta na lista de ferramentas.
+     *
+     * @param id O ID da ferramenta a ser procurada
+     * @return O índice da ferramenta na lista, ou -1 se não encontrada
+     */
     private int procuraIndice(int id) {
         int indice = -1;
         for (int i = 0; i < FerramentaDAO.listaFerramenta.size(); i++) {
@@ -153,12 +201,28 @@ public class Ferramenta {
         }
         return indice;
     }
-
+    
+    /**
+     * Atualiza os dados de uma ferramenta no banco de dados.
+     *
+     * @param id O ID da ferramenta a ser atualizada
+     * @param nome Nome atualizado da ferramenta
+     * @param marca Marca atualizada da ferramenta
+     * @param custoAquisicao Custo de aquisição atualizado da ferramenta
+     * @return true se a atualização for bem-sucedida, false caso contrário
+     */
     public boolean atualizarFerramentaDB(int id, String nome, String marca, double custoAquisicao) {
         Ferramenta ferramenta = new Ferramenta(id, nome, marca, custoAquisicao);
         dao.atualizar(ferramenta);
         return true;
     }
+    
+    /**
+     * Busca uma ferramenta no banco de dados com base no seu ID.
+     *
+     * @param id O ID da ferramenta a ser buscada
+     * @return O objeto Ferramenta correspondente ao ID, ou null se não encontrada
+     */
     public Ferramenta buscarFerramentaDB(int id) {
         return dao.buscar(id);
     }
