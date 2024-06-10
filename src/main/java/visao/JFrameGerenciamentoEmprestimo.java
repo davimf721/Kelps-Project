@@ -86,7 +86,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Amigo ", "Ferramenta", "Emprestimo", "Data emprestimo", "Data devolução"
+                "Emprestimo", "Ferramenta", "Amigo ", "Data emprestimo", "Data devolução"
             }
         ) {
             boolean[] canEdit = new boolean [] {
