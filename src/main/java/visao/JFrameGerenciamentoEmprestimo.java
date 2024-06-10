@@ -62,13 +62,13 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null,null,null,null},
-                {null, null,null,null,null},
-                {null, null,null,null,null},
-                {null, null,null,null,null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                    "idAmigo", "idFerramenta", "idEmprestimo", "dataDevolucao","dataEmprestimom"
+                "Nome", "Telefone"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -86,7 +86,7 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Emprestimo", "Ferramenta", "Amigo", "Data devolução", "Data emprestimo"
+                "Amigo ", "Ferramenta", "Emprestimo", "Data emprestimo", "Data devolução"
             }
         ) {
             boolean[] canEdit = new boolean [] {
