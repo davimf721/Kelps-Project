@@ -73,8 +73,9 @@ Um cadastro de ferramentas  e de amigos:
 - `database=kelps`
 - `user=root`
 - `password=root`
-## Considerações Adicionais:
-- Utilizar JDBC para interagir com o banco de dados MySQL.
-- Implementar validações de entrada de dados para garantir a integridade dos dados.
-- Criar uma estrutura de exceções para lidar com erros e exceções durante a execução do aplicativo.
-- Testar exaustivamente todas as funcionalidades para garantir que o sistema esteja funcionando conforme o esperado.
+## Desenvolvedores
+- Davi Moreira fuzatto (davimf721,Unisul ADM)
+- João Manuel pires escouto (João Manuel)
+- Marlos Samuel (MarlosSamuel)
+- Bento (4kbento)
+- Julio Loch (lochjulio)

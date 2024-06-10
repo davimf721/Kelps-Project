@@ -317,14 +317,9 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             } else {
                 idFerramenta = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
             }
-            this.JTFAmigo.getText();
             idAmigo = Integer.parseInt(this.JTFAmigo.getText());
-            if (this.JTFDataEmprestimo.getText().length() < 2) {
-                dataEmprestimo = this.JTFDataEmprestimo.getText();
-            }
-            if (this.JTFDevolucao.getText().length() < 2) {
-                dataDevolucao = this.JTFDevolucao.getText();
-            }
+            dataEmprestimo = this.JTFDataEmprestimo.getText();
+            dataDevolucao = this.JTFDevolucao.getText();
 
 
             Date sqlDataEmprestimo = null;
