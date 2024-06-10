@@ -166,18 +166,12 @@ public class Emprestimo {
         return indice;
     }
 
-    public boolean atualizarEmprestimoDB(int id_emprestimo, int id_amigo, int id_ferramenta, String data_emprestimo, String data_devolucao) throws SQLException {
-        try {
-            Date dataEmprestimo = convertStringToDate(data_emprestimo);
-            Date dataDevolucao = convertStringToDate(data_devolucao);
+    public boolean atualizarEmprestimoDB(int id_emprestimo, int id_amigo, int id_ferramenta, Date data_emprestimo, Date data_devolucao) throws SQLException {
 
             Emprestimo emprestimo = new Emprestimo(idEmprestimo, idAmigo, idFerramenta, dataEmprestimo, dataDevolucao);
             int indice = this.procuraIndice(idEmprestimo);
             return dao.atualizar(emprestimo);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return false;
-        }
+
     }
     private Date convertStringToDate(String dateString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
