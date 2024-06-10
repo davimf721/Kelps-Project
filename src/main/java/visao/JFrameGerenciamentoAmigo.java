@@ -55,13 +55,26 @@ import model.Amigo;
             new String [] {
                 "Id", "Nome", "Telefone"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         JTabelaAmigos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JTabelaAmigosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(JTabelaAmigos);
+        if (JTabelaAmigos.getColumnModel().getColumnCount() > 0) {
+            JTabelaAmigos.getColumnModel().getColumn(0).setResizable(false);
+            JTabelaAmigos.getColumnModel().getColumn(1).setResizable(false);
+            JTabelaAmigos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         JBFechar.setText("Fechar");
         JBFechar.addActionListener(new java.awt.event.ActionListener() {

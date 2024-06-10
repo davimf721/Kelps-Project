@@ -78,13 +78,27 @@ public class JFrameGerenciamentoFerramenta extends javax.swing.JFrame {
             new String [] {
                 "Id", "Nome", "Marca", "Custo de aquisição"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTabelaFerramentas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTabelaFerramentasMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTabelaFerramentas);
+        if (jTabelaFerramentas.getColumnModel().getColumnCount() > 0) {
+            jTabelaFerramentas.getColumnModel().getColumn(0).setResizable(false);
+            jTabelaFerramentas.getColumnModel().getColumn(1).setResizable(false);
+            jTabelaFerramentas.getColumnModel().getColumn(2).setResizable(false);
+            jTabelaFerramentas.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         JBAlterar.setText("Alterar");
         JBAlterar.addActionListener(new java.awt.event.ActionListener() {
