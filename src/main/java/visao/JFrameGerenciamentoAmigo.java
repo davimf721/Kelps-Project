@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import model.Amigo;
+import modelo.Amigo;
 import javax.swing.ImageIcon;
 
 /**

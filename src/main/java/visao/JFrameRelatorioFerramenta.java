@@ -10,8 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import model.Emprestimo;
-import model.Ferramenta;
+import modelo.Emprestimo;
+import modelo.Ferramenta;
 
 /**
  *
