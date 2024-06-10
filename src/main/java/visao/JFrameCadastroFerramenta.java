@@ -8,6 +8,8 @@ import javax.swing.*;
 import model.Ferramenta;
 
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -216,7 +218,8 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
 
             System.out.println("Validando nome");
             if (this.JTFNome.getText().length() < 2) {
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Nome deve conter ao menos 2 caracteres!","So uma letra parceiro q isso??!", 0,customIcon);
             } else {
                 nome = this.JTFNome.getText();
             }
@@ -225,12 +228,14 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
             if (this.JTFCusto.getText().length() > 1) {
                 custoAquisicao = Double.parseDouble(this.JTFCusto.getText());
             } else {
-                throw new Mensagem("Informe um número válido.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe um número válido!","Opa opa!", 0,customIcon);
             }
 
             System.out.println("Validando marca");
             if (this.JTFMarca.getText().length() < 1) {
-                throw new Mensagem("Marca deve conter ao menos 2 caracteres.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Marca deve conter ao menos 2 caracteres!","Opa opa!", 0,customIcon);
             } else {
                 marca = this.JTFMarca.getText();
             }
@@ -238,18 +243,19 @@ public class JFrameCadastroFerramenta extends javax.swing.JFrame {
             //Envia os dados para o Controlador cadastrar
             System.out.println("Chamando inserirFerramentaDB");
             if (this.objetoferramenta.inserirFerramentaDB(nome, marca, custoAquisicao)) {
-                JOptionPane.showMessageDialog(null, "Ferramenta Cadastrada com Sucesso!");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Ferramenta cadastrada com sucesso!","Sucesso!", 0,customIcon);
                 //Limpa campos da interface
                 this.JTFNome.setText("");
                 this.JTFCusto.setText("");
                 this.JTFMarca.setText("");
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar ferramenta.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Error ao cadastrar ferramenta","Error!", 0,customIcon);
             }
-        } catch (Mensagem error) {
-            JOptionPane.showMessageDialog(null, error.getMessage());
         } catch (NumberFormatException | SQLException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Informe um número válido.","Calma ai parceiro!", 0,customIcon);
         }
 
     }

@@ -184,7 +184,8 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
 
             System.out.println("Validando nome");
             if (this.JTFNome.getText().length() < 2) {
-                throw new Mensagem("Nome deve conter ao menos 2 caracteres.");
+                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
+                JOptionPane.showMessageDialog(null, "Nome deve conter ao menos 2 caracteres.","Calma ai parceiro!", 0,customIcon);
             } else {
                 nome = this.JTFNome.getText();
             }
@@ -194,23 +195,21 @@ public class JFrameCadastroAmigo extends javax.swing.JFrame {
                 telefone = Integer.parseInt(this.JTFTelefone.getText());
             } else {
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
-                JOptionPane.showMessageDialog(null, "Informe um número válido.","Error!", 0,customIcon);
+                JOptionPane.showMessageDialog(null, "Informe um número válido.","Calma ai parceiro!", 0,customIcon);
             }
 
             //Envia os dados para o Controlador cadastrar
             System.out.println("Chamando inserirAmigoDB");
             if (this.objetoamigo.inserirAmigoDB(nome, telefone)) {
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
-                JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!", "Error!", JOptionPane.PLAIN_MESSAGE,customIcon);
+                JOptionPane.showMessageDialog(null, "Amigo Cadastrado com Sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE,customIcon);
                 //Limpa campos da interface
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
             }
-        } catch (Mensagem error) {
-            JOptionPane.showMessageDialog(null, error.getMessage());
         } catch (NumberFormatException | SQLException erro2) {
             ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
-            JOptionPane.showMessageDialog(null, "Informe um número válido.","Error!", 0,customIcon);
+            JOptionPane.showMessageDialog(null, "Informe um número válido.","Calma ai parceiro!", 0,customIcon);
         }
 
         }
