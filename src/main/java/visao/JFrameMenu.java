@@ -155,8 +155,10 @@ public class JFrameMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         SwingUtilities.invokeLater(new Runnable() {
          public void run() {
-            JFrameRelatorio frame = new JFrameRelatorio();
-            frame.setVisible(true);
+             // Cria uma nova instância da classe JFrameRelatorio
+             JFrameRelatorio frame = new JFrameRelatorio();
+             // Torna a janela visível
+             frame.setVisible(true);
          }
       });
         this.dispose();
