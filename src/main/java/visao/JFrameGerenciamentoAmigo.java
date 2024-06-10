@@ -256,7 +256,7 @@ import javax.swing.ImageIcon;
                 throw new RuntimeException(e);
             } finally {
                 try {
-                // atualiza a tabela.
+
                 carregaTabela();
             } catch (SQLException ex) {
                 Logger.getLogger(JFrameGerenciamentoFerramenta.class.getName()).log(Level.SEVERE, null, ex);
@@ -313,7 +313,7 @@ import javax.swing.ImageIcon;
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
                 JOptionPane.showMessageDialog(null, "Amigo alterado com Sucesso!","Sucesso!", 0,customIcon);
             }
-                //Exibe no console o aluno cadastrado
+                //Exibe no console o Amigo cadastrado
                 System.out.println(this.objetoamigo.listarAmigo().toString());
             } catch (NumberFormatException erro2) {
                 ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
@@ -399,7 +399,7 @@ import javax.swing.ImageIcon;
         }
         //</editor-fold>
 
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

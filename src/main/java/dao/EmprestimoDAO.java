@@ -23,8 +23,8 @@ public class EmprestimoDAO extends ConexaoDAO {
             System.out.println("emprestimo.getIdFerramenta: " + emprestimo.getIdFerramenta());
             smt.setInt(2, emprestimo.getIdAmigo());
             System.out.println("emprestimo.getIdAmigo: " + emprestimo.getIdAmigo());
-            smt.setString(3, emprestimo.getDataEmprestimo());
-            smt.setString(4, emprestimo.getDataDevolucao());
+            smt.setDate(3, emprestimo.getDataEmprestimo());
+            smt.setDate(4, emprestimo.getDataDevolucao());
             smt.execute();
             smt.close();
             return true;
@@ -69,8 +69,8 @@ public class EmprestimoDAO extends ConexaoDAO {
                 int idEmprestimo = res.getInt("id_emprestimo");
                 int idFerramenta = res.getInt("id_ferramenta");
                 int idAmigo = res.getInt("id_amigo");
-                String dataEmprestimo = res.getString("data_emprestimo");
-                String dataDevolucao = res.getString("data_devolucao");
+                Date dataEmprestimo = res.getDate("data_emprestimo");
+                Date dataDevolucao = res.getDate("data_devolucao");
                 Emprestimo objeto = new Emprestimo(idEmprestimo, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao);
 
                 listaEmprestimo.add(objeto);
@@ -105,8 +105,8 @@ public class EmprestimoDAO extends ConexaoDAO {
             ResultSet res = smt.executeQuery("select * from emprestimos where id_emprestimo = " + IdEmprestimo);
             res.next();
             emprestimo.setIdEmprestimo(res.getInt("id_emprestimo"));
-            emprestimo.setDataDevolucao(res.getString("data_devolucao"));
-            emprestimo.setDataEmprestimo(res.getString("data_emprestimo"));
+            emprestimo.setDataDevolucao(res.getDate("data_devolucao"));
+            emprestimo.setDataEmprestimo(res.getDate("data_emprestimo"));
             emprestimo.setIdAmigo(res.getInt("id_amigo"));
             emprestimo.setIdFerramenta(res.getInt("id_ferramenta"));
             smt.close();
@@ -129,8 +129,8 @@ public class EmprestimoDAO extends ConexaoDAO {
             smt.setInt(1, emprestimo.getIdEmprestimo());
             smt.setInt(2, emprestimo.getIdFerramenta());
             smt.setInt(3, emprestimo.getIdAmigo());
-            smt.setString(4, emprestimo.getDataEmprestimo());
-            smt.setString(5, emprestimo.getDataDevolucao());
+            smt.setDate(4, emprestimo.getDataEmprestimo());
+            smt.setDate(5, emprestimo.getDataDevolucao());
             smt.setInt(6, emprestimo.getIdEmprestimo());
             smt.execute();
             smt.close();

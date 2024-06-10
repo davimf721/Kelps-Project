@@ -4,7 +4,10 @@
  */
 package visao;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import model.Emprestimo;
@@ -268,23 +271,34 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Informe uma data válida.","Calma ai parceiro!", 0,customIcon);
             }
 
-            //Envia os dados para o Controlador cadastrar
+            Date sqlDataEmprestimo = convertStringToDate(dataemprestimo);
+            Date sqlDataDevolucao = convertStringToDate(datadevolucao);
+
+
             System.out.println("Chamando inserirEmprestimoDB");
-            if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, dataemprestimo, datadevolucao)) {
-                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
-                JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso.","Sucesso!", 0,customIcon);
+
+            if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, sqlDataEmprestimo, sqlDataDevolucao)) {
+                JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso!");
+
                 //Limpa campos da interface
                 this.JTFIDdoamigo.setText("");
                 this.JTFIDferramenta.setText("");
                 this.JTFDataEmprestimo.setText("");
                 this.JTFDataDevolucao.setText("");
 
-            }
-        } catch (NumberFormatException | SQLException erro2) {
-                ImageIcon customIcon = new ImageIcon("C:\\Users\\lucas\\Desktop\\FACULDAD\\Kelps-Project\\src\\main\\java\\visao\\pequenaLOGO.png");
-                JOptionPane.showMessageDialog(null, "Informe um número válido.","Calma la parceiro!", 0,customIcon);
+
+        } catch (Mensagem error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        } catch (NumberFormatException | SQLException | ParseException erro2) {
+            JOptionPane.showMessageDialog(null, "Informe um número válido.");
+
         }
 
+    }
+    private Date convertStringToDate(String dateString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date date = formatter.parse(dateString);
+        return new java.sql.Date(date.getTime());
     }
 
     public class Mensagem extends Exception {
