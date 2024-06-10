@@ -237,7 +237,7 @@ import model.Amigo;
                 showConfirmDialog(null,"Tem certeza que deseja apagar este amigo ?");
             
             if (respostaUsuario == 0) {// clicou em SIM
-                // envia os dados para o Aluno processar
+
                 if (this.objetoamigo.deletarAmigoBD(id)) {
                     // limpa os campos
                     this.JTFId.setText("");
