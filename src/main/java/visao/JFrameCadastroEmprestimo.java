@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import model.Emprestimo;
+import modelo.Emprestimo;
 
 /**
  *
