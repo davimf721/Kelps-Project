@@ -4,8 +4,12 @@ Um cadastro de ferramentas  e de amigos:
 - seguro
 - automatizado
 
-##
-
+## Desenvolvedores
+- Davi Moreira fuzatto (davimf721,Unisul ADM)
+- João Manuel pires escouto (João Manuel)
+- Marlos Samuel (MarlosSamuel)
+- Bento (4kbento)
+- Julio Loch (lochjulio)
 
 ## Modelo de Dados:
 ### Tabelas no MySQL:
@@ -73,9 +77,4 @@ Um cadastro de ferramentas  e de amigos:
 - `database=kelps`
 - `user=root`
 - `password=root`
-## Desenvolvedores
-- Davi Moreira fuzatto (davimf721,Unisul ADM)
-- João Manuel pires escouto (João Manuel)
-- Marlos Samuel (MarlosSamuel)
-- Bento (4kbento)
-- Julio Loch (lochjulio)
+
