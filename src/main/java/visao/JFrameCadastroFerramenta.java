@@ -5,7 +5,7 @@
 package visao;
 
 import javax.swing.*;
-import model.Ferramenta;
+import modelo.Ferramenta;
 
 import java.sql.SQLException;
 import javax.swing.ImageIcon;

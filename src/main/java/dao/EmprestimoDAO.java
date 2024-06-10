@@ -1,6 +1,6 @@
 package dao;
 
-import model.Emprestimo;
+import modelo.Emprestimo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

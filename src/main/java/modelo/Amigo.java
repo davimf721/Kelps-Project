@@ -1,6 +1,6 @@
-package model;
+package modelo;
 import dao.AmigoDAO;
-import model.Emprestimo;
+import modelo.Emprestimo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

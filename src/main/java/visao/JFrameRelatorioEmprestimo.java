@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import model.Emprestimo;
+import modelo.Emprestimo;
 
 
 /**

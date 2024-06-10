@@ -1,6 +1,6 @@
 package dao;
 
-import model.Amigo;
+import modelo.Amigo;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;

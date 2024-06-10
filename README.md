@@ -7,9 +7,9 @@ Um cadastro de ferramentas  e de amigos:
 ## Desenvolvedores
 - Davi Moreira fuzatto (davimf721,Unisul ADM)
 - João Manuel pires escouto (João Manuel)
-- Marlos Samuel (MarlosSamuel)
-- Bento (4kbento)
-- Julio Loch (lochjulio)
+- Marlos Samuel Herneck do Carmo (MarlosSamuel)
+- Bento Biral Foerster (4kbento)
+- Julio Cesar Loch Stupp (lochjulio)
 
 ## Modelo de Dados:
 ### Tabelas no MySQL:
