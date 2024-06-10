@@ -141,7 +141,7 @@ public class Ferramenta {
         return indice;
     }
 
-    public boolean atualizarFerramentaDB(int id, String nome, String marca, double custo) {
+    public boolean atualizarFerramentaDB(int id, String nome, String marca, double custoAquisicao) {
         Ferramenta ferramenta = new Ferramenta(id, nome, marca, custoAquisicao);
         dao.atualizar(ferramenta);
         return true;
