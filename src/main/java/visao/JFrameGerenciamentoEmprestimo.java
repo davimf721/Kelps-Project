@@ -310,10 +310,10 @@ public class JFrameGerenciamentoEmprestimo extends javax.swing.JFrame {
             } else {
                 idFerramenta = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
             }
-            if (this.JTFAmigo.getText().length() < 2) {
-                throw new Mensagem("O nome do amigo deve conter ao menos 2 caracteres.");
+            if (this.JTFAmigo.getText().length() == -1) {
+                throw new Mensagem("Informe um Id Valido");
             } else {
-                idAmigo = Integer.parseInt(this.JTabelaEmprestimos.getValueAt(this.JTabelaEmprestimos.getSelectedRow(), 0).toString());
+                idAmigo = Integer.parseInt(this.JTFAmigo.getText());
             }
             if (this.JTFDataEmprestimo.getText().length() < 2) {
                 dataEmprestimo = this.JTFDataEmprestimo.getText();
