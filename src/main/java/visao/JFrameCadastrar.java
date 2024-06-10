@@ -118,8 +118,15 @@ public class JFrameCadastrar extends javax.swing.JFrame {
     private void JBCadastrarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarAmigoActionPerformed
         // TODO add your handling code here:
         SwingUtilities.invokeLater(new Runnable() {
+            
+            /**
+             * Inicia a interface gráfica para o cadastro de um amigo.
+             * Isso cria uma instância de JFrameCadastroAmigo e torna a janela visível.
+             */
          public void run() {
+             // Cria uma instância da janela de cadastro de amigo
             JFrameCadastroAmigo frame = new JFrameCadastroAmigo();
+            // Torna a janela de cadastro de amigo visível para o usuário
             frame.setVisible(true);
             
          }
@@ -131,9 +138,23 @@ public class JFrameCadastrar extends javax.swing.JFrame {
 
     private void JBCadastroFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroFerramentaActionPerformed
         // TODO add your handling code here:
+        
+        /**
+        * Invoca uma nova thread para executar a interface gráfica para o cadastro de uma ferramenta.
+        * Isso é feito dentro de uma instância de Runnable para garantir que a operação seja realizada na thread de despacho de eventos do Swing.
+        * Isso evita problemas de concorrência e bloqueios na interface do usuário.
+        */
         SwingUtilities.invokeLater(new Runnable() {
+            
+            /**
+            * O método run() é implementado aqui para criar e tornar visível a janela de cadastro de ferramentas.
+            * Isso é executado na thread de despacho de eventos do Swing.
+            */
          public void run() {
+             // Cria uma instância da janela de cadastro de ferramenta
             JFrameCadastroFerramenta frame = new JFrameCadastroFerramenta();
+            
+            // Torna a janela de cadastro de ferramenta visível para o usuário
             frame.setVisible(true);
             
          }
@@ -143,9 +164,22 @@ public class JFrameCadastrar extends javax.swing.JFrame {
 
     private void JBCadastroEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastroEmprestimoActionPerformed
         // TODO add your handling code here:
-        SwingUtilities.invokeLater(new Runnable() {
+        
+        /**
+        * Invoca uma nova thread para executar a interface gráfica do menu.
+        * Isso é feito dentro de uma instância de Runnable para garantir que a operação seja realizada na thread de despacho de eventos do Swing.
+        * Isso evita problemas de concorrência e bloqueios na interface do usuário.
+        */
+        SwingUtilities.invokeLater(new Runnable() {   
+            
+            /**
+            * O método run() é implementado aqui para criar e tornar visível a janela do menu.
+            * Isso é executado na thread de despacho de eventos do Swing.
+            */
          public void run() {
+            // Cria uma instância da janela de cadastro de ferramenta
             JFrameCadastroEmprestimo frame = new JFrameCadastroEmprestimo();
+            // Torna a janela de cadastro de ferramenta visível para o usuário
             frame.setVisible(true);
             
          }
@@ -155,9 +189,22 @@ public class JFrameCadastrar extends javax.swing.JFrame {
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
+        
+        /**
+        * Invoca uma nova thread para executar a interface gráfica do menu.
+        * Isso é feito dentro de uma instância de Runnable para garantir que a operação seja realizada na thread de despacho de eventos do Swing.
+        * Isso evita problemas de concorrência e bloqueios na interface do usuário.
+        */
         SwingUtilities.invokeLater(new Runnable() {
+            /**
+            * O método run() é implementado aqui para criar e tornar visível a janela do menu.
+            * Isso é executado na thread de despacho de eventos do Swing.
+            */
          public void run() {
+             // Cria uma instância da janela do menu
             JFrameMenu frame = new JFrameMenu();
+            
+            // Torna a janela do menu visível para o usuário
             frame.setVisible(true);
          }
       });
