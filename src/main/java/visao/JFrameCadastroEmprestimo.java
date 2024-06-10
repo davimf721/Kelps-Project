@@ -221,7 +221,11 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
     private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
         // TODO add your handling code here:
+        
+        // Limpa o campo de texto para o ID do amigo
         JTFIDdoamigo.setText("");
+        
+        // Limpa o campo de texto para o ID da ferramenta
         JTFIDferramenta.setText("");
     }//GEN-LAST:event_JBLimparActionPerformed
 
@@ -234,19 +238,21 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             //Recebendo e validando dados da interface gráfica.
-            int idamigo = 0;
-            int idferramenta = 0;
-            String dataemprestimo = "";
-            String datadevolucao = "";
+            int idamigo = 0; // Variável para armazenar o ID do amigo
+            int idferramenta = 0; // Variável para armazenar o ID da ferramenta
+            String dataemprestimo = ""; // Variável para armazenar a data de empréstimo
+            String datadevolucao = ""; // Variável para armazenar a data de devolução
 
             System.out.println("Validando ID");
             if (this.JTFIDferramenta.getText().length() >= 1) {
+                // Se o campo de ID da ferramenta tiver pelo menos um caractere
                 idferramenta = Integer.parseInt(this.JTFIDferramenta.getText());
             } else {
                 throw new Mensagem("Informe um ID válido.");
             }
             System.out.println("Validando ID");
             if (this.JTFIDdoamigo.getText().length() >= 1) {
+                // Se o campo de ID do amigo tiver pelo menos um caractere
                 idamigo = Integer.parseInt(this.JTFIDdoamigo.getText());
             } else {
                 throw new Mensagem("Informe um ID válido.");
@@ -254,12 +260,14 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
             System.out.println("Validando Data Emprestimo");
             if (this.JTFDataEmprestimo.getText().length() == 10) {
+                // Se o campo de data de empréstimo tiver 10 caracteres (formato dd/MM/yyyy)
                 dataemprestimo = this.JTFDataEmprestimo.getText();
             } else {
                 throw new Mensagem("Informe uma data valida.");
             }
             System.out.println("Validando Data Devolucao");
             if (this.JTFDataDevolucao.getText().length() == 10) {
+                // Se o campo de data de devolução tiver 10 caracteres (formato dd/MM/yyyy)
                 datadevolucao = this.JTFDataDevolucao.getText();
             } else {
                 throw new Mensagem("Informe uma data valida.");
@@ -270,7 +278,9 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
 
             System.out.println("Chamando inserirEmprestimoDB");
+            // Chama o método para inserir o empréstimo no banco de dados
             if (this.objetoemprestimo.inserirEmprestimoDB(idferramenta, idamigo, sqlDataEmprestimo, sqlDataDevolucao)) {
+                // Se o empréstimo for cadastrado com sucesso, exibe uma mensagem de sucesso
                 JOptionPane.showMessageDialog(null, "Emprestimo Cadastrado com Sucesso!");
                 //Limpa campos da interface
                 this.JTFIDdoamigo.setText("");
@@ -280,15 +290,27 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
             }
         } catch (Mensagem error) {
+            // Se ocorrer um erro de mensagem personalizada, exibe a mensagem de erro
             JOptionPane.showMessageDialog(null, error.getMessage());
         } catch (NumberFormatException | SQLException | ParseException erro2) {
+            // Se ocorrer um erro de formato de número, SQL ou de análise, exibe uma mensagem genérica de erro
             JOptionPane.showMessageDialog(null, "Informe um número válido.");
         }
 
     }
+    
+    /**
+    * Converte uma string em formato de data para o tipo Date.
+    *
+    * @param dateString A string representando a data no formato "yyyy-MM-dd".
+    * @return Um objeto Date representando a data convertida.
+    * @throws ParseException Se ocorrer um erro durante a análise da string de data.
+    */
     private Date convertStringToDate(String dateString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        // Parse a string para um objeto java.util.Date
         java.util.Date date = formatter.parse(dateString);
+        // Converte o objeto java.util.Date para java.sql.Date e retorna
         return new java.sql.Date(date.getTime());
     }
 
@@ -302,6 +324,10 @@ public class JFrameCadastroEmprestimo extends javax.swing.JFrame {
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
+        
+        /**
+        * Cria e exibe a interface gráfica para cadastrar.
+        */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 JFrameCadastrar frame = new JFrameCadastrar();
