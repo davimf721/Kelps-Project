@@ -153,21 +153,38 @@ public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
 
     private void JBVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarActionPerformed
         // TODO add your handling code here:
+
+        /**
+         * Cria e exibe um JFrame para mostrar um relatório.
+         */
         SwingUtilities.invokeLater(new Runnable() {
          public void run() {
-            JFrameRelatorio frame = new JFrameRelatorio();
-            frame.setVisible(true);
+             // Cria um novo JFrame para o relatório
+             JFrameRelatorio frame = new JFrameRelatorio();
+             // Define a visibilidade do JFrame como verdadeira para exibi-lo
+             frame.setVisible(true);
          }
       });
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
-    
+
+    /**
+     * Carrega os dados das ferramentas em uma tabela de relatório.
+     *
+     * @throws SQLException se ocorrer um erro ao acessar o banco de dados.
+     */
     public void carregaTabela() throws SQLException {
+        // Obtém o modelo da tabela
         DefaultTableModel modelo = (DefaultTableModel) this.JTRelatorioFerramenta.getModel();
         modelo.setNumRows(0); // Posiciona na primeira linha da tabela
 
+        // Obtém a lista de ferramentas do objeto de relatório de ferramenta
         ArrayList<Ferramenta> Ferramentas = objetorelatorioferramenta.listarFerramenta();
+
+        // Variável para armazenar o total de custos das ferramentas
         double totalCustos = 0.0;
+
+        // Itera sobre cada ferramenta na lista
         for (Ferramenta a : Ferramentas) {
             modelo.addRow(new Object[]{
                     a.getId(),
@@ -175,11 +192,24 @@ public class JFrameRelatorioFerramenta extends javax.swing.JFrame {
                     a.getMarca(),
                     a.getCustoAquisicao()
             });
+            // Soma o custo de aquisição da ferramenta ao total de custos
             totalCustos += a.getCustoAquisicao();
         }
+
+        /**
+         * Atualiza o JLabel com o total dos custos das ferramentas.
+         *
+         * @param totalCustos o total dos custos das ferramentas.
+         */
         jLabelTotal.setText("Total dos Custos: " + totalCustos); // Atualiza o JLabel com o total dos custos
     }
 
+    /**
+     * Método principal para iniciar a aplicação de relatório de ferramenta.
+     * Cria uma instância de JFrameRelatorioFerramenta e a torna visível.
+     *
+     * @param args os argumentos da linha de comando (não são utilizados neste método).
+     */
     public static void main(String args[]) {
         try {
             new JFrameRelatorioFerramenta().setVisible(true);

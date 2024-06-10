@@ -129,11 +129,18 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_JBVoltarActionPerformed
 
+    /**
+     * Carrega os dados dos empréstimos na tabela de relatório de empréstimos.
+     * @throws SQLException se ocorrer um erro ao acessar o banco de dados.
+     */
     public void carregaTabela() throws SQLException {
+        // Obtém o modelo da tabela
         DefaultTableModel modelo = (DefaultTableModel) this.JTRelatorioEmprestimo.getModel();
+        // Limpa todas as linhas existentes na tabela
         modelo.setNumRows(0); //Posiciona na primeira linha da tabela
         //Carrega a lista de objetos aluno
         ArrayList<Emprestimo> Emprestimos = objetorelatorioemprestimo.listaEmprestimo();
+        // Itera sobre a lista de empréstimos e adiciona cada empréstimo como uma nova linha na tabela
         for (Emprestimo a : Emprestimos) {
           modelo.addRow(new Object[]{
             a.getIdAmigo(),
@@ -176,8 +183,10 @@ public class JFrameRelatorioEmprestimo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
+                    // Cria e exibe um JFrame para o relatório de empréstimos
                     new JFrameRelatorioEmprestimo().setVisible(true);
                 } catch (SQLException e) {
+                    // Se ocorrer um erro durante a criação e exibição do JFrame, lança uma RuntimeException
                     throw new RuntimeException(e);
                 }
             }
