@@ -254,7 +254,7 @@ import model.Amigo;
                 throw new RuntimeException(e);
             } finally {
                 try {
-                // atualiza a tabela.
+
                 carregaTabela();
             } catch (SQLException ex) {
                 Logger.getLogger(JFrameGerenciamentoFerramenta.class.getName()).log(Level.SEVERE, null, ex);
@@ -307,7 +307,7 @@ import model.Amigo;
                 this.JTFTelefone.setText("");
                 JOptionPane.showMessageDialog(rootPane, "Amigo alterado com Sucesso!");
             }
-                //Exibe no console o aluno cadastrado
+                //Exibe no console o Amigo cadastrado
                 System.out.println(this.objetoamigo.listarAmigo().toString());
             } catch (Mensagem erro) {
                 JOptionPane.showMessageDialog(null, erro.getMessage());
@@ -394,7 +394,7 @@ import model.Amigo;
         }
         //</editor-fold>
 
-        /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
