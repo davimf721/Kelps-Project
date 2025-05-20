@@ -78,3 +78,10 @@ Um cadastro de ferramentas  e de amigos:
 - `user=root`
 - `password=root`
 
+
+                        
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/davimf721/Kelps-Project.svg?variant=adaptive)](https://starchart.cc/davimf721/Kelps-Project)
+
+
+                    
